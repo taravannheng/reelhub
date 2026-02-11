@@ -1,4 +1,4 @@
-class ImageConstants {
+class CustomImages {
   static final String _basePath = 'assets/images';
 
   // L
