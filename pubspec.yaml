@@ -7,8 +7,13 @@ environment:
   sdk: ^3.8.1
 
 dependencies:
+  bloc: ^9.2.0
+  bloc_test: ^10.0.0
   flutter:
     sdk: flutter
+  flutter_bloc: ^9.1.1
+  hydrated_bloc: ^10.1.1
+  tmdb_api: ^2.2.3
 
 dev_dependencies:
   flutter_test:
