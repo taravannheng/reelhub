@@ -12,38 +12,52 @@ class ScaffoldWithNavBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: navigationShell,
-      bottomNavigationBar: BottomNavigationBar(
-        items: <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: CustomIcon(path: CustomIcons.home),
-            activeIcon: CustomIcon(
-              path: CustomIcons.homeSolid,
-              color: Theme.of(context).primaryColor,
-            ),
-            label: 'Home',
+      bottomNavigationBar: Container(
+        decoration: BoxDecoration(
+          border: Border(
+            top: BorderSide(color: Colors.black.withValues(alpha: 0.1)),
           ),
-          BottomNavigationBarItem(
-            icon: CustomIcon(path: CustomIcons.magnifyingGlass),
-            activeIcon: CustomIcon(
-              path: CustomIcons.magnifyingGlassSolid,
-              color: Theme.of(context).primaryColor,
+        ),
+        child: BottomNavigationBar(
+          items: <BottomNavigationBarItem>[
+            BottomNavigationBarItem(
+              icon: CustomIcon(path: CustomIcons.home, color: Colors.black45),
+              activeIcon: CustomIcon(
+                path: CustomIcons.homeSolid,
+                color: Theme.of(context).primaryColor,
+              ),
+              label: 'Home',
             ),
-            label: 'Browse',
-          ),
-          BottomNavigationBarItem(
-            icon: CustomIcon(path: CustomIcons.profile),
-            activeIcon: CustomIcon(
-              path: CustomIcons.profileSolid,
-              color: Theme.of(context).primaryColor,
+            BottomNavigationBarItem(
+              icon: CustomIcon(
+                path: CustomIcons.magnifyingGlass,
+                color: Colors.black45,
+              ),
+              activeIcon: CustomIcon(
+                path: CustomIcons.magnifyingGlassSolid,
+                color: Theme.of(context).primaryColor,
+              ),
+              label: 'Browse',
             ),
-            label: 'Profile',
-          ),
-        ],
-        currentIndex: navigationShell.currentIndex,
-        onTap: (int index) => _onTap(context, index),
-        selectedFontSize: 12.0,
-        selectedItemColor: Theme.of(context).primaryColor,
+            BottomNavigationBarItem(
+              icon: CustomIcon(
+                path: CustomIcons.profile,
+                color: Colors.black45,
+              ),
+              activeIcon: CustomIcon(
+                path: CustomIcons.profileSolid,
+                color: Theme.of(context).primaryColor,
+              ),
+              label: 'Profile',
+            ),
+          ],
+          currentIndex: navigationShell.currentIndex,
+          onTap: (int index) => _onTap(context, index),
+          selectedFontSize: 12.0,
+          selectedItemColor: Theme.of(context).primaryColor,
+        ),
       ),
     );
   }

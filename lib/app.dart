@@ -11,8 +11,13 @@ class ReelHub extends StatelessWidget {
       routerConfig: routerInstance,
       theme: ThemeData(
         primaryColor: Colors.black,
+        scaffoldBackgroundColor: Colors.white,
         splashColor: Colors.transparent,
         highlightColor: Colors.transparent,
+        appBarTheme: AppBarThemeData(backgroundColor: Colors.white),
+        bottomNavigationBarTheme: BottomNavigationBarThemeData(
+          backgroundColor: Colors.white,
+        ),
       ),
     );
   }
