@@ -1,19 +1,26 @@
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get_it/get_it.dart';
+import 'package:reelhub/data/repositories/trending/trending_repository.dart';
+import 'package:reelhub/data/repositories/trending/trending_repository_impl.dart';
 import 'package:reelhub/data/services/tmdb_service.dart';
+import 'package:reelhub/ui/home/bloc/trending_bloc.dart';
 import 'package:tmdb_api/tmdb_api.dart';
 
-final sl = GetIt.instance;
+final getIt = GetIt.instance;
 
 Future<void> initDI() async {
-  sl.registerLazySingleton<TMDB>(
+  getIt.registerLazySingleton<TMDB>(
     () => TMDB(
       ApiKeys(dotenv.env["TMDB_API_KEY"] ?? '', 'apiReadAccessTokenv4'),
       logConfig: ConfigLogger.recommended(),
     ),
   );
 
-  sl.registerLazySingleton<TmdbService>(
-    () => TmdbService(sl<TMDB>()),
+  getIt.registerLazySingleton<TmdbService>(() => TmdbService(getIt<TMDB>()));
+
+  getIt.registerLazySingleton<TrendingRepository>(
+    () => TrendingRepositoryImpl(getIt<TmdbService>()),
   );
+
+  getIt.registerLazySingleton<TrendingBloc>(() => TrendingBloc(getIt<TrendingRepository>()));
 }

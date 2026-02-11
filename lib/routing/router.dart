@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:reelhub/config/di.dart';
 import 'package:reelhub/routing/routes.dart';
 import 'package:reelhub/ui/browse/views/browse_screen.dart';
 import 'package:reelhub/ui/core/scaffold_with_navbar.dart';
+import 'package:reelhub/ui/home/bloc/trending_bloc.dart';
 import 'package:reelhub/ui/home/views/home_screen.dart';
 import 'package:reelhub/ui/profile/views/profile_screen.dart';
 
@@ -30,7 +33,10 @@ final GoRouter routerInstance = GoRouter(
               name: Routes.home,
               path: Routes.homePath,
               builder: (BuildContext context, GoRouterState state) =>
-                  const HomeScreen(),
+                  BlocProvider(
+                    create: (context) => getIt<TrendingBloc>()..add(TrendingFetched()),
+                    child: const HomeScreen(),
+                  ),
             ),
           ],
         ),
