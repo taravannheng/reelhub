@@ -1,12 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:reelhub/routing/router.dart';
 
 class ReelHub extends StatelessWidget {
   const ReelHub({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: Scaffold(body: Center(child: Text('Hello World!'))),
+    return MaterialApp.router(
+      title: 'ReelHub',
+      routerConfig: routerInstance,
+      theme: ThemeData(
+        splashColor: Colors.transparent,
+        highlightColor: Colors.transparent,
+      ),
     );
   }
 }
