@@ -31,7 +31,21 @@ class TmdbService {
 
       return nowPlayingList;
     } catch (e) {
-      print('now-playing: $e');
+      return [];
+    }
+  }
+
+  Future<List<Movie>> getPopular() async {
+    final Map<dynamic, dynamic> results = await _tmdb.v3.tv.getPopular();
+
+    try {
+      final popularList = (results["results"] as List<dynamic>)
+          .cast<Map<String, dynamic>>()
+          .map((item) => Movie.fromJson(item))
+          .toList();
+
+      return popularList;
+    } catch (e) {
       return [];
     }
   }
