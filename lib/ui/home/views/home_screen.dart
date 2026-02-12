@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:reelhub/ui/core/custom_logo_app_bar.dart';
 import 'package:reelhub/ui/home/blocs/now_playing/now_playing_bloc.dart';
-import 'package:reelhub/ui/home/blocs/popular/popular_bloc.dart';
 import 'package:reelhub/ui/home/blocs/trending_bloc/trending_bloc.dart';
 import 'package:reelhub/ui/core/movie_list.dart';
 import 'package:reelhub/utils/mock/mock_trending_items.dart';
@@ -53,28 +52,6 @@ class HomeScreen extends StatelessWidget {
                         return MovieList(
                           state.items,
                           title: "Playing in Theatre",
-                        );
-                      default:
-                        return const Text("No data");
-                    }
-                  },
-                ),
-                SizedBox(height: 24),
-                BlocBuilder<PopularBloc, PopularState>(
-                  builder: (context, state) {
-                    switch (state.status) {
-                      case PopularStatus.loading:
-                        return Skeletonizer(
-                          enabled: true,
-                          child: MovieList(
-                            mockMovieList,
-                            title: "Popular TV Shows",
-                          ),
-                        );
-                      case PopularStatus.success:
-                        return MovieList(
-                          state.items,
-                          title: "Popular TV Shows",
                         );
                       default:
                         return const Text("No data");

@@ -5,6 +5,7 @@ import 'package:reelhub/ui/browse/blocs/top_rated_movies/top_rated_movies_bloc.d
 import 'package:reelhub/ui/browse/blocs/top_rated_tv_shows/top_rated_tv_shows_bloc.dart';
 import 'package:reelhub/ui/core/custom_logo_app_bar.dart';
 import 'package:reelhub/ui/core/movie_list.dart';
+import 'package:reelhub/ui/browse/blocs/popular_tv_shows/popular_tv_shows_bloc.dart';
 import 'package:reelhub/utils/mock/mock_trending_items.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
@@ -81,6 +82,28 @@ class BrowseScreen extends StatelessWidget {
                         return MovieList(
                           state.items,
                           title: "More Movies",
+                        );
+                      default:
+                        return const Text("No data");
+                    }
+                  },
+                ),
+                SizedBox(height: 24),
+                BlocBuilder<PopularTVShowsBloc, PopularTVShowsState>(
+                  builder: (context, state) {
+                    switch (state.status) {
+                      case PopularTVShowsStatus.loading:
+                        return Skeletonizer(
+                          enabled: true,
+                          child: MovieList(
+                            mockMovieList,
+                            title: "Popular TV Shows",
+                          ),
+                        );
+                      case PopularTVShowsStatus.success:
+                        return MovieList(
+                          state.items,
+                          title: "Popular TV Shows",
                         );
                       default:
                         return const Text("No data");
