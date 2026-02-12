@@ -2,6 +2,8 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:reelhub/data/models/movie_model.dart';
+import 'package:reelhub/utils/enums/poster_size_enums.dart';
+import 'package:reelhub/utils/helpers/image_helpers.dart';
 
 class MovieCard extends StatelessWidget {
   final Movie item;
@@ -17,7 +19,7 @@ class MovieCard extends StatelessWidget {
         children: [
           if (item.posterPath != null && item.posterPath != "")
             Image.network(
-              "https://image.tmdb.org/t/p/w154${item.posterPath ?? ""}",
+              ImageHelpers.formatPosterUrl(item.posterPath, size: PosterSize.w154),
               fit: BoxFit
                   .cover, // Ensure the image is stretched to cover the area
             ),
