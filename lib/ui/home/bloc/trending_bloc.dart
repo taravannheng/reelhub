@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:reelhub/data/models/trending_item_model.dart';
+import 'package:reelhub/data/models/movie_model.dart';
 import 'package:reelhub/data/repositories/trending/trending_repository.dart';
 
 part 'trending_event.dart';

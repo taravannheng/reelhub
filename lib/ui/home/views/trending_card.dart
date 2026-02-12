@@ -1,11 +1,11 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:reelhub/data/models/trending_item_model.dart';
+import 'package:reelhub/data/models/movie_model.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
 class TrendingCard extends StatelessWidget {
-  final TrendingItem item;
+  final Movie item;
 
   const TrendingCard(this.item, {super.key});
 

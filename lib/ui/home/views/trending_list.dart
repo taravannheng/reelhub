@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:reelhub/data/models/trending_item_model.dart';
+import 'package:reelhub/data/models/movie_model.dart';
 import 'package:reelhub/ui/home/views/trending_card.dart';
 
 class TrendingList extends StatelessWidget {
-  final List<TrendingItem>? items;
+  final List<Movie>? items;
 
   const TrendingList(this.items, {super.key});
 

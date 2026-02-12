@@ -1,4 +1,4 @@
-import 'package:reelhub/data/models/trending_item_model.dart';
+import 'package:reelhub/data/models/movie_model.dart';
 import 'package:tmdb_api/tmdb_api.dart';
 
 class TmdbService {
@@ -6,7 +6,7 @@ class TmdbService {
 
   TmdbService(this._tmdb);
 
-  Future<List<TrendingItem>> getTrending() async {
+  Future<List<Movie>> getTrending() async {
     final Map<dynamic, dynamic> results = await _tmdb.v3.trending.getTrending(
       mediaType: MediaType.all,
       timeWindow: TimeWindow.day,
@@ -14,7 +14,7 @@ class TmdbService {
 
     final trendingList = (results["results"] as List<dynamic>)
         .cast<Map<String, dynamic>>()
-        .map((item) => TrendingItem.fromJson(item))
+        .map((item) => Movie.fromJson(item))
         .toList();
 
     return trendingList;

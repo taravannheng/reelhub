@@ -25,7 +25,7 @@ class HomeScreen extends StatelessWidget {
                     case TrendingStatus.loading:
                       return Skeletonizer(
                         enabled: true,
-                        child: TrendingList(mockTrendingItems),
+                        child: TrendingList(mockMovieList),
                       );
                     case TrendingStatus.success:
                       return TrendingList(state.items);

@@ -6,18 +6,22 @@ final class TrendingState extends Equatable {
   const TrendingState({
     this.status = TrendingStatus.initial,
     this.errorMessage,
-    this.items
+    this.items,
   });
 
   final TrendingStatus status;
   final String? errorMessage;
-  final List<TrendingItem>? items;
+  final List<Movie>? items;
 
-  TrendingState copyWith({TrendingStatus? status, String? errorMessage, List<TrendingItem>? items}) {
+  TrendingState copyWith({
+    TrendingStatus? status,
+    String? errorMessage,
+    List<Movie>? items,
+  }) {
     return TrendingState(
       status: status ?? this.status,
       errorMessage: errorMessage ?? this.errorMessage,
-      items: items ?? this.items
+      items: items ?? this.items,
     );
   }
 

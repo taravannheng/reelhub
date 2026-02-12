@@ -1,12 +1,12 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'trending_item_model.dart';
+part of 'movie_model.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-TrendingItem _$TrendingItemFromJson(Map<String, dynamic> json) => TrendingItem(
+Movie _$MovieFromJson(Map<String, dynamic> json) => Movie(
   id: (json['id'] as num).toInt(),
   mediaType: json['media_type'] as String,
   adult: json['adult'] as bool,
@@ -28,23 +28,22 @@ TrendingItem _$TrendingItemFromJson(Map<String, dynamic> json) => TrendingItem(
   voteCount: (json['vote_count'] as num?)?.toInt(),
 );
 
-Map<String, dynamic> _$TrendingItemToJson(TrendingItem instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'media_type': instance.mediaType,
-      'adult': instance.adult,
-      'title': instance.title,
-      'name': instance.name,
-      'original_title': instance.originalTitle,
-      'overview': instance.overview,
-      'poster_path': instance.posterPath,
-      'backdrop_path': instance.backdropPath,
-      'original_language': instance.originalLanguage,
-      'genre_ids': instance.genreIds,
-      'popularity': instance.popularity,
-      'release_date': instance.releaseDate,
-      'first_air_date': instance.firstAirDate,
-      'video': instance.video,
-      'vote_average': instance.voteAverage,
-      'vote_count': instance.voteCount,
-    };
+Map<String, dynamic> _$MovieToJson(Movie instance) => <String, dynamic>{
+  'id': instance.id,
+  'media_type': instance.mediaType,
+  'adult': instance.adult,
+  'title': instance.title,
+  'name': instance.name,
+  'original_title': instance.originalTitle,
+  'overview': instance.overview,
+  'poster_path': instance.posterPath,
+  'backdrop_path': instance.backdropPath,
+  'original_language': instance.originalLanguage,
+  'genre_ids': instance.genreIds,
+  'popularity': instance.popularity,
+  'release_date': instance.releaseDate,
+  'first_air_date': instance.firstAirDate,
+  'video': instance.video,
+  'vote_average': instance.voteAverage,
+  'vote_count': instance.voteCount,
+};

@@ -1,7 +1,7 @@
-import 'package:reelhub/data/models/trending_item_model.dart';
+import 'package:reelhub/data/models/movie_model.dart';
 
-List<TrendingItem> mockTrendingItems = [
-  TrendingItem(
+List<Movie> mockMovieList = [
+  Movie(
     id: 1,
     mediaType: 'movie',
     adult: false,
@@ -17,7 +17,7 @@ List<TrendingItem> mockTrendingItems = [
     voteAverage: 7.5,
     voteCount: 200,
   ),
-  TrendingItem(
+  Movie(
     id: 2,
     mediaType: 'movie',
     adult: false,
@@ -33,7 +33,7 @@ List<TrendingItem> mockTrendingItems = [
     voteAverage: 6.8,
     voteCount: 150,
   ),
-  TrendingItem(
+  Movie(
     id: 3,
     mediaType: 'tv',
     adult: false,
@@ -49,7 +49,7 @@ List<TrendingItem> mockTrendingItems = [
     voteAverage: 8.0,
     voteCount: 250,
   ),
-  TrendingItem(
+  Movie(
     id: 4,
     mediaType: 'movie',
     adult: false,
@@ -65,7 +65,7 @@ List<TrendingItem> mockTrendingItems = [
     voteAverage: 7.9,
     voteCount: 320,
   ),
-  TrendingItem(
+  Movie(
     id: 5,
     mediaType: 'tv',
     adult: false,
@@ -81,7 +81,7 @@ List<TrendingItem> mockTrendingItems = [
     voteAverage: 7.3,
     voteCount: 180,
   ),
-  TrendingItem(
+  Movie(
     id: 6,
     mediaType: 'movie',
     adult: false,
@@ -97,7 +97,7 @@ List<TrendingItem> mockTrendingItems = [
     voteAverage: 7.4,
     voteCount: 215,
   ),
-  TrendingItem(
+  Movie(
     id: 7,
     mediaType: 'tv',
     adult: false,
@@ -113,7 +113,7 @@ List<TrendingItem> mockTrendingItems = [
     voteAverage: 6.9,
     voteCount: 190,
   ),
-  TrendingItem(
+  Movie(
     id: 8,
     mediaType: 'movie',
     adult: false,
@@ -129,7 +129,7 @@ List<TrendingItem> mockTrendingItems = [
     voteAverage: 8.1,
     voteCount: 340,
   ),
-  TrendingItem(
+  Movie(
     id: 9,
     mediaType: 'tv',
     adult: false,
@@ -145,7 +145,7 @@ List<TrendingItem> mockTrendingItems = [
     voteAverage: 6.5,
     voteCount: 130,
   ),
-  TrendingItem(
+  Movie(
     id: 10,
     mediaType: 'movie',
     adult: false,
