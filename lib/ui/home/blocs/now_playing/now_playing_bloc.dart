@@ -1,13 +1,13 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:reelhub/data/models/movie_model.dart';
-import 'package:reelhub/data/repositories/now_playing/now_playing_repository.dart';
+import 'package:reelhub/data/repositories/movie/movie_repository.dart';
 
 part 'now_playing_event.dart';
 part 'now_playing_state.dart';
 
 class NowPlayingBloc extends Bloc<NowPlayingEvent, NowPlayingState> {
-  final NowPlayingRepository repository;
+  final MovieRepository repository;
 
   NowPlayingBloc(this.repository) : super(const NowPlayingState()) {
     on<NowPlayingFetched>(_onNowPlayingFetched);

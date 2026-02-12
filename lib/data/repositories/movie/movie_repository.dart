@@ -1,5 +1,5 @@
 import 'package:reelhub/data/models/movie_model.dart';
 
-abstract class NowPlayingRepository {
+abstract class MovieRepository {
   Future<List<Movie>> getNowPlaying();
 }

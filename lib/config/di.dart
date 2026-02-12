@@ -1,7 +1,7 @@
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get_it/get_it.dart';
-import 'package:reelhub/data/repositories/now_playing/now_playing_repository.dart';
-import 'package:reelhub/data/repositories/now_playing/now_playing_repository_impl.dart';
+import 'package:reelhub/data/repositories/movie/movie_repository.dart';
+import 'package:reelhub/data/repositories/movie/movie_repository_impl.dart';
 import 'package:reelhub/data/repositories/trending/trending_repository.dart';
 import 'package:reelhub/data/repositories/trending/trending_repository_impl.dart';
 import 'package:reelhub/data/services/tmdb_service.dart';
@@ -29,11 +29,11 @@ Future<void> initDI() async {
     () => TrendingBloc(getIt<TrendingRepository>()),
   );
 
-  getIt.registerLazySingleton<NowPlayingRepository>(
-    () => NowPlayingRepositoryImpl(getIt<TmdbService>()),
+  getIt.registerLazySingleton<MovieRepository>(
+    () => MovieRepositoryImpl(getIt<TmdbService>()),
   );
 
   getIt.registerLazySingleton<NowPlayingBloc>(
-    () => NowPlayingBloc(getIt<NowPlayingRepository>()),
+    () => NowPlayingBloc(getIt<MovieRepository>()),
   );
 }
