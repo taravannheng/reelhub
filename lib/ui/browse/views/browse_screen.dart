@@ -75,14 +75,11 @@ class BrowseScreen extends StatelessWidget {
                           enabled: true,
                           child: MovieList(
                             mockMovieList,
-                            title: "More Movies",
+                            title: "Popular Movies",
                           ),
                         );
                       case PopularMoviesStatus.success:
-                        return MovieList(
-                          state.items,
-                          title: "More Movies",
-                        );
+                        return MovieList(state.items, title: "Popular Movies");
                       default:
                         return const Text("No data");
                     }
