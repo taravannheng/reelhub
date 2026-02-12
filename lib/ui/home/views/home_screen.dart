@@ -17,7 +17,7 @@ class HomeScreen extends StatelessWidget {
       appBar: CustomLogoAppBar(),
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16.0),
+          padding: const EdgeInsets.only(left: 16.0),
           child: SingleChildScrollView(
             child: Column(
               children: [
@@ -72,10 +72,7 @@ class HomeScreen extends StatelessWidget {
                           ),
                         );
                       case UpcomingMoviesStatus.success:
-                        return MovieList(
-                          state.items,
-                          title: "Upcoming Movies",
-                        );
+                        return MovieList(state.items, title: "Upcoming Movies");
                       default:
                         return const Text("No data");
                     }

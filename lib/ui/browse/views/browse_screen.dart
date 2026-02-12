@@ -18,7 +18,7 @@ class BrowseScreen extends StatelessWidget {
       appBar: CustomLogoAppBar(),
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16.0),
+          padding: const EdgeInsets.only(left: 16.0),
           child: SingleChildScrollView(
             child: Column(
               children: [

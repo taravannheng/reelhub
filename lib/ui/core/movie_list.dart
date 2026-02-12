@@ -26,7 +26,9 @@ class MovieList extends StatelessWidget {
             itemCount: items!.length,
             itemBuilder: (BuildContext context, int index) {
               return Padding(
-                padding: const EdgeInsets.only(right: 8.0),
+                padding: EdgeInsets.only(
+                  right: index < items!.length - 1 ? 8.0 : 16.0,
+                ),
                 child: MovieCard(items![index]),
               );
             },
