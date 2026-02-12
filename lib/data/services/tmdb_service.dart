@@ -49,4 +49,20 @@ class TmdbService {
       return [];
     }
   }
+
+  Future<List<Movie>> getTopRatedMovies() async {
+    final Map<dynamic, dynamic> results = await _tmdb.v3.movies.getTopRated();
+
+    try {
+      final topRatedMovieList = (results["results"] as List<dynamic>)
+          .cast<Map<String, dynamic>>()
+          .map((item) => Movie.fromJson(item))
+          .toList();
+
+      return topRatedMovieList;
+    } catch (e) {
+      print(e);
+      return [];
+    }
+  }
 }

@@ -11,4 +11,9 @@ class MovieRepositoryImpl implements MovieRepository {
   Future<List<Movie>> getNowPlaying() {
     return _tmdb.getNowPlaying();
   }
+
+  @override
+  Future<List<Movie>> getTopRated() {
+    return _tmdb.getTopRatedMovies();
+  }
 }

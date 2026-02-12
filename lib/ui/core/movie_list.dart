@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:reelhub/data/models/movie_model.dart';
-import 'package:reelhub/ui/home/views/movie_card.dart';
+import 'package:reelhub/ui/core/movie_card.dart';
 
 class MovieList extends StatelessWidget {
   final List<Movie>? items;

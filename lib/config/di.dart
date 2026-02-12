@@ -7,6 +7,7 @@ import 'package:reelhub/data/repositories/trending/trending_repository_impl.dart
 import 'package:reelhub/data/repositories/tv/tv_repository.dart';
 import 'package:reelhub/data/repositories/tv/tv_repository_impl.dart';
 import 'package:reelhub/data/services/tmdb_service.dart';
+import 'package:reelhub/ui/browse/blocs/top_rated_movies/top_rated_movies_bloc.dart';
 import 'package:reelhub/ui/home/blocs/now_playing/now_playing_bloc.dart';
 import 'package:reelhub/ui/home/blocs/popular/popular_bloc.dart';
 import 'package:reelhub/ui/home/blocs/trending_bloc/trending_bloc.dart';
@@ -28,23 +29,27 @@ Future<void> initDI() async {
     () => TrendingRepositoryImpl(getIt<TmdbService>()),
   );
 
-  getIt.registerLazySingleton<TrendingBloc>(
-    () => TrendingBloc(getIt<TrendingRepository>()),
-  );
-
   getIt.registerLazySingleton<MovieRepository>(
     () => MovieRepositoryImpl(getIt<TmdbService>()),
-  );
-
-  getIt.registerLazySingleton<NowPlayingBloc>(
-    () => NowPlayingBloc(getIt<MovieRepository>()),
   );
 
   getIt.registerLazySingleton<TvRepository>(
     () => TvRepositoryImpl(getIt<TmdbService>()),
   );
 
+  getIt.registerLazySingleton<NowPlayingBloc>(
+    () => NowPlayingBloc(getIt<MovieRepository>()),
+  );
+
+  getIt.registerLazySingleton<TrendingBloc>(
+    () => TrendingBloc(getIt<TrendingRepository>()),
+  );
+
   getIt.registerLazySingleton<PopularBloc>(
     () => PopularBloc(getIt<TvRepository>()),
+  );
+
+  getIt.registerLazySingleton<TopRatedMoviesBloc>(
+    () => TopRatedMoviesBloc(getIt<MovieRepository>()),
   );
 }
