@@ -10,7 +10,8 @@ import 'package:reelhub/ui/browse/views/browse_screen.dart';
 import 'package:reelhub/ui/core/scaffold_with_navbar.dart';
 import 'package:reelhub/ui/home/blocs/now_playing/now_playing_bloc.dart';
 import 'package:reelhub/ui/browse/blocs/popular_tv_shows/popular_tv_shows_bloc.dart';
-import 'package:reelhub/ui/home/blocs/trending_bloc/trending_bloc.dart';
+import 'package:reelhub/ui/home/blocs/trending/trending_bloc.dart';
+import 'package:reelhub/ui/home/blocs/upcoming_movies/upcoming_movies_bloc.dart';
 import 'package:reelhub/ui/home/views/home_screen.dart';
 import 'package:reelhub/ui/profile/views/profile_screen.dart';
 
@@ -48,8 +49,11 @@ final GoRouter routerInstance = GoRouter(
                         create: (context) =>
                             getIt<NowPlayingBloc>()..add(NowPlayingFetched()),
                       ),
+                      BlocProvider(
+                        create: (context) =>
+                            getIt<UpcomingMoviesBloc>()..add(UpcomingMoviesFetched()),
+                      ),
                     ],
-
                     child: const HomeScreen(),
                   ),
             ),

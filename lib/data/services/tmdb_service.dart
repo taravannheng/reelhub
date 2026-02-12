@@ -98,4 +98,20 @@ class TmdbService {
       return [];
     }
   }
+
+
+  Future<List<Movie>> getUpcomingMovies() async {
+    final Map<dynamic, dynamic> results = await _tmdb.v3.movies.getUpcoming();
+
+    try {
+      final upcomingMovieList = (results["results"] as List<dynamic>)
+          .cast<Map<String, dynamic>>()
+          .map((item) => Movie.fromJson(item))
+          .toList();
+
+      return upcomingMovieList;
+    } catch (e) {
+      return [];
+    }
+  }
 }

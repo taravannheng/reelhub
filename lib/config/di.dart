@@ -12,7 +12,8 @@ import 'package:reelhub/ui/browse/blocs/top_rated_movies/top_rated_movies_bloc.d
 import 'package:reelhub/ui/browse/blocs/top_rated_tv_shows/top_rated_tv_shows_bloc.dart';
 import 'package:reelhub/ui/home/blocs/now_playing/now_playing_bloc.dart';
 import 'package:reelhub/ui/browse/blocs/popular_tv_shows/popular_tv_shows_bloc.dart';
-import 'package:reelhub/ui/home/blocs/trending_bloc/trending_bloc.dart';
+import 'package:reelhub/ui/home/blocs/trending/trending_bloc.dart';
+import 'package:reelhub/ui/home/blocs/upcoming_movies/upcoming_movies_bloc.dart';
 import 'package:tmdb_api/tmdb_api.dart';
 
 final getIt = GetIt.instance;
@@ -61,5 +62,9 @@ Future<void> initDI() async {
 
   getIt.registerLazySingleton<PopularMoviesBloc>(
     () => PopularMoviesBloc(getIt<MovieRepository>()),
+  );
+
+  getIt.registerLazySingleton<UpcomingMoviesBloc>(
+    () => UpcomingMoviesBloc(getIt<MovieRepository>()),
   );
 }
