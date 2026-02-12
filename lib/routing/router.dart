@@ -5,7 +5,8 @@ import 'package:reelhub/config/di.dart';
 import 'package:reelhub/routing/routes.dart';
 import 'package:reelhub/ui/browse/views/browse_screen.dart';
 import 'package:reelhub/ui/core/scaffold_with_navbar.dart';
-import 'package:reelhub/ui/home/bloc/trending_bloc.dart';
+import 'package:reelhub/ui/home/blocs/now_playing/now_playing_bloc.dart';
+import 'package:reelhub/ui/home/blocs/trending_bloc/trending_bloc.dart';
 import 'package:reelhub/ui/home/views/home_screen.dart';
 import 'package:reelhub/ui/profile/views/profile_screen.dart';
 
@@ -33,8 +34,18 @@ final GoRouter routerInstance = GoRouter(
               name: Routes.home,
               path: Routes.homePath,
               builder: (BuildContext context, GoRouterState state) =>
-                  BlocProvider(
-                    create: (context) => getIt<TrendingBloc>()..add(TrendingFetched()),
+                  MultiBlocProvider(
+                    providers: [
+                      BlocProvider(
+                        create: (context) =>
+                            getIt<TrendingBloc>()..add(TrendingFetched()),
+                      ),
+                      BlocProvider(
+                        create: (context) =>
+                            getIt<NowPlayingBloc>()..add(NowPlayingFetched()),
+                      ),
+                    ],
+
                     child: const HomeScreen(),
                   ),
             ),

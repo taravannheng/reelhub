@@ -7,7 +7,7 @@ class Movie {
   final int id;
 
   @JsonKey(name: 'media_type')
-  final String mediaType;
+  final String? mediaType;
 
   final bool adult;
 

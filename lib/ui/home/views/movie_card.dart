@@ -2,12 +2,11 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:reelhub/data/models/movie_model.dart';
-import 'package:skeletonizer/skeletonizer.dart';
 
-class TrendingCard extends StatelessWidget {
+class MovieCard extends StatelessWidget {
   final Movie item;
 
-  const TrendingCard(this.item, {super.key});
+  const MovieCard(this.item, {super.key});
 
   @override
   Widget build(BuildContext context) {

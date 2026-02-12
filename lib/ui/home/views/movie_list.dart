@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:reelhub/data/models/movie_model.dart';
-import 'package:reelhub/ui/home/views/trending_card.dart';
+import 'package:reelhub/ui/home/views/movie_card.dart';
 
-class TrendingList extends StatelessWidget {
+class MovieList extends StatelessWidget {
   final List<Movie>? items;
+  final String title;
 
-  const TrendingList(this.items, {super.key});
+  const MovieList(this.items, {super.key, required this.title});
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +17,7 @@ class TrendingList extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text("Trending", style: Theme.of(context).textTheme.titleLarge),
+        Text(title, style: Theme.of(context).textTheme.titleLarge),
         SizedBox(height: 16),
         SizedBox(
           height: 231,
@@ -26,7 +27,7 @@ class TrendingList extends StatelessWidget {
             itemBuilder: (BuildContext context, int index) {
               return Padding(
                 padding: const EdgeInsets.only(right: 8.0),
-                child: TrendingCard(items![index]),
+                child: MovieCard(items![index]),
               );
             },
           ),

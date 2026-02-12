@@ -19,4 +19,20 @@ class TmdbService {
 
     return trendingList;
   }
+
+  Future<List<Movie>> getNowPlaying() async {
+    final Map<dynamic, dynamic> results = await _tmdb.v3.movies.getNowPlaying();
+
+    try {
+      final nowPlayingList = (results["results"] as List<dynamic>)
+          .cast<Map<String, dynamic>>()
+          .map((item) => Movie.fromJson(item))
+          .toList();
+
+      return nowPlayingList;
+    } catch (e) {
+      print('now-playing: $e');
+      return [];
+    }
+  }
 }
