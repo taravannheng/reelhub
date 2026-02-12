@@ -12,12 +12,16 @@ class TmdbService {
       timeWindow: TimeWindow.day,
     );
 
-    final trendingList = (results["results"] as List<dynamic>)
-        .cast<Map<String, dynamic>>()
-        .map((item) => Movie.fromJson(item))
-        .toList();
+    try {
+      final trendingList = (results["results"] as List<dynamic>)
+          .cast<Map<String, dynamic>>()
+          .map((item) => Movie.fromJson(item))
+          .toList();
 
-    return trendingList;
+      return trendingList;
+    } catch (e) {
+      return [];
+    }
   }
 
   Future<List<Movie>> getNowPlaying() async {
@@ -61,7 +65,21 @@ class TmdbService {
 
       return topRatedMovieList;
     } catch (e) {
-      print(e);
+      return [];
+    }
+  }
+
+  Future<List<Movie>> getTopRatedTvShows() async {
+    final Map<dynamic, dynamic> results = await _tmdb.v3.tv.getTopRated();
+
+    try {
+      final topRatedTvShowsList = (results["results"] as List<dynamic>)
+          .cast<Map<String, dynamic>>()
+          .map((item) => Movie.fromJson(item))
+          .toList();
+
+      return topRatedTvShowsList;
+    } catch (e) {
       return [];
     }
   }

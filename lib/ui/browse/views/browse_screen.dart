@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:reelhub/ui/browse/blocs/top_rated_movies/top_rated_movies_bloc.dart';
+import 'package:reelhub/ui/browse/blocs/top_rated_tv_shows/top_rated_tv_shows_bloc.dart';
 import 'package:reelhub/ui/core/custom_logo_app_bar.dart';
 import 'package:reelhub/ui/core/movie_list.dart';
 import 'package:reelhub/utils/mock/mock_trending_items.dart';
@@ -42,6 +43,27 @@ class BrowseScreen extends StatelessWidget {
                   },
                 ),
                 SizedBox(height: 24),
+                BlocBuilder<TopRatedTVShowsBloc, TopRatedTVShowsState>(
+                  builder: (context, state) {
+                    switch (state.status) {
+                      case TopRatedTVShowsStatus.loading:
+                        return Skeletonizer(
+                          enabled: true,
+                          child: MovieList(
+                            mockMovieList,
+                            title: "Top Rated TV Shows",
+                          ),
+                        );
+                      case TopRatedTVShowsStatus.success:
+                        return MovieList(
+                          state.items,
+                          title: "Top Rated TV Shows",
+                        );
+                      default:
+                        return const Text("No data");
+                    }
+                  },
+                ),
               ],
             ),
           ),

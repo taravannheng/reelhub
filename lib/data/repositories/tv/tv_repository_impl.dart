@@ -11,4 +11,9 @@ class TvRepositoryImpl implements TvRepository {
   Future<List<Movie>> getPopular() {
     return _tmdb.getPopular();
   }
+
+  @override
+  Future<List<Movie>> getTopRated() {
+    return _tmdb.getTopRatedTvShows();
+  }
 }

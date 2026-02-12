@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:reelhub/config/di.dart';
 import 'package:reelhub/routing/routes.dart';
 import 'package:reelhub/ui/browse/blocs/top_rated_movies/top_rated_movies_bloc.dart';
+import 'package:reelhub/ui/browse/blocs/top_rated_tv_shows/top_rated_tv_shows_bloc.dart';
 import 'package:reelhub/ui/browse/views/browse_screen.dart';
 import 'package:reelhub/ui/core/scaffold_with_navbar.dart';
 import 'package:reelhub/ui/home/blocs/now_playing/now_playing_bloc.dart';
@@ -69,6 +70,11 @@ final GoRouter routerInstance = GoRouter(
                         create: (context) =>
                             getIt<TopRatedMoviesBloc>()
                               ..add(TopRatedMoviesFetched()),
+                      ),
+                      BlocProvider(
+                        create: (context) =>
+                            getIt<TopRatedTVShowsBloc>()
+                              ..add(TopRatedTVShowsFetched()),
                       ),
                     ],
 
