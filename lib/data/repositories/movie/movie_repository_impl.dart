@@ -16,4 +16,9 @@ class MovieRepositoryImpl implements MovieRepository {
   Future<List<Movie>> getTopRated() {
     return _tmdb.getTopRatedMovies();
   }
+
+  @override
+  Future<List<Movie>> getPopular() {
+    return _tmdb.getPopularMovies();
+  }
 }

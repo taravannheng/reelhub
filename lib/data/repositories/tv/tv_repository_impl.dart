@@ -9,7 +9,7 @@ class TvRepositoryImpl implements TvRepository {
 
   @override
   Future<List<Movie>> getPopular() {
-    return _tmdb.getPopular();
+    return _tmdb.getPopularTvShows();
   }
 
   @override

@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:reelhub/config/di.dart';
 import 'package:reelhub/routing/routes.dart';
+import 'package:reelhub/ui/browse/blocs/popular_movies/popular_movies_bloc.dart';
 import 'package:reelhub/ui/browse/blocs/top_rated_movies/top_rated_movies_bloc.dart';
 import 'package:reelhub/ui/browse/blocs/top_rated_tv_shows/top_rated_tv_shows_bloc.dart';
 import 'package:reelhub/ui/browse/views/browse_screen.dart';
@@ -75,6 +76,11 @@ final GoRouter routerInstance = GoRouter(
                         create: (context) =>
                             getIt<TopRatedTVShowsBloc>()
                               ..add(TopRatedTVShowsFetched()),
+                      ),
+                      BlocProvider(
+                        create: (context) =>
+                            getIt<PopularMoviesBloc>()
+                              ..add(PopularMoviesFetched()),
                       ),
                     ],
 

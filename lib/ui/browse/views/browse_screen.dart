@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:reelhub/ui/browse/blocs/popular_movies/popular_movies_bloc.dart';
 import 'package:reelhub/ui/browse/blocs/top_rated_movies/top_rated_movies_bloc.dart';
 import 'package:reelhub/ui/browse/blocs/top_rated_tv_shows/top_rated_tv_shows_bloc.dart';
 import 'package:reelhub/ui/core/custom_logo_app_bar.dart';
@@ -64,6 +65,29 @@ class BrowseScreen extends StatelessWidget {
                     }
                   },
                 ),
+                SizedBox(height: 24),
+                BlocBuilder<PopularMoviesBloc, PopularMoviesState>(
+                  builder: (context, state) {
+                    switch (state.status) {
+                      case PopularMoviesStatus.loading:
+                        return Skeletonizer(
+                          enabled: true,
+                          child: MovieList(
+                            mockMovieList,
+                            title: "More Movies",
+                          ),
+                        );
+                      case PopularMoviesStatus.success:
+                        return MovieList(
+                          state.items,
+                          title: "More Movies",
+                        );
+                      default:
+                        return const Text("No data");
+                    }
+                  },
+                ),
+                SizedBox(height: 24),
               ],
             ),
           ),

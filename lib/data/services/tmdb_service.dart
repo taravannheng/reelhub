@@ -39,7 +39,7 @@ class TmdbService {
     }
   }
 
-  Future<List<Movie>> getPopular() async {
+  Future<List<Movie>> getPopularTvShows() async {
     final Map<dynamic, dynamic> results = await _tmdb.v3.tv.getPopular();
 
     try {
@@ -79,6 +79,21 @@ class TmdbService {
           .toList();
 
       return topRatedTvShowsList;
+    } catch (e) {
+      return [];
+    }
+  }
+
+  Future<List<Movie>> getPopularMovies() async {
+    final Map<dynamic, dynamic> results = await _tmdb.v3.movies.getPopular();
+
+    try {
+      final popularMovieList = (results["results"] as List<dynamic>)
+          .cast<Map<String, dynamic>>()
+          .map((item) => Movie.fromJson(item))
+          .toList();
+
+      return popularMovieList;
     } catch (e) {
       return [];
     }
