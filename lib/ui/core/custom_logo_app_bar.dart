@@ -10,6 +10,7 @@ class CustomLogoAppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       backgroundColor: Colors.white,
+      surfaceTintColor: Colors.transparent,
       leadingWidth: 56,
       leading: Container(
         padding: EdgeInsets.only(left: 10),
