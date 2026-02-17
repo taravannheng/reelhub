@@ -17,46 +17,43 @@ class ScaffoldWithNavBar extends StatelessWidget {
       bottomNavigationBar: Container(
         decoration: BoxDecoration(
           border: Border(
-            top: BorderSide(color: Colors.black.withValues(alpha: 0.1)),
+            top: BorderSide(
+              color: Theme.of(context).dividerColor.withAlpha(100),
+            ),
           ),
         ),
         child: BottomNavigationBar(
           items: <BottomNavigationBarItem>[
             BottomNavigationBarItem(
-              icon: CustomIcon(path: CustomIcons.home, color: Colors.black45),
-              activeIcon: CustomIcon(
-                path: CustomIcons.homeSolid,
-                color: Theme.of(context).primaryColor,
+              icon: CustomIcon(
+                path: CustomIcons.home,
+                color: Theme.of(
+                  context,
+                ).bottomNavigationBarTheme.unselectedIconTheme?.color,
               ),
+              activeIcon: CustomIcon(path: CustomIcons.homeSolid),
               label: 'Home',
             ),
             BottomNavigationBarItem(
-              icon: CustomIcon(
-                path: CustomIcons.magnifyingGlass,
-                color: Colors.black45,
-              ),
-              activeIcon: CustomIcon(
-                path: CustomIcons.magnifyingGlassSolid,
-                color: Theme.of(context).primaryColor,
-              ),
+              icon: CustomIcon(path: CustomIcons.magnifyingGlass,
+                color: Theme.of(
+                  context,
+                ).bottomNavigationBarTheme.unselectedIconTheme?.color,),
+              activeIcon: CustomIcon(path: CustomIcons.magnifyingGlassSolid),
               label: 'Browse',
             ),
             BottomNavigationBarItem(
-              icon: CustomIcon(
-                path: CustomIcons.profile,
-                color: Colors.black45,
-              ),
-              activeIcon: CustomIcon(
-                path: CustomIcons.profileSolid,
-                color: Theme.of(context).primaryColor,
-              ),
+              icon: CustomIcon(path: CustomIcons.profile,
+                color: Theme.of(
+                  context,
+                ).bottomNavigationBarTheme.unselectedIconTheme?.color,),
+              activeIcon: CustomIcon(path: CustomIcons.profileSolid),
               label: 'Profile',
             ),
           ],
           currentIndex: navigationShell.currentIndex,
           onTap: (int index) => _onTap(context, index),
           selectedFontSize: 12.0,
-          selectedItemColor: Theme.of(context).primaryColor,
         ),
       ),
     );

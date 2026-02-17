@@ -1,6 +1,9 @@
 class CustomIcons {
   static final String _basePath = 'assets/icons';
 
+  // C
+  static final String check = '$_basePath/check.svg';
+
   // M
   static final String magnifyingGlass = '$_basePath/magnifying_glass.svg';
   static final String magnifyingGlassSolid = '$_basePath/magnifying_glass_solid.svg';

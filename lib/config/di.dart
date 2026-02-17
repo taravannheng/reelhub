@@ -14,6 +14,7 @@ import 'package:reelhub/ui/home/blocs/now_playing/now_playing_bloc.dart';
 import 'package:reelhub/ui/browse/blocs/popular_tv_shows/popular_tv_shows_bloc.dart';
 import 'package:reelhub/ui/home/blocs/trending/trending_bloc.dart';
 import 'package:reelhub/ui/home/blocs/upcoming_movies/upcoming_movies_bloc.dart';
+import 'package:reelhub/ui/profile/blocs/theme/theme_bloc.dart';
 import 'package:tmdb_api/tmdb_api.dart';
 
 final getIt = GetIt.instance;
@@ -67,4 +68,6 @@ Future<void> initDI() async {
   getIt.registerLazySingleton<UpcomingMoviesBloc>(
     () => UpcomingMoviesBloc(getIt<MovieRepository>()),
   );
+
+  getIt.registerLazySingleton<ThemeBloc>(() => ThemeBloc());
 }

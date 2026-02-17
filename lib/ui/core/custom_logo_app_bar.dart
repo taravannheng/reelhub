@@ -9,16 +9,18 @@ class CustomLogoAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      backgroundColor: Colors.white,
       surfaceTintColor: Colors.transparent,
       leadingWidth: 56,
       leading: Container(
-        padding: EdgeInsets.only(left: 10),
-        child: Image.asset(CustomImages.logoGrayscale, fit: BoxFit.contain),
+        padding: EdgeInsets.only(left: 16),
+        child: Image.asset(
+          CustomImages.logoGrayScaleTransparent,
+          fit: BoxFit.contain,
+        ),
       ),
       shape: Border(
         bottom: BorderSide(
-          color: Colors.black.withValues(alpha: 0.1),
+          color: Theme.of(context).dividerColor.withAlpha(100),
           width: 1,
         ),
       ),

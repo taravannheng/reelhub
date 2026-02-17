@@ -51,7 +51,8 @@ final GoRouter routerInstance = GoRouter(
                       ),
                       BlocProvider(
                         create: (context) =>
-                            getIt<UpcomingMoviesBloc>()..add(UpcomingMoviesFetched()),
+                            getIt<UpcomingMoviesBloc>()
+                              ..add(UpcomingMoviesFetched()),
                       ),
                     ],
                     child: const HomeScreen(),
@@ -84,7 +85,8 @@ final GoRouter routerInstance = GoRouter(
                       ),
                       BlocProvider(
                         create: (context) =>
-                            getIt<PopularTVShowsBloc>()..add(PopularTVShowsFetched()),
+                            getIt<PopularTVShowsBloc>()
+                              ..add(PopularTVShowsFetched()),
                       ),
                     ],
 
