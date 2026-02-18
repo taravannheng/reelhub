@@ -19,10 +19,7 @@ class CustomLogoAppBar extends StatelessWidget implements PreferredSizeWidget {
         ),
       ),
       shape: Border(
-        bottom: BorderSide(
-          color: Theme.of(context).dividerColor.withAlpha(100),
-          width: 1,
-        ),
+        bottom: BorderSide(color: Theme.of(context).dividerColor, width: 1),
       ),
       actions: actions,
     );

@@ -18,7 +18,7 @@ class ScaffoldWithNavBar extends StatelessWidget {
         decoration: BoxDecoration(
           border: Border(
             top: BorderSide(
-              color: Theme.of(context).dividerColor.withAlpha(100),
+              color: Theme.of(context).dividerColor,
             ),
           ),
         ),

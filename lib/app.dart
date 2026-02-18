@@ -17,6 +17,14 @@ class ReelHub extends StatelessWidget {
             title: 'ReelHub',
             routerConfig: routerInstance,
             theme: ThemeData.light(useMaterial3: true).copyWith(
+              colorScheme: ColorScheme.light(
+                primary: Colors.black,
+                surface: Colors.white,
+              ),
+              scaffoldBackgroundColor: Colors.white,
+              splashColor: Colors.transparent,
+              highlightColor: Colors.transparent,
+              dividerColor: Colors.black.withAlpha(50),
               listTileTheme: ListTileThemeData(
                 tileColor: Colors.grey.withValues(alpha: 0.2),
               ),
@@ -24,9 +32,18 @@ class ReelHub extends StatelessWidget {
                 selectedItemColor: Colors.black,
                 unselectedItemColor: Colors.black45,
                 unselectedIconTheme: IconThemeData(color: Colors.black45),
+                backgroundColor: Colors.white,
               ),
             ),
             darkTheme: ThemeData.dark(useMaterial3: true).copyWith(
+              colorScheme: ColorScheme.dark(
+                primary: Colors.white,
+                surface: Colors.black,
+              ),
+              scaffoldBackgroundColor: Colors.black,
+              splashColor: Colors.transparent,
+              highlightColor: Colors.transparent,
+              dividerColor: Colors.white.withAlpha(50),
               listTileTheme: ListTileThemeData(
                 tileColor: Colors.grey.withValues(alpha: 0.1),
               ),

@@ -34,7 +34,7 @@ class ThemeList extends StatelessWidget {
                 ),
               ),
             ),
-            const Divider(height: 1),
+            Divider(height: 1, color: Theme.of(context).dividerColor),
             ListTile(
               title: Text("Dark"),
               trailing: state.selectedTheme == ThemeMode.dark
@@ -44,7 +44,7 @@ class ThemeList extends StatelessWidget {
                 context.read<ThemeBloc>().add(ThemeSelected(ThemeMode.dark));
               },
             ),
-            const Divider(height: 1),
+            Divider(height: 1, color: Theme.of(context).dividerColor),
             ListTile(
               title: Text("System"),
               trailing: state.selectedTheme == ThemeMode.system

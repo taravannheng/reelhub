@@ -16,7 +16,7 @@ class ProfileScreen extends StatelessWidget {
             child: Column(
               children: [
                 const SizedBox(height: 24.0),
-                ThemeList()
+                ThemeList(),
               ],
             ),
           ),
