@@ -34,6 +34,9 @@ class ReelHub extends StatelessWidget {
                 unselectedIconTheme: IconThemeData(color: Colors.black45),
                 backgroundColor: Colors.white,
               ),
+              bottomSheetTheme: BottomSheetThemeData(
+                backgroundColor: Colors.grey.withValues(alpha: 0.2),
+              ),
             ),
             darkTheme: ThemeData.dark(useMaterial3: true).copyWith(
               colorScheme: ColorScheme.dark(
