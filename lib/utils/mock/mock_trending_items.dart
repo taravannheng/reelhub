@@ -1,4 +1,4 @@
-import 'package:reelhub/data/models/movie_model.dart';
+import 'package:reelhub/data/models/movie/movie_model.dart';
 
 List<Movie> mockMovieList = [
   Movie(

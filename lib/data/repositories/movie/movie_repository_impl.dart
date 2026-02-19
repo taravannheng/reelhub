@@ -1,4 +1,4 @@
-import 'package:reelhub/data/models/movie_model.dart';
+import 'package:reelhub/data/models/movie/movie_model.dart';
 import 'package:reelhub/data/repositories/movie/movie_repository.dart';
 import 'package:reelhub/data/services/tmdb_service.dart';
 

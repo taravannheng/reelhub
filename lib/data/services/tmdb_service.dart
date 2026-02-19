@@ -1,10 +1,19 @@
-import 'package:reelhub/data/models/movie_model.dart';
+import 'package:reelhub/data/models/movie/movie_model.dart';
+import 'package:reelhub/data/models/movie_details/movie_details_model.dart';
 import 'package:tmdb_api/tmdb_api.dart';
 
 class TmdbService {
   final TMDB _tmdb;
 
   TmdbService(this._tmdb);
+
+  Future<MovieDetails> getMovieDetails(String id) async {
+    final Map<dynamic, dynamic> result = await _tmdb.v3.movies.getDetails(
+      int.parse(id),
+    );
+
+    return MovieDetails.fromJson(result as Map<String, dynamic>);
+  }
 
   Future<List<Movie>> getTrending() async {
     final Map<dynamic, dynamic> results = await _tmdb.v3.trending.getTrending(
@@ -98,7 +107,6 @@ class TmdbService {
       return [];
     }
   }
-
 
   Future<List<Movie>> getUpcomingMovies() async {
     final Map<dynamic, dynamic> results = await _tmdb.v3.movies.getUpcoming();

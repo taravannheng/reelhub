@@ -13,6 +13,8 @@ import 'package:reelhub/ui/browse/blocs/popular_tv_shows/popular_tv_shows_bloc.d
 import 'package:reelhub/ui/home/blocs/trending/trending_bloc.dart';
 import 'package:reelhub/ui/home/blocs/upcoming_movies/upcoming_movies_bloc.dart';
 import 'package:reelhub/ui/home/views/home_screen.dart';
+import 'package:reelhub/ui/movie_details/blocs/movie_details/movie_details_bloc.dart';
+import 'package:reelhub/ui/movie_details/views/movie_details_screen.dart';
 import 'package:reelhub/ui/profile/views/profile_screen.dart';
 
 final GlobalKey<NavigatorState> _rootNavigatorKey = GlobalKey<NavigatorState>(
@@ -57,6 +59,20 @@ final GoRouter routerInstance = GoRouter(
                     ],
                     child: const HomeScreen(),
                   ),
+              routes: <RouteBase>[
+                GoRoute(
+                  name: Routes.movieDetails,
+                  path: Routes.movieDetailsPath,
+                  builder: (BuildContext context, GoRouterState state) {
+                    final movieId = state.pathParameters['movieId'];
+
+                    return BlocProvider(
+                      create: (context) => getIt<MovieDetailsBloc>()..add(MovieDetailsFetched(movieId ?? '')),
+                      child: MovieDetailsScreen(movieId ?? ''),
+                    );
+                  },
+                ),
+              ],
             ),
           ],
         ),
