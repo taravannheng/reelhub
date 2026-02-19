@@ -15,6 +15,7 @@ class ReelHub extends StatelessWidget {
         builder: (context, state) {
           return MaterialApp.router(
             title: 'ReelHub',
+            debugShowCheckedModeBanner: false,
             routerConfig: routerInstance,
             theme: ThemeData.light(useMaterial3: true).copyWith(
               colorScheme: ColorScheme.light(
