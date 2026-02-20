@@ -4,14 +4,18 @@ class CustomIcons {
   // C
   static final String check = '$_basePath/check.svg';
 
-  // M
-  static final String magnifyingGlass = '$_basePath/magnifying_glass.svg';
-  static final String magnifyingGlassSolid =
-      '$_basePath/magnifying_glass_solid.svg';
+  // F
+  static final String fire = '$_basePath/fire.svg';
+  static final String fireSolid = '$_basePath/fire_solid.svg';
 
   // H
   static final String home = '$_basePath/home.svg';
   static final String homeSolid = '$_basePath/home_solid.svg';
+
+  // M
+  static final String magnifyingGlass = '$_basePath/magnifying_glass.svg';
+  static final String magnifyingGlassSolid =
+      '$_basePath/magnifying_glass_solid.svg';
 
   // P
   static final String profile = '$_basePath/profile.svg';
