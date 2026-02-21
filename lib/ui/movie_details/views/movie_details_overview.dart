@@ -20,7 +20,7 @@ class MovieDetailsOverview extends StatelessWidget {
           textAlign: TextAlign.left,
           style: Theme.of(context).textTheme.headlineLarge,
         ),
-        GenreList(genres: movieDetails?.genres),
+        GenreList(genres: movieDetails?.genres, runtime: movieDetails?.runtime),
         MetaList(
           adult: movieDetails?.adult,
           popularity: movieDetails?.popularity ?? 0,
