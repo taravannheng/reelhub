@@ -4,4 +4,8 @@ class MovieHelpers {
     final minutes = runtime % 60;
     return '${hours}h ${minutes}m';
   }
+
+  static String extractYearFromReleaseDate(String releaseDate) {
+    return releaseDate.split("-").first;
+  }
 }
