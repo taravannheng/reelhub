@@ -36,7 +36,7 @@ class ReelHub extends StatelessWidget {
                 backgroundColor: Colors.white,
               ),
               bottomSheetTheme: BottomSheetThemeData(
-                backgroundColor: Colors.grey.withValues(alpha: 0.2),
+                backgroundColor: Color(0xFFECECEC),
               ),
             ),
             darkTheme: ThemeData.dark(useMaterial3: true).copyWith(
@@ -55,6 +55,9 @@ class ReelHub extends StatelessWidget {
                 selectedItemColor: Colors.white,
                 unselectedItemColor: Colors.white54,
                 unselectedIconTheme: IconThemeData(color: Colors.white54),
+              ),
+              bottomSheetTheme: BottomSheetThemeData(
+                backgroundColor: Color(0xFF101010),
               ),
             ),
             themeMode: state.selectedTheme,
