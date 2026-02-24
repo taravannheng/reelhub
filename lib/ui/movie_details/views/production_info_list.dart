@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:reelhub/data/models/movie_details/movie_details_model.dart';
+import 'package:reelhub/data/models/production_company/production_company_model.dart';
 import 'package:reelhub/utils/helpers/movie_helpers.dart';
 
 class ProductionInfoList extends StatelessWidget {

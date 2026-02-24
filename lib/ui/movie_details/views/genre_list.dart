@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:reelhub/data/models/movie_details/movie_details_model.dart';
+import 'package:reelhub/data/models/genre/genre_model.dart';
 
 class GenreList extends StatelessWidget {
   final List<Genre>? genres;

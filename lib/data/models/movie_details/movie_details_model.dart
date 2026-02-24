@@ -1,4 +1,8 @@
 import 'package:json_annotation/json_annotation.dart';
+import 'package:reelhub/data/models/genre/genre_model.dart';
+import 'package:reelhub/data/models/production_company/production_company_model.dart';
+import 'package:reelhub/data/models/production_country/production_country_model.dart';
+import 'package:reelhub/data/models/spoken_language/spoken_language_model.dart';
 
 part 'movie_details_model.g.dart';
 
@@ -98,85 +102,4 @@ class MovieDetails {
       _$MovieDetailsFromJson(json);
 
   Map<String, dynamic> toJson() => _$MovieDetailsToJson(this);
-}
-
-@JsonSerializable()
-class Genre {
-  final int id;
-  final String name;
-
-  Genre({
-    required this.id,
-    required this.name,
-  });
-
-  factory Genre.fromJson(Map<String, dynamic> json) =>
-      _$GenreFromJson(json);
-
-  Map<String, dynamic> toJson() => _$GenreToJson(this);
-}
-
-@JsonSerializable()
-class ProductionCompany {
-  final int id;
-
-  @JsonKey(name: 'logo_path')
-  final String? logoPath;
-
-  final String name;
-
-  @JsonKey(name: 'origin_country')
-  final String originCountry;
-
-  ProductionCompany({
-    required this.id,
-    this.logoPath,
-    required this.name,
-    required this.originCountry,
-  });
-
-  factory ProductionCompany.fromJson(Map<String, dynamic> json) =>
-      _$ProductionCompanyFromJson(json);
-
-  Map<String, dynamic> toJson() => _$ProductionCompanyToJson(this);
-}
-
-@JsonSerializable()
-class ProductionCountry {
-  @JsonKey(name: 'iso_3166_1')
-  final String iso31661;
-
-  final String name;
-
-  ProductionCountry({
-    required this.iso31661,
-    required this.name,
-  });
-
-  factory ProductionCountry.fromJson(Map<String, dynamic> json) =>
-      _$ProductionCountryFromJson(json);
-
-  Map<String, dynamic> toJson() => _$ProductionCountryToJson(this);
-}
-
-@JsonSerializable()
-class SpokenLanguage {
-  @JsonKey(name: 'english_name')
-  final String englishName;
-
-  @JsonKey(name: 'iso_639_1')
-  final String iso6391;
-
-  final String name;
-
-  SpokenLanguage({
-    required this.englishName,
-    required this.iso6391,
-    required this.name,
-  });
-
-  factory SpokenLanguage.fromJson(Map<String, dynamic> json) =>
-      _$SpokenLanguageFromJson(json);
-
-  Map<String, dynamic> toJson() => _$SpokenLanguageToJson(this);
 }
