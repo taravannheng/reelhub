@@ -42,7 +42,7 @@ class MovieDetailsScreen extends StatelessWidget {
                   const SizedBox(height: 24),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                    child: MovieDetailsOverview(movieDetailsState.item!),
+                    child: MovieDetailsOverview(movieDetailsState.item),
                   ),
                   const SizedBox(height: 24),
                   if (trailerState.items != null &&
