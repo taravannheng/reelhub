@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:reelhub/data/models/movie/movie_model.dart';
+import 'package:reelhub/data/models/media/media_model.dart';
 import 'package:reelhub/data/repositories/movie/movie_repository.dart';
 
 part 'now_playing_event.dart';

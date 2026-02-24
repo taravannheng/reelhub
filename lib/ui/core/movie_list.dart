@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:reelhub/data/models/movie/movie_model.dart';
+import 'package:reelhub/data/models/media/media_model.dart';
 import 'package:reelhub/ui/core/movie_card.dart';
 
 class MovieList extends StatelessWidget {
-  final List<Movie>? items;
+  final List<Media>? items;
   final String title;
 
   const MovieList(this.items, {super.key, required this.title});

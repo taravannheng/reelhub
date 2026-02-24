@@ -1,5 +1,5 @@
 import 'package:reelhub/data/models/cast/cast_model.dart';
-import 'package:reelhub/data/models/movie/movie_model.dart';
+import 'package:reelhub/data/models/media/media_model.dart';
 import 'package:reelhub/data/models/movie_details/movie_details_model.dart';
 import 'package:reelhub/data/models/trailer/trailer_model.dart';
 import 'package:tmdb_api/tmdb_api.dart';
@@ -9,7 +9,7 @@ class TmdbService {
 
   TmdbService(this._tmdb);
 
-  Future<List<Movie>?> getSimilarMovies(int id) async {
+  Future<List<Media>?> getSimilarMovies(int id) async {
     try {
       final Map<dynamic, dynamic> results = await _tmdb.v3.movies.getSimilar(
         id,
@@ -17,7 +17,7 @@ class TmdbService {
 
       final similarMovieList = (results["results"] as List<dynamic>)
           .cast<Map<String, dynamic>>()
-          .map((item) => Movie.fromJson(item))
+          .map((item) => Media.fromJson(item))
           .toList();
 
       return similarMovieList;
@@ -72,7 +72,7 @@ class TmdbService {
     }
   }
 
-  Future<List<Movie>> getTrending() async {
+  Future<List<Media>> getTrending() async {
     try {
       final Map<dynamic, dynamic> results = await _tmdb.v3.trending.getTrending(
         mediaType: MediaType.all,
@@ -81,7 +81,7 @@ class TmdbService {
 
       final trendingList = (results["results"] as List<dynamic>)
           .cast<Map<String, dynamic>>()
-          .map((item) => Movie.fromJson(item))
+          .map((item) => Media.fromJson(item))
           .toList();
 
       return trendingList;
@@ -90,14 +90,14 @@ class TmdbService {
     }
   }
 
-  Future<List<Movie>> getNowPlaying() async {
+  Future<List<Media>> getNowPlaying() async {
     try {
       final Map<dynamic, dynamic> results = await _tmdb.v3.movies
           .getNowPlaying();
 
       final nowPlayingList = (results["results"] as List<dynamic>)
           .cast<Map<String, dynamic>>()
-          .map((item) => Movie.fromJson(item))
+          .map((item) => Media.fromJson(item))
           .toList();
 
       return nowPlayingList;
@@ -106,13 +106,13 @@ class TmdbService {
     }
   }
 
-  Future<List<Movie>> getPopularTvShows() async {
+  Future<List<Media>> getPopularTvShows() async {
     try {
       final Map<dynamic, dynamic> results = await _tmdb.v3.tv.getPopular();
 
       final popularList = (results["results"] as List<dynamic>)
           .cast<Map<String, dynamic>>()
-          .map((item) => Movie.fromJson(item))
+          .map((item) => Media.fromJson(item))
           .toList();
 
       return popularList;
@@ -121,13 +121,13 @@ class TmdbService {
     }
   }
 
-  Future<List<Movie>> getTopRatedMovies() async {
+  Future<List<Media>> getTopRatedMovies() async {
     try {
       final Map<dynamic, dynamic> results = await _tmdb.v3.movies.getTopRated();
 
       final topRatedMovieList = (results["results"] as List<dynamic>)
           .cast<Map<String, dynamic>>()
-          .map((item) => Movie.fromJson(item))
+          .map((item) => Media.fromJson(item))
           .toList();
 
       return topRatedMovieList;
@@ -136,13 +136,13 @@ class TmdbService {
     }
   }
 
-  Future<List<Movie>> getTopRatedTvShows() async {
+  Future<List<Media>> getTopRatedTvShows() async {
     try {
       final Map<dynamic, dynamic> results = await _tmdb.v3.tv.getTopRated();
 
       final topRatedTvShowsList = (results["results"] as List<dynamic>)
           .cast<Map<String, dynamic>>()
-          .map((item) => Movie.fromJson(item))
+          .map((item) => Media.fromJson(item))
           .toList();
 
       return topRatedTvShowsList;
@@ -151,13 +151,13 @@ class TmdbService {
     }
   }
 
-  Future<List<Movie>> getPopularMovies() async {
+  Future<List<Media>> getPopularMovies() async {
     try {
       final Map<dynamic, dynamic> results = await _tmdb.v3.movies.getPopular();
 
       final popularMovieList = (results["results"] as List<dynamic>)
           .cast<Map<String, dynamic>>()
-          .map((item) => Movie.fromJson(item))
+          .map((item) => Media.fromJson(item))
           .toList();
 
       return popularMovieList;
@@ -166,13 +166,13 @@ class TmdbService {
     }
   }
 
-  Future<List<Movie>> getUpcomingMovies() async {
+  Future<List<Media>> getUpcomingMovies() async {
     try {
       final Map<dynamic, dynamic> results = await _tmdb.v3.movies.getUpcoming();
 
       final upcomingMovieList = (results["results"] as List<dynamic>)
           .cast<Map<String, dynamic>>()
-          .map((item) => Movie.fromJson(item))
+          .map((item) => Media.fromJson(item))
           .toList();
 
       return upcomingMovieList;

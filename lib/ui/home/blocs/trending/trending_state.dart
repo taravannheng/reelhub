@@ -11,12 +11,12 @@ final class TrendingState extends Equatable {
 
   final TrendingStatus status;
   final String? errorMessage;
-  final List<Movie>? items;
+  final List<Media>? items;
 
   TrendingState copyWith({
     TrendingStatus? status,
     String? errorMessage,
-    List<Movie>? items,
+    List<Media>? items,
   }) {
     return TrendingState(
       status: status ?? this.status,

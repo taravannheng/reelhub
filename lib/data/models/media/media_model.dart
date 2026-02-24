@@ -1,9 +1,9 @@
 import 'package:json_annotation/json_annotation.dart';
 
-part 'movie_model.g.dart';
+part 'media_model.g.dart';
 
 @JsonSerializable()
-class Movie {
+class Media {
   final int id;
 
   @JsonKey(name: 'media_type')
@@ -47,7 +47,7 @@ class Movie {
   @JsonKey(name: 'vote_count')
   final int? voteCount;
 
-  Movie({
+  Media({
     required this.id,
     required this.mediaType,
     required this.adult,
@@ -67,8 +67,7 @@ class Movie {
     this.voteCount,
   });
 
-  factory Movie.fromJson(Map<String, dynamic> json) =>
-      _$MovieFromJson(json);
+  factory Media.fromJson(Map<String, dynamic> json) => _$MediaFromJson(json);
 
-  Map<String, dynamic> toJson() => _$MovieToJson(this);
+  Map<String, dynamic> toJson() => _$MediaToJson(this);
 }

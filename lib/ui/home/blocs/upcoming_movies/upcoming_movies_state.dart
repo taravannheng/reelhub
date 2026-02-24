@@ -11,12 +11,12 @@ final class UpcomingMoviesState extends Equatable {
 
   final UpcomingMoviesStatus status;
   final String? errorMessage;
-  final List<Movie>? items;
+  final List<Media>? items;
 
   UpcomingMoviesState copyWith({
     UpcomingMoviesStatus? status,
     String? errorMessage,
-    List<Movie>? items,
+    List<Media>? items,
   }) {
     return UpcomingMoviesState(
       status: status ?? this.status,

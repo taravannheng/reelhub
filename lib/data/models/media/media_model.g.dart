@@ -1,12 +1,12 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'movie_model.dart';
+part of 'media_model.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-Movie _$MovieFromJson(Map<String, dynamic> json) => Movie(
+Media _$MediaFromJson(Map<String, dynamic> json) => Media(
   id: (json['id'] as num).toInt(),
   mediaType: json['media_type'] as String?,
   adult: json['adult'] as bool,
@@ -28,7 +28,7 @@ Movie _$MovieFromJson(Map<String, dynamic> json) => Movie(
   voteCount: (json['vote_count'] as num?)?.toInt(),
 );
 
-Map<String, dynamic> _$MovieToJson(Movie instance) => <String, dynamic>{
+Map<String, dynamic> _$MediaToJson(Media instance) => <String, dynamic>{
   'id': instance.id,
   'media_type': instance.mediaType,
   'adult': instance.adult,

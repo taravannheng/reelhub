@@ -11,12 +11,12 @@ final class PopularMoviesState extends Equatable {
 
   final PopularMoviesStatus status;
   final String? errorMessage;
-  final List<Movie>? items;
+  final List<Media>? items;
 
   PopularMoviesState copyWith({
     PopularMoviesStatus? status,
     String? errorMessage,
-    List<Movie>? items,
+    List<Media>? items,
   }) {
     return PopularMoviesState(
       status: status ?? this.status,

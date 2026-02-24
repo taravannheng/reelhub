@@ -11,12 +11,12 @@ final class SimilarMovieState extends Equatable {
 
   final SimilarMovieStatus status;
   final String? errorMessage;
-  final List<Movie>? items;
+  final List<Media>? items;
 
   SimilarMovieState copyWith({
     SimilarMovieStatus? status,
     String? errorMessage,
-    List<Movie>? items,
+    List<Media>? items,
   }) {
     return SimilarMovieState(
       status: status ?? this.status,

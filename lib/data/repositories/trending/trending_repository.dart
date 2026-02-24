@@ -1,5 +1,5 @@
-import 'package:reelhub/data/models/movie/movie_model.dart';
+import 'package:reelhub/data/models/media/media_model.dart';
 
 abstract class TrendingRepository {
-  Future<List<Movie>> getTrending();
+  Future<List<Media>> getTrending();
 }

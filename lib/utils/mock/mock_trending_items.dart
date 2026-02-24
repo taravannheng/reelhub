@@ -1,7 +1,7 @@
-import 'package:reelhub/data/models/movie/movie_model.dart';
+import 'package:reelhub/data/models/media/media_model.dart';
 
-List<Movie> mockMovieList = [
-  Movie(
+List<Media> mockMovieList = [
+  Media(
     id: 1,
     mediaType: 'movie',
     adult: false,
@@ -17,7 +17,7 @@ List<Movie> mockMovieList = [
     voteAverage: 7.5,
     voteCount: 200,
   ),
-  Movie(
+  Media(
     id: 2,
     mediaType: 'movie',
     adult: false,
@@ -33,7 +33,7 @@ List<Movie> mockMovieList = [
     voteAverage: 6.8,
     voteCount: 150,
   ),
-  Movie(
+  Media(
     id: 3,
     mediaType: 'tv',
     adult: false,
@@ -49,7 +49,7 @@ List<Movie> mockMovieList = [
     voteAverage: 8.0,
     voteCount: 250,
   ),
-  Movie(
+  Media(
     id: 4,
     mediaType: 'movie',
     adult: false,
@@ -65,7 +65,7 @@ List<Movie> mockMovieList = [
     voteAverage: 7.9,
     voteCount: 320,
   ),
-  Movie(
+  Media(
     id: 5,
     mediaType: 'tv',
     adult: false,
@@ -81,7 +81,7 @@ List<Movie> mockMovieList = [
     voteAverage: 7.3,
     voteCount: 180,
   ),
-  Movie(
+  Media(
     id: 6,
     mediaType: 'movie',
     adult: false,
@@ -97,7 +97,7 @@ List<Movie> mockMovieList = [
     voteAverage: 7.4,
     voteCount: 215,
   ),
-  Movie(
+  Media(
     id: 7,
     mediaType: 'tv',
     adult: false,
@@ -113,7 +113,7 @@ List<Movie> mockMovieList = [
     voteAverage: 6.9,
     voteCount: 190,
   ),
-  Movie(
+  Media(
     id: 8,
     mediaType: 'movie',
     adult: false,
@@ -129,7 +129,7 @@ List<Movie> mockMovieList = [
     voteAverage: 8.1,
     voteCount: 340,
   ),
-  Movie(
+  Media(
     id: 9,
     mediaType: 'tv',
     adult: false,
@@ -145,7 +145,7 @@ List<Movie> mockMovieList = [
     voteAverage: 6.5,
     voteCount: 130,
   ),
-  Movie(
+  Media(
     id: 10,
     mediaType: 'movie',
     adult: false,

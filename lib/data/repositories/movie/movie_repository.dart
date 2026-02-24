@@ -1,9 +1,9 @@
-import 'package:reelhub/data/models/movie/movie_model.dart';
+import 'package:reelhub/data/models/media/media_model.dart';
 
 abstract class MovieRepository {
-  Future<List<Movie>> getNowPlaying();
-  Future<List<Movie>> getTopRated();
-  Future<List<Movie>> getPopular();
-  Future<List<Movie>> getUpcoming();
-  Future<List<Movie>?> getSimilarMovies(int id);
+  Future<List<Media>> getNowPlaying();
+  Future<List<Media>> getTopRated();
+  Future<List<Media>> getPopular();
+  Future<List<Media>> getUpcoming();
+  Future<List<Media>?> getSimilarMovies(int id);
 }

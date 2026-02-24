@@ -2,13 +2,13 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:reelhub/data/models/movie/movie_model.dart';
+import 'package:reelhub/data/models/media/media_model.dart';
 import 'package:reelhub/routing/routes.dart';
 import 'package:reelhub/utils/enums/poster_size_enums.dart';
 import 'package:reelhub/utils/helpers/image_helpers.dart';
 
 class MovieCard extends StatelessWidget {
-  final Movie item;
+  final Media item;
 
   const MovieCard(this.item, {super.key});
 
@@ -16,9 +16,10 @@ class MovieCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        context.pushNamed(Routes.movieDetails, pathParameters: {
-          'movieId': item.id.toString()
-        });
+        context.pushNamed(
+          Routes.movieDetails,
+          pathParameters: {'movieId': item.id.toString()},
+        );
       },
       child: SizedBox(
         width: 154,

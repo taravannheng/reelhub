@@ -11,12 +11,12 @@ final class NowPlayingState extends Equatable {
 
   final NowPlayingStatus status;
   final String? errorMessage;
-  final List<Movie>? items;
+  final List<Media>? items;
 
   NowPlayingState copyWith({
     NowPlayingStatus? status,
     String? errorMessage,
-    List<Movie>? items,
+    List<Media>? items,
   }) {
     return NowPlayingState(
       status: status ?? this.status,

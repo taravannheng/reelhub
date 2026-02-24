@@ -1,4 +1,4 @@
-import 'package:reelhub/data/models/movie/movie_model.dart';
+import 'package:reelhub/data/models/media/media_model.dart';
 import 'package:reelhub/data/repositories/movie/movie_repository.dart';
 import 'package:reelhub/data/services/tmdb_service.dart';
 
@@ -8,27 +8,27 @@ class MovieRepositoryImpl implements MovieRepository {
   MovieRepositoryImpl(this._tmdb);
 
   @override
-  Future<List<Movie>> getNowPlaying() {
+  Future<List<Media>> getNowPlaying() {
     return _tmdb.getNowPlaying();
   }
 
   @override
-  Future<List<Movie>> getTopRated() {
+  Future<List<Media>> getTopRated() {
     return _tmdb.getTopRatedMovies();
   }
 
   @override
-  Future<List<Movie>> getPopular() {
+  Future<List<Media>> getPopular() {
     return _tmdb.getPopularMovies();
   }
 
   @override
-  Future<List<Movie>> getUpcoming() {
+  Future<List<Media>> getUpcoming() {
     return _tmdb.getUpcomingMovies();
   }
 
   @override
-  Future<List<Movie>?> getSimilarMovies(int id) {
+  Future<List<Media>?> getSimilarMovies(int id) {
     return _tmdb.getSimilarMovies(id);
   }
 }
