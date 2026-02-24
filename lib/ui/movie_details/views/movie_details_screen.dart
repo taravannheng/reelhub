@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:reelhub/ui/movie_details/blocs/casts/casts_bloc.dart';
 import 'package:reelhub/ui/movie_details/blocs/movie_details/movie_details_bloc.dart';
 import 'package:reelhub/ui/movie_details/blocs/trailers/trailers_bloc.dart';
+import 'package:reelhub/ui/movie_details/views/cast_list.dart';
 import 'package:reelhub/ui/movie_details/views/movie_details_hero.dart';
 import 'package:reelhub/ui/movie_details/views/movie_details_overview.dart';
 import 'package:reelhub/ui/movie_details/views/trailer_list.dart';
@@ -23,6 +25,7 @@ class MovieDetailsScreen extends StatelessWidget {
               .watch<MovieDetailsBloc>()
               .state;
           final TrailerState trailerState = context.watch<TrailerBloc>().state;
+          final CastState castState = context.watch<CastBloc>().state;
 
           switch (movieDetailsState.status) {
             case MovieDetailsStatus.loading:
@@ -47,6 +50,12 @@ class MovieDetailsScreen extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 16.0),
                       child: TrailerList(trailerState.items!),
+                    ),
+                  const SizedBox(height: 24),
+                  if (castState.items != null && castState.items!.isNotEmpty)
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                      child: CastList(castState.items!),
                     ),
                   const SizedBox(height: 24),
                 ],

@@ -1,5 +1,7 @@
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get_it/get_it.dart';
+import 'package:reelhub/data/repositories/cast/cast_repository.dart';
+import 'package:reelhub/data/repositories/cast/cast_repository_impl.dart';
 import 'package:reelhub/data/repositories/movie/movie_repository.dart';
 import 'package:reelhub/data/repositories/movie/movie_repository_impl.dart';
 import 'package:reelhub/data/repositories/movie_details/movie_details_repository.dart';
@@ -18,6 +20,7 @@ import 'package:reelhub/ui/home/blocs/now_playing/now_playing_bloc.dart';
 import 'package:reelhub/ui/browse/blocs/popular_tv_shows/popular_tv_shows_bloc.dart';
 import 'package:reelhub/ui/home/blocs/trending/trending_bloc.dart';
 import 'package:reelhub/ui/home/blocs/upcoming_movies/upcoming_movies_bloc.dart';
+import 'package:reelhub/ui/movie_details/blocs/casts/casts_bloc.dart';
 import 'package:reelhub/ui/movie_details/blocs/movie_details/movie_details_bloc.dart';
 import 'package:reelhub/ui/movie_details/blocs/trailers/trailers_bloc.dart';
 import 'package:reelhub/ui/profile/blocs/theme/theme_bloc.dart';
@@ -53,6 +56,10 @@ Future<void> initDI() async {
 
   getIt.registerLazySingleton<TrailerRepository>(
     () => TrailerRepositoryImpl(getIt<TmdbService>()),
+  );
+
+  getIt.registerLazySingleton<CastRepository>(
+    () => CastRepositoryImpl(getIt<TmdbService>()),
   );
 
   getIt.registerLazySingleton<NowPlayingBloc>(
@@ -91,5 +98,9 @@ Future<void> initDI() async {
 
   getIt.registerFactory<TrailerBloc>(
     () => TrailerBloc(getIt<TrailerRepository>()),
+  );
+
+  getIt.registerFactory<CastBloc>(
+    () => CastBloc(getIt<CastRepository>()),
   );
 }

@@ -13,6 +13,7 @@ import 'package:reelhub/ui/browse/blocs/popular_tv_shows/popular_tv_shows_bloc.d
 import 'package:reelhub/ui/home/blocs/trending/trending_bloc.dart';
 import 'package:reelhub/ui/home/blocs/upcoming_movies/upcoming_movies_bloc.dart';
 import 'package:reelhub/ui/home/views/home_screen.dart';
+import 'package:reelhub/ui/movie_details/blocs/casts/casts_bloc.dart';
 import 'package:reelhub/ui/movie_details/blocs/movie_details/movie_details_bloc.dart';
 import 'package:reelhub/ui/movie_details/blocs/trailers/trailers_bloc.dart';
 import 'package:reelhub/ui/movie_details/views/movie_details_screen.dart';
@@ -78,6 +79,11 @@ final GoRouter routerInstance = GoRouter(
                           create: (context) =>
                               getIt<TrailerBloc>()
                                 ..add(TrailerFetched(movieId ?? '')),
+                        ),
+                        BlocProvider(
+                          create: (context) =>
+                              getIt<CastBloc>()
+                                ..add(CastFetched(movieId ?? '')),
                         ),
                       ],
                       child: MovieDetailsScreen(movieId ?? ''),

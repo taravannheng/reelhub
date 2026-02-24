@@ -1,3 +1,4 @@
+import 'package:reelhub/data/models/cast/cast_model.dart';
 import 'package:reelhub/data/models/movie/movie_model.dart';
 import 'package:reelhub/data/models/movie_details/movie_details_model.dart';
 import 'package:reelhub/data/models/trailer/trailer_model.dart';
@@ -7,6 +8,23 @@ class TmdbService {
   final TMDB _tmdb;
 
   TmdbService(this._tmdb);
+
+  Future<List<Cast>?> getCasts(String id) async {
+    try {
+      final Map<dynamic, dynamic> results = await _tmdb.v3.movies.getCredits(
+        int.parse(id),
+      );
+
+      final castList = (results["cast"] as List<dynamic>)
+          .cast<Map<String, dynamic>>()
+          .map((item) => Cast.fromJson(item))
+          .toList();
+
+      return castList;
+    } catch (e) {
+      return null;
+    }
+  }
 
   Future<List<Trailer>> getTrailers(String id) async {
     try {
