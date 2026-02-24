@@ -18,7 +18,7 @@ class MovieDetailsOverview extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          "${movieDetails?.title ?? "N/A"}${movieDetails?.releaseDate == null ? "" : " (${MovieHelpers.extractYearFromReleaseDate(movieDetails!.releaseDate)})"}",
+          "${movieDetails?.title ?? "N/A"}${movieDetails?.releaseDate == null ? "" : MovieHelpers.extractYearFromReleaseDate(movieDetails!.releaseDate)}",
           textAlign: TextAlign.left,
           style: Theme.of(context).textTheme.headlineLarge,
         ),

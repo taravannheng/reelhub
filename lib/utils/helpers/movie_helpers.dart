@@ -6,6 +6,11 @@ class MovieHelpers {
   }
 
   static String extractYearFromReleaseDate(String releaseDate) {
-    return releaseDate.split("-").first;
+    final List<String> splittedDate = releaseDate.split("-");
+    if (splittedDate.first.isNotEmpty) {
+      return " (${splittedDate.first})";
+    }
+
+    return "";
   }
 }
