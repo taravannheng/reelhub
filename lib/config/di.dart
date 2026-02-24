@@ -4,6 +4,8 @@ import 'package:reelhub/data/repositories/movie/movie_repository.dart';
 import 'package:reelhub/data/repositories/movie/movie_repository_impl.dart';
 import 'package:reelhub/data/repositories/movie_details/movie_details_repository.dart';
 import 'package:reelhub/data/repositories/movie_details/movie_details_repository_impl.dart';
+import 'package:reelhub/data/repositories/trailer/trailer_repository.dart';
+import 'package:reelhub/data/repositories/trailer/trailer_repository_impl.dart';
 import 'package:reelhub/data/repositories/trending/trending_repository.dart';
 import 'package:reelhub/data/repositories/trending/trending_repository_impl.dart';
 import 'package:reelhub/data/repositories/tv/tv_repository.dart';
@@ -17,6 +19,7 @@ import 'package:reelhub/ui/browse/blocs/popular_tv_shows/popular_tv_shows_bloc.d
 import 'package:reelhub/ui/home/blocs/trending/trending_bloc.dart';
 import 'package:reelhub/ui/home/blocs/upcoming_movies/upcoming_movies_bloc.dart';
 import 'package:reelhub/ui/movie_details/blocs/movie_details/movie_details_bloc.dart';
+import 'package:reelhub/ui/movie_details/blocs/trailers/trailers_bloc.dart';
 import 'package:reelhub/ui/profile/blocs/theme/theme_bloc.dart';
 import 'package:tmdb_api/tmdb_api.dart';
 
@@ -46,6 +49,10 @@ Future<void> initDI() async {
 
   getIt.registerLazySingleton<MovieDetailsRepository>(
     () => MovieDetailsRepositoryImpl(getIt<TmdbService>()),
+  );
+
+  getIt.registerLazySingleton<TrailerRepository>(
+    () => TrailerRepositoryImpl(getIt<TmdbService>()),
   );
 
   getIt.registerLazySingleton<NowPlayingBloc>(
@@ -80,5 +87,9 @@ Future<void> initDI() async {
 
   getIt.registerFactory<MovieDetailsBloc>(
     () => MovieDetailsBloc(getIt<MovieDetailsRepository>()),
+  );
+
+  getIt.registerFactory<TrailerBloc>(
+    () => TrailerBloc(getIt<TrailerRepository>()),
   );
 }

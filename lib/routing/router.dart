@@ -14,6 +14,7 @@ import 'package:reelhub/ui/home/blocs/trending/trending_bloc.dart';
 import 'package:reelhub/ui/home/blocs/upcoming_movies/upcoming_movies_bloc.dart';
 import 'package:reelhub/ui/home/views/home_screen.dart';
 import 'package:reelhub/ui/movie_details/blocs/movie_details/movie_details_bloc.dart';
+import 'package:reelhub/ui/movie_details/blocs/trailers/trailers_bloc.dart';
 import 'package:reelhub/ui/movie_details/views/movie_details_screen.dart';
 import 'package:reelhub/ui/profile/views/profile_screen.dart';
 
@@ -66,8 +67,19 @@ final GoRouter routerInstance = GoRouter(
                   builder: (BuildContext context, GoRouterState state) {
                     final movieId = state.pathParameters['movieId'];
 
-                    return BlocProvider(
-                      create: (context) => getIt<MovieDetailsBloc>()..add(MovieDetailsFetched(movieId ?? '')),
+                    return MultiBlocProvider(
+                      providers: [
+                        BlocProvider(
+                          create: (context) =>
+                              getIt<MovieDetailsBloc>()
+                                ..add(MovieDetailsFetched(movieId ?? '')),
+                        ),
+                        BlocProvider(
+                          create: (context) =>
+                              getIt<TrailerBloc>()
+                                ..add(TrailerFetched(movieId ?? '')),
+                        ),
+                      ],
                       child: MovieDetailsScreen(movieId ?? ''),
                     );
                   },
