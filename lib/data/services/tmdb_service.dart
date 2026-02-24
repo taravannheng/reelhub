@@ -25,21 +25,25 @@ class TmdbService {
     }
   }
 
-  Future<MovieDetails> getMovieDetails(String id) async {
-    final Map<dynamic, dynamic> result = await _tmdb.v3.movies.getDetails(
-      int.parse(id),
-    );
+  Future<MovieDetails?> getMovieDetails(String id) async {
+    try {
+      final Map<dynamic, dynamic> result = await _tmdb.v3.movies.getDetails(
+        int.parse(id),
+      );
 
-    return MovieDetails.fromJson(result as Map<String, dynamic>);
+      return MovieDetails.fromJson(result as Map<String, dynamic>);
+    } catch (e) {
+      return null;
+    }
   }
 
   Future<List<Movie>> getTrending() async {
-    final Map<dynamic, dynamic> results = await _tmdb.v3.trending.getTrending(
-      mediaType: MediaType.all,
-      timeWindow: TimeWindow.day,
-    );
-
     try {
+      final Map<dynamic, dynamic> results = await _tmdb.v3.trending.getTrending(
+        mediaType: MediaType.all,
+        timeWindow: TimeWindow.day,
+      );
+
       final trendingList = (results["results"] as List<dynamic>)
           .cast<Map<String, dynamic>>()
           .map((item) => Movie.fromJson(item))
@@ -52,9 +56,10 @@ class TmdbService {
   }
 
   Future<List<Movie>> getNowPlaying() async {
-    final Map<dynamic, dynamic> results = await _tmdb.v3.movies.getNowPlaying();
-
     try {
+      final Map<dynamic, dynamic> results = await _tmdb.v3.movies
+          .getNowPlaying();
+
       final nowPlayingList = (results["results"] as List<dynamic>)
           .cast<Map<String, dynamic>>()
           .map((item) => Movie.fromJson(item))
@@ -67,9 +72,9 @@ class TmdbService {
   }
 
   Future<List<Movie>> getPopularTvShows() async {
-    final Map<dynamic, dynamic> results = await _tmdb.v3.tv.getPopular();
-
     try {
+      final Map<dynamic, dynamic> results = await _tmdb.v3.tv.getPopular();
+
       final popularList = (results["results"] as List<dynamic>)
           .cast<Map<String, dynamic>>()
           .map((item) => Movie.fromJson(item))
@@ -82,9 +87,9 @@ class TmdbService {
   }
 
   Future<List<Movie>> getTopRatedMovies() async {
-    final Map<dynamic, dynamic> results = await _tmdb.v3.movies.getTopRated();
-
     try {
+      final Map<dynamic, dynamic> results = await _tmdb.v3.movies.getTopRated();
+
       final topRatedMovieList = (results["results"] as List<dynamic>)
           .cast<Map<String, dynamic>>()
           .map((item) => Movie.fromJson(item))
@@ -97,9 +102,9 @@ class TmdbService {
   }
 
   Future<List<Movie>> getTopRatedTvShows() async {
-    final Map<dynamic, dynamic> results = await _tmdb.v3.tv.getTopRated();
-
     try {
+      final Map<dynamic, dynamic> results = await _tmdb.v3.tv.getTopRated();
+
       final topRatedTvShowsList = (results["results"] as List<dynamic>)
           .cast<Map<String, dynamic>>()
           .map((item) => Movie.fromJson(item))
@@ -112,9 +117,9 @@ class TmdbService {
   }
 
   Future<List<Movie>> getPopularMovies() async {
-    final Map<dynamic, dynamic> results = await _tmdb.v3.movies.getPopular();
-
     try {
+      final Map<dynamic, dynamic> results = await _tmdb.v3.movies.getPopular();
+
       final popularMovieList = (results["results"] as List<dynamic>)
           .cast<Map<String, dynamic>>()
           .map((item) => Movie.fromJson(item))
@@ -127,9 +132,9 @@ class TmdbService {
   }
 
   Future<List<Movie>> getUpcomingMovies() async {
-    final Map<dynamic, dynamic> results = await _tmdb.v3.movies.getUpcoming();
-
     try {
+      final Map<dynamic, dynamic> results = await _tmdb.v3.movies.getUpcoming();
+
       final upcomingMovieList = (results["results"] as List<dynamic>)
           .cast<Map<String, dynamic>>()
           .map((item) => Movie.fromJson(item))

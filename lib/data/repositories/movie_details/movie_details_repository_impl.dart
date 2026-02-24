@@ -8,7 +8,7 @@ class MovieDetailsRepositoryImpl implements MovieDetailsRepository {
   MovieDetailsRepositoryImpl(this._tmdb);
 
   @override
-  Future<MovieDetails> getMovieDetails(String id) {
+  Future<MovieDetails?> getMovieDetails(String id) {
     return _tmdb.getMovieDetails(id);
   }
 }
