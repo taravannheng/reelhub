@@ -21,8 +21,9 @@ class MovieDetailsScreen extends StatelessWidget {
             case MovieDetailsStatus.loading:
               return Center(child: const CircularProgressIndicator.adaptive());
             case MovieDetailsStatus.success:
-              return Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+              return ListView(
+                scrollDirection: Axis.vertical,
+                padding: EdgeInsets.zero,
                 children: [
                   MovieDetailsHero(
                     backdropPath: state.item?.backdropPath,
