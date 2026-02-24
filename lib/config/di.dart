@@ -22,6 +22,7 @@ import 'package:reelhub/ui/home/blocs/trending/trending_bloc.dart';
 import 'package:reelhub/ui/home/blocs/upcoming_movies/upcoming_movies_bloc.dart';
 import 'package:reelhub/ui/movie_details/blocs/casts/casts_bloc.dart';
 import 'package:reelhub/ui/movie_details/blocs/movie_details/movie_details_bloc.dart';
+import 'package:reelhub/ui/movie_details/blocs/similar_movies/similar_movies_bloc.dart';
 import 'package:reelhub/ui/movie_details/blocs/trailers/trailers_bloc.dart';
 import 'package:reelhub/ui/profile/blocs/theme/theme_bloc.dart';
 import 'package:tmdb_api/tmdb_api.dart';
@@ -102,5 +103,9 @@ Future<void> initDI() async {
 
   getIt.registerFactory<CastBloc>(
     () => CastBloc(getIt<CastRepository>()),
+  );
+
+  getIt.registerFactory<SimilarMovieBloc>(
+    () => SimilarMovieBloc(getIt<MovieRepository>()),
   );
 }

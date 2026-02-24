@@ -15,6 +15,7 @@ import 'package:reelhub/ui/home/blocs/upcoming_movies/upcoming_movies_bloc.dart'
 import 'package:reelhub/ui/home/views/home_screen.dart';
 import 'package:reelhub/ui/movie_details/blocs/casts/casts_bloc.dart';
 import 'package:reelhub/ui/movie_details/blocs/movie_details/movie_details_bloc.dart';
+import 'package:reelhub/ui/movie_details/blocs/similar_movies/similar_movies_bloc.dart';
 import 'package:reelhub/ui/movie_details/blocs/trailers/trailers_bloc.dart';
 import 'package:reelhub/ui/movie_details/views/movie_details_screen.dart';
 import 'package:reelhub/ui/profile/views/profile_screen.dart';
@@ -66,27 +67,32 @@ final GoRouter routerInstance = GoRouter(
                   name: Routes.movieDetails,
                   path: Routes.movieDetailsPath,
                   builder: (BuildContext context, GoRouterState state) {
-                    final movieId = state.pathParameters['movieId'];
+                    final movieId = state.pathParameters['movieId'] ?? '';
+                    final movieIdInt = int.tryParse(movieId) ?? 0;
 
                     return MultiBlocProvider(
                       providers: [
                         BlocProvider(
                           create: (context) =>
                               getIt<MovieDetailsBloc>()
-                                ..add(MovieDetailsFetched(movieId ?? '')),
+                                ..add(MovieDetailsFetched(movieId)),
                         ),
                         BlocProvider(
                           create: (context) =>
                               getIt<TrailerBloc>()
-                                ..add(TrailerFetched(movieId ?? '')),
+                                ..add(TrailerFetched(movieId)),
                         ),
                         BlocProvider(
                           create: (context) =>
-                              getIt<CastBloc>()
-                                ..add(CastFetched(movieId ?? '')),
+                              getIt<CastBloc>()..add(CastFetched(movieId)),
+                        ),
+                        BlocProvider(
+                          create: (context) =>
+                              getIt<SimilarMovieBloc>()
+                                ..add(SimilarMovieFetched(movieIdInt)),
                         ),
                       ],
-                      child: MovieDetailsScreen(movieId ?? ''),
+                      child: MovieDetailsScreen(movieId),
                     );
                   },
                 ),

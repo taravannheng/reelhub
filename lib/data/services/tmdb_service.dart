@@ -9,6 +9,23 @@ class TmdbService {
 
   TmdbService(this._tmdb);
 
+  Future<List<Movie>?> getSimilarMovies(int id) async {
+    try {
+      final Map<dynamic, dynamic> results = await _tmdb.v3.movies.getSimilar(
+        id,
+      );
+
+      final similarMovieList = (results["results"] as List<dynamic>)
+          .cast<Map<String, dynamic>>()
+          .map((item) => Movie.fromJson(item))
+          .toList();
+
+      return similarMovieList;
+    } catch (e) {
+      return null;
+    }
+  }
+
   Future<List<Cast>?> getCasts(String id) async {
     try {
       final Map<dynamic, dynamic> results = await _tmdb.v3.movies.getCredits(
