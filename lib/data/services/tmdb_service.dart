@@ -1,6 +1,6 @@
 import 'package:reelhub/data/models/cast/cast_model.dart';
 import 'package:reelhub/data/models/media/media_model.dart';
-import 'package:reelhub/data/models/movie_details/movie_details_model.dart';
+import 'package:reelhub/data/models/movie/movie_model.dart';
 import 'package:reelhub/data/models/trailer/trailer_model.dart';
 import 'package:reelhub/data/models/tv_show/tv_show_model.dart';
 import 'package:tmdb_api/tmdb_api.dart';
@@ -61,13 +61,13 @@ class TmdbService {
     }
   }
 
-  Future<MovieDetails?> getMovieDetails(String id) async {
+  Future<Movie?> getMovieDetails(String id) async {
     try {
       final Map<dynamic, dynamic> result = await _tmdb.v3.movies.getDetails(
         int.parse(id),
       );
 
-      return MovieDetails.fromJson(result as Map<String, dynamic>);
+      return Movie.fromJson(result as Map<String, dynamic>);
     } catch (e) {
       return null;
     }

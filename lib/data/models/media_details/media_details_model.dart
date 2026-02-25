@@ -1,6 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
 import 'package:reelhub/data/models/genre/genre_model.dart';
-import 'package:reelhub/data/models/movie_details/movie_details_model.dart';
+import 'package:reelhub/data/models/movie/movie_model.dart';
 import 'package:reelhub/data/models/production_company/production_company_model.dart';
 import 'package:reelhub/data/models/tv_show/tv_show_model.dart';
 
@@ -50,7 +50,9 @@ class MediaDetails {
     return MediaDetails(
       title: tvShow.name,
       releaseDate: tvShow.firstAirDate,
-      runtime: tvShow.episodeRunTime.isNotEmpty ? tvShow.episodeRunTime.first : null,
+      runtime: tvShow.episodeRunTime.isNotEmpty
+          ? tvShow.episodeRunTime.first
+          : null,
       genres: tvShow.genres,
       productionCompanies: tvShow.productionCompanies,
       adult: tvShow.adult,
@@ -60,7 +62,7 @@ class MediaDetails {
     );
   }
 
-  factory MediaDetails.fromMovie(MovieDetails? movie) {
+  factory MediaDetails.fromMovie(Movie? movie) {
     if (movie == null) return MediaDetails.empty();
 
     return MediaDetails(

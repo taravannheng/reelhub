@@ -1,5 +1,5 @@
-import 'package:reelhub/data/models/movie_details/movie_details_model.dart';
+import 'package:reelhub/data/models/movie/movie_model.dart';
 
 abstract class MovieDetailsRepository {
-  Future<MovieDetails?> getMovieDetails(String id);
+  Future<Movie?> getMovieDetails(String id);
 }

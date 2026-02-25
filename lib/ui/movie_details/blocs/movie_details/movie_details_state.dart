@@ -11,12 +11,12 @@ final class MovieDetailsState extends Equatable {
 
   final MovieDetailsStatus status;
   final String? errorMessage;
-  final MovieDetails? item;
+  final Movie? item;
 
   MovieDetailsState copyWith({
     MovieDetailsStatus? status,
     String? errorMessage,
-    MovieDetails? item,
+    Movie? item,
   }) {
     return MovieDetailsState(
       status: status ?? this.status,

@@ -7,7 +7,7 @@ import 'package:reelhub/data/models/spoken_language/spoken_language_model.dart';
 part 'movie_details_model.g.dart';
 
 @JsonSerializable()
-class MovieDetails {
+class Movie {
   final bool adult;
 
   @JsonKey(name: 'backdrop_path')
@@ -70,7 +70,7 @@ class MovieDetails {
   @JsonKey(name: 'vote_count')
   final int voteCount;
 
-  MovieDetails({
+  Movie({
     required this.adult,
     this.backdropPath,
     this.belongsToCollection,
@@ -98,7 +98,7 @@ class MovieDetails {
     required this.voteCount,
   });
 
-  factory MovieDetails.fromJson(Map<String, dynamic> json) =>
+  factory Movie.fromJson(Map<String, dynamic> json) =>
       _$MovieDetailsFromJson(json);
 
   Map<String, dynamic> toJson() => _$MovieDetailsToJson(this);
