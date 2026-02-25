@@ -20,11 +20,12 @@ import 'package:reelhub/ui/home/blocs/now_playing/now_playing_bloc.dart';
 import 'package:reelhub/ui/browse/blocs/popular_tv_shows/popular_tv_shows_bloc.dart';
 import 'package:reelhub/ui/home/blocs/trending/trending_bloc.dart';
 import 'package:reelhub/ui/home/blocs/upcoming_movies/upcoming_movies_bloc.dart';
-import 'package:reelhub/ui/movie_details/blocs/casts/casts_bloc.dart';
+import 'package:reelhub/data/blocs/casts/casts_bloc.dart';
 import 'package:reelhub/ui/movie_details/blocs/movie_details/movie_details_bloc.dart';
-import 'package:reelhub/ui/movie_details/blocs/similar_movies/similar_movies_bloc.dart';
-import 'package:reelhub/ui/movie_details/blocs/trailers/trailers_bloc.dart';
+import 'package:reelhub/data/blocs/similar_media/similar_media_bloc.dart';
+import 'package:reelhub/data/blocs/trailers/trailers_bloc.dart';
 import 'package:reelhub/ui/profile/blocs/theme/theme_bloc.dart';
+import 'package:reelhub/ui/tv_show_details/blocs/tv_show_details/tv_show_details_bloc.dart';
 import 'package:tmdb_api/tmdb_api.dart';
 
 final getIt = GetIt.instance;
@@ -101,11 +102,13 @@ Future<void> initDI() async {
     () => TrailerBloc(getIt<TrailerRepository>()),
   );
 
-  getIt.registerFactory<CastBloc>(
-    () => CastBloc(getIt<CastRepository>()),
+  getIt.registerFactory<CastBloc>(() => CastBloc(getIt<CastRepository>()));
+
+  getIt.registerFactory<SimilarMediaBloc>(
+    () => SimilarMediaBloc(getIt<MovieRepository>(), getIt<TvRepository>()),
   );
 
-  getIt.registerFactory<SimilarMovieBloc>(
-    () => SimilarMovieBloc(getIt<MovieRepository>()),
+  getIt.registerFactory<TvShowDetailsBloc>(
+    () => TvShowDetailsBloc(getIt<TvRepository>()),
   );
 }

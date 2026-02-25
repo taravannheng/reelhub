@@ -22,7 +22,7 @@ class Cast {
   final String? profilePath;
 
   @JsonKey(name: 'cast_id')
-  final int castId;
+  final int? castId;
 
   final String character;
 

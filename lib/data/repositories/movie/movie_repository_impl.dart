@@ -28,7 +28,7 @@ class MovieRepositoryImpl implements MovieRepository {
   }
 
   @override
-  Future<List<Media>?> getSimilarMovies(int id) {
-    return _tmdb.getSimilarMovies(id);
+  Future<List<Media>?> getSimilar(int id) {
+    return _tmdb.getSimilar(id, isMovie: true);
   }
 }

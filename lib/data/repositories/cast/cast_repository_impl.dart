@@ -8,7 +8,7 @@ class CastRepositoryImpl implements CastRepository {
   CastRepositoryImpl(this._tmdb);
 
   @override
-  Future<List<Cast>?> getCasts(String id) {
-    return _tmdb.getCasts(id);
+  Future<List<Cast>?> getCasts(String id, {required bool isMovie}) {
+    return _tmdb.getCasts(id, isMovie: isMovie);
   }
 }

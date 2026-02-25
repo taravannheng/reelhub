@@ -5,10 +5,11 @@ sealed class TrailerEvent extends Equatable {
 }
 
 final class TrailerFetched extends TrailerEvent {
-  final String movieId;
+  final String id;
+  final bool isMovie;
 
-  const TrailerFetched(this.movieId);
+  const TrailerFetched(this.id, {this.isMovie = true});
 
   @override
-  List<Object> get props => [movieId];
+  List<Object> get props => [id, isMovie];
 }

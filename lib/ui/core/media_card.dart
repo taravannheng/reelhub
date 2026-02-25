@@ -7,18 +7,19 @@ import 'package:reelhub/routing/routes.dart';
 import 'package:reelhub/utils/enums/poster_size_enums.dart';
 import 'package:reelhub/utils/helpers/image_helpers.dart';
 
-class MovieCard extends StatelessWidget {
+class MediaCard extends StatelessWidget {
   final Media item;
+  final bool isMovie;
 
-  const MovieCard(this.item, {super.key});
+  const MediaCard(this.item, {super.key, required this.isMovie});
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
         context.pushNamed(
-          Routes.movieDetails,
-          pathParameters: {'movieId': item.id.toString()},
+          isMovie ? Routes.movieDetails : Routes.tvShowDetails,
+          pathParameters: {'id': item.id.toString()},
         );
       },
       child: SizedBox(

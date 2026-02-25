@@ -5,5 +5,5 @@ abstract class MovieRepository {
   Future<List<Media>> getTopRated();
   Future<List<Media>> getPopular();
   Future<List<Media>> getUpcoming();
-  Future<List<Media>?> getSimilarMovies(int id);
+  Future<List<Media>?> getSimilar(int id);
 }

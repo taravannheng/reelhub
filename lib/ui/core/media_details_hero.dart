@@ -5,11 +5,11 @@ import 'package:reelhub/utils/enums/backdrop_size_enums.dart';
 import 'package:reelhub/utils/enums/poster_size_enums.dart';
 import 'package:reelhub/utils/helpers/image_helpers.dart';
 
-class MovieDetailsHero extends StatelessWidget {
+class MediaDetailsHero extends StatelessWidget {
   final String? backdropPath;
   final String? posterPath;
 
-  const MovieDetailsHero({
+  const MediaDetailsHero({
     super.key,
     required this.backdropPath,
     required this.posterPath,

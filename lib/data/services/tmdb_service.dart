@@ -2,6 +2,7 @@ import 'package:reelhub/data/models/cast/cast_model.dart';
 import 'package:reelhub/data/models/media/media_model.dart';
 import 'package:reelhub/data/models/movie_details/movie_details_model.dart';
 import 'package:reelhub/data/models/trailer/trailer_model.dart';
+import 'package:reelhub/data/models/tv_show/tv_show_model.dart';
 import 'package:tmdb_api/tmdb_api.dart';
 
 class TmdbService {
@@ -9,11 +10,11 @@ class TmdbService {
 
   TmdbService(this._tmdb);
 
-  Future<List<Media>?> getSimilarMovies(int id) async {
+  Future<List<Media>?> getSimilar(int id, {required bool isMovie}) async {
     try {
-      final Map<dynamic, dynamic> results = await _tmdb.v3.movies.getSimilar(
-        id,
-      );
+      final Map<dynamic, dynamic> results = isMovie
+          ? await _tmdb.v3.movies.getSimilar(id)
+          : await _tmdb.v3.tv.getSimilar(id);
 
       final similarMovieList = (results["results"] as List<dynamic>)
           .cast<Map<String, dynamic>>()
@@ -26,11 +27,11 @@ class TmdbService {
     }
   }
 
-  Future<List<Cast>?> getCasts(String id) async {
+  Future<List<Cast>?> getCasts(String id, {required bool isMovie}) async {
     try {
-      final Map<dynamic, dynamic> results = await _tmdb.v3.movies.getCredits(
-        int.parse(id),
-      );
+      final Map<dynamic, dynamic> results = isMovie
+          ? await _tmdb.v3.movies.getCredits(int.parse(id))
+          : await _tmdb.v3.tv.getCredits(int.parse(id));
 
       final castList = (results["cast"] as List<dynamic>)
           .cast<Map<String, dynamic>>()
@@ -43,11 +44,11 @@ class TmdbService {
     }
   }
 
-  Future<List<Trailer>> getTrailers(String id) async {
+  Future<List<Trailer>> getTrailers(String id, {required bool isMovie}) async {
     try {
-      final Map<dynamic, dynamic> results = await _tmdb.v3.movies.getVideos(
-        int.parse(id),
-      );
+      final Map<dynamic, dynamic> results = isMovie
+          ? await _tmdb.v3.movies.getVideos(int.parse(id))
+          : await _tmdb.v3.tv.getVideos(id);
 
       final trailerList = (results["results"] as List<dynamic>)
           .cast<Map<String, dynamic>>()
@@ -148,6 +149,16 @@ class TmdbService {
       return topRatedTvShowsList;
     } catch (e) {
       return [];
+    }
+  }
+
+  Future<TvShow?> getTvShowDetails(int id) async {
+    try {
+      final Map<dynamic, dynamic> result = await _tmdb.v3.tv.getDetails(id);
+
+      return TvShow.fromJson(result as Map<String, dynamic>);
+    } catch (e) {
+      return null;
     }
   }
 

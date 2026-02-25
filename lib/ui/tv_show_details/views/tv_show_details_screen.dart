@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:reelhub/data/models/media_details/media_details_model.dart';
-import 'package:reelhub/ui/core/movie_list.dart';
-import 'package:reelhub/ui/movie_details/blocs/movie_details/movie_details_bloc.dart';
-import 'package:reelhub/data/blocs/similar_media/similar_media_bloc.dart';
 import 'package:reelhub/ui/core/cast_list.dart';
 import 'package:reelhub/ui/core/media_details_hero.dart';
 import 'package:reelhub/ui/core/media_details_overview.dart';
+import 'package:reelhub/ui/core/movie_list.dart';
 import 'package:reelhub/ui/core/trailer_list.dart';
+import 'package:reelhub/data/blocs/similar_media/similar_media_bloc.dart';
+import 'package:reelhub/ui/tv_show_details/blocs/tv_show_details/tv_show_details_bloc.dart';
 
-class MovieDetailsScreen extends StatelessWidget {
-  final String movieId;
+class TvShowDetailsScreen extends StatelessWidget {
+  final int id;
 
-  const MovieDetailsScreen(this.movieId, {super.key});
+  const TvShowDetailsScreen(this.id, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +24,7 @@ class MovieDetailsScreen extends StatelessWidget {
         scrollDirection: Axis.vertical,
         padding: EdgeInsets.zero,
         children: [
-          BlocBuilder<MovieDetailsBloc, MovieDetailsState>(
+          BlocBuilder<TvShowDetailsBloc, TvShowDetailsState>(
             builder: (context, state) {
               return Column(
                 children: [
@@ -36,7 +36,7 @@ class MovieDetailsScreen extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 16.0),
                     child: MediaDetailsOverview(
-                      MediaDetails.fromMovie(state.item),
+                      MediaDetails.fromTvShow(state.item),
                     ),
                   ),
                 ],

@@ -1,12 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:reelhub/data/models/media/media_model.dart';
-import 'package:reelhub/ui/core/movie_card.dart';
+import 'package:reelhub/ui/core/media_card.dart';
 
 class MovieList extends StatelessWidget {
   final List<Media>? items;
   final String title;
+  final bool isMovie;
 
-  const MovieList(this.items, {super.key, required this.title});
+  const MovieList(
+    this.items, {
+    super.key,
+    required this.title,
+    this.isMovie = true,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +35,7 @@ class MovieList extends StatelessWidget {
                 padding: EdgeInsets.only(
                   right: index < items!.length - 1 ? 8.0 : 16.0,
                 ),
-                child: MovieCard(items![index]),
+                child: MediaCard(items![index], isMovie: isMovie),
               );
             },
           ),

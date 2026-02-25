@@ -13,12 +13,14 @@ import 'package:reelhub/ui/browse/blocs/popular_tv_shows/popular_tv_shows_bloc.d
 import 'package:reelhub/ui/home/blocs/trending/trending_bloc.dart';
 import 'package:reelhub/ui/home/blocs/upcoming_movies/upcoming_movies_bloc.dart';
 import 'package:reelhub/ui/home/views/home_screen.dart';
-import 'package:reelhub/ui/movie_details/blocs/casts/casts_bloc.dart';
+import 'package:reelhub/data/blocs/casts/casts_bloc.dart';
 import 'package:reelhub/ui/movie_details/blocs/movie_details/movie_details_bloc.dart';
-import 'package:reelhub/ui/movie_details/blocs/similar_movies/similar_movies_bloc.dart';
-import 'package:reelhub/ui/movie_details/blocs/trailers/trailers_bloc.dart';
+import 'package:reelhub/data/blocs/similar_media/similar_media_bloc.dart';
+import 'package:reelhub/data/blocs/trailers/trailers_bloc.dart';
 import 'package:reelhub/ui/movie_details/views/movie_details_screen.dart';
 import 'package:reelhub/ui/profile/views/profile_screen.dart';
+import 'package:reelhub/ui/tv_show_details/blocs/tv_show_details/tv_show_details_bloc.dart';
+import 'package:reelhub/ui/tv_show_details/views/tv_show_details_screen.dart';
 
 final GlobalKey<NavigatorState> _rootNavigatorKey = GlobalKey<NavigatorState>(
   debugLabel: 'root',
@@ -67,32 +69,64 @@ final GoRouter routerInstance = GoRouter(
                   name: Routes.movieDetails,
                   path: Routes.movieDetailsPath,
                   builder: (BuildContext context, GoRouterState state) {
-                    final movieId = state.pathParameters['movieId'] ?? '';
-                    final movieIdInt = int.tryParse(movieId) ?? 0;
+                    final id = state.pathParameters['id'] ?? '';
+                    final idAsInt = int.tryParse(id) ?? 0;
 
                     return MultiBlocProvider(
                       providers: [
                         BlocProvider(
                           create: (context) =>
                               getIt<MovieDetailsBloc>()
-                                ..add(MovieDetailsFetched(movieId)),
+                                ..add(MovieDetailsFetched(id)),
+                        ),
+                        BlocProvider(
+                          create: (context) =>
+                              getIt<TrailerBloc>()..add(TrailerFetched(id)),
+                        ),
+                        BlocProvider(
+                          create: (context) =>
+                              getIt<CastBloc>()..add(CastFetched(id)),
+                        ),
+                        BlocProvider(
+                          create: (context) =>
+                              getIt<SimilarMediaBloc>()
+                                ..add(SimilarMediaFetched(idAsInt)),
+                        ),
+                      ],
+                      child: MovieDetailsScreen(id),
+                    );
+                  },
+                ),
+                GoRoute(
+                  name: Routes.tvShowDetails,
+                  path: Routes.tvShowDetailsPath,
+                  builder: (BuildContext context, GoRouterState state) {
+                    final id = state.pathParameters['id'] ?? '';
+                    final idAsInt = int.tryParse(id) ?? 0;
+
+                    return MultiBlocProvider(
+                      providers: [
+                        BlocProvider(
+                          create: (context) =>
+                              getIt<TvShowDetailsBloc>()
+                                ..add(TvShowDetailsFetched(idAsInt)),
                         ),
                         BlocProvider(
                           create: (context) =>
                               getIt<TrailerBloc>()
-                                ..add(TrailerFetched(movieId)),
+                                ..add(TrailerFetched(id, isMovie: false)),
                         ),
                         BlocProvider(
                           create: (context) =>
-                              getIt<CastBloc>()..add(CastFetched(movieId)),
+                              getIt<CastBloc>()
+                                ..add(CastFetched(id, isMovie: false)),
                         ),
                         BlocProvider(
-                          create: (context) =>
-                              getIt<SimilarMovieBloc>()
-                                ..add(SimilarMovieFetched(movieIdInt)),
+                          create: (context) => getIt<SimilarMediaBloc>()
+                            ..add(SimilarMediaFetched(idAsInt, isMovie: false)),
                         ),
                       ],
-                      child: MovieDetailsScreen(movieId),
+                      child: TvShowDetailsScreen(idAsInt),
                     );
                   },
                 ),

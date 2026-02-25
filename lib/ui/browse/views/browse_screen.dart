@@ -54,12 +54,14 @@ class BrowseScreen extends StatelessWidget {
                           child: MovieList(
                             mockMovieList,
                             title: "Top Rated TV Shows",
+                            isMovie: false,
                           ),
                         );
                       case TopRatedTVShowsStatus.success:
                         return MovieList(
                           state.items,
                           title: "Top Rated TV Shows",
+                          isMovie: false,
                         );
                       default:
                         return const Text("No data");
@@ -95,12 +97,14 @@ class BrowseScreen extends StatelessWidget {
                           child: MovieList(
                             mockMovieList,
                             title: "Popular TV Shows",
+                            isMovie: false,
                           ),
                         );
                       case PopularTVShowsStatus.success:
                         return MovieList(
                           state.items,
                           title: "Popular TV Shows",
+                          isMovie: false,
                         );
                       default:
                         return const Text("No data");

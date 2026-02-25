@@ -20,7 +20,7 @@ class TrailerBloc extends Bloc<TrailerEvent, TrailerState> {
     emit(state.copyWith(status: TrailerStatus.loading, errorMessage: null));
 
     try {
-      final results = await repository.getTrailers(event.movieId);
+      final results = await repository.getTrailers(event.id, isMovie: event.isMovie);
 
       // filter for youtube videos only
       final filteredResults = results

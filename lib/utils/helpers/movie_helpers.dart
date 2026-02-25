@@ -5,7 +5,9 @@ class MovieHelpers {
     return '${hours}h ${minutes}m';
   }
 
-  static String extractYearFromReleaseDate(String releaseDate) {
+  static String extractYearFromReleaseDate(String? releaseDate) {
+    if (releaseDate == null) return "";
+
     final List<String> splittedDate = releaseDate.split("-");
     if (splittedDate.first.isNotEmpty) {
       return " (${splittedDate.first})";

@@ -20,7 +20,10 @@ class CastBloc extends Bloc<CastEvent, CastState> {
     emit(state.copyWith(status: CastStatus.loading, errorMessage: null));
 
     try {
-      final results = await repository.getCasts(event.movieId);
+      final results = await repository.getCasts(
+        event.id,
+        isMovie: event.isMovie,
+      );
 
       if (results != null) {
         // filter for actors/actress only
@@ -38,7 +41,7 @@ class CastBloc extends Bloc<CastEvent, CastState> {
 
         return;
       }
-      
+
       emit(
         state.copyWith(
           status: CastStatus.success,

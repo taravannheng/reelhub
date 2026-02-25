@@ -8,7 +8,7 @@ class TrailerRepositoryImpl implements TrailerRepository {
   TrailerRepositoryImpl(this._tmdb);
 
   @override
-  Future<List<Trailer>> getTrailers(String id) {
-    return _tmdb.getTrailers(id);
+  Future<List<Trailer>> getTrailers(String id, {required bool isMovie}) {
+    return _tmdb.getTrailers(id, isMovie: isMovie);
   }
 }

@@ -5,10 +5,11 @@ sealed class CastEvent extends Equatable {
 }
 
 final class CastFetched extends CastEvent {
-  final String movieId;
+  final String id;
+  final bool isMovie;
 
-  const CastFetched(this.movieId);
+  const CastFetched(this.id, {this.isMovie = true});
 
   @override
-  List<Object> get props => [movieId];
+  List<Object> get props => [id, isMovie];
 }
