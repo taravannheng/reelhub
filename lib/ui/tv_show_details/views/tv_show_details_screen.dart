@@ -37,6 +37,7 @@ class TvShowDetailsScreen extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(horizontal: 16.0),
                     child: MediaDetailsOverview(
                       MediaDetails.fromTvShow(state.item),
+                      seasonList: state.item?.seasons,
                     ),
                   ),
                 ],
