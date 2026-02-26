@@ -57,7 +57,23 @@ class MovieDetailsScreen extends StatelessWidget {
           const SizedBox(height: 24),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16.0),
-            child: ProductionCompanyList(),
+            child: BlocBuilder<MovieDetailsBloc, MovieDetailsState>(
+              builder: (context, state) {
+                switch (state.status) {
+                  case MovieDetailsStatus.initial:
+                  case MovieDetailsStatus.loading:
+                    return ProductionCompanyList(isLoading: true);
+                  case MovieDetailsStatus.failure:
+                    return ProductionCompanyList(
+                      errorMessage: 'Error occured while fetching data...',
+                    );
+                  case MovieDetailsStatus.success:
+                    return ProductionCompanyList(
+                      productionCompanies: state.item!.productionCompanies,
+                    );
+                }
+              },
+            ),
           ),
           const SizedBox(height: 24),
           Padding(
