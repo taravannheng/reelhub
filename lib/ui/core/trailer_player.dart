@@ -46,7 +46,11 @@ class _TrailerPlayerState extends State<TrailerPlayer> {
   Widget build(BuildContext context) {
     return YoutubePlayer(
       controller: _controller,
-      showVideoProgressIndicator: true,
+      showVideoProgressIndicator: false,
+      onEnded: (metaData) {
+        _controller.seekTo(Duration.zero);
+        _controller.pause();
+      },
       bottomActions: [
         CurrentPosition(),
         ProgressBar(
