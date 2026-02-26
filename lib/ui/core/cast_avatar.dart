@@ -12,29 +12,35 @@ class CastAvatar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CircleAvatar(
-      radius: 100,
-      backgroundImage: cast.profilePath != null && cast.profilePath!.isNotEmpty
-          ? NetworkImage(
-              ImageHelpers.formatProfileUrl(
-                cast.profilePath,
-                size: ProfileSize.w185,
-              ),
-            )
-          : null,
-      backgroundColor: Theme.of(context).colorScheme.surfaceContainer,
-      child: cast.profilePath == null || cast.profilePath!.isEmpty
-          ? Container(
-              width: double.infinity,
-              color: Colors.transparent,
-              child: Center(
-                child: SizedBox(
-                  width: 50,
-                  height: 50,
-                  child: CustomIcon(
-                    path: CustomIcons.profile,
-                    color: Theme.of(context).colorScheme.primary,
+    final hasImage = cast.profilePath != null && cast.profilePath!.isNotEmpty;
+
+    return Container(
+      width: 100,
+      height: 100,
+      decoration: BoxDecoration(
+        shape: BoxShape.circle,
+        color: Theme.of(context).colorScheme.surfaceContainer,
+        image: hasImage
+            ? DecorationImage(
+                image: NetworkImage(
+                  ImageHelpers.formatProfileUrl(
+                    cast.profilePath,
+                    size: ProfileSize.w185,
                   ),
+                ),
+                fit: BoxFit.cover,
+                alignment: Alignment.topCenter,
+              )
+            : null,
+      ),
+      child: !hasImage
+          ? Center(
+              child: SizedBox(
+                width: 50,
+                height: 50,
+                child: CustomIcon(
+                  path: CustomIcons.profile,
+                  color: Theme.of(context).colorScheme.primary,
                 ),
               ),
             )
