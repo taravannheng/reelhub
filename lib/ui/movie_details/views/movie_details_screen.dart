@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:reelhub/data/models/media_details/media_details_model.dart';
+import 'package:reelhub/ui/core/company_list.dart';
 import 'package:reelhub/ui/core/movie_list.dart';
 import 'package:reelhub/ui/movie_details/blocs/movie_details/movie_details_bloc.dart';
 import 'package:reelhub/data/blocs/similar_media/similar_media_bloc.dart';
@@ -52,6 +53,11 @@ class MovieDetailsScreen extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16.0),
             child: CastList(),
+          ),
+          const SizedBox(height: 24),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16.0),
+            child: ProductionCompanyList(),
           ),
           const SizedBox(height: 24),
           Padding(

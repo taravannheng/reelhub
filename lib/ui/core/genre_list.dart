@@ -13,34 +13,7 @@ class GenreList extends StatelessWidget {
       child: ListView(
         scrollDirection: Axis.horizontal,
         children: [
-          if (genres != null)
-            ...genres!.map(
-              (genre) => Align(
-                alignment: AlignmentGeometry.center,
-                child: Padding(
-                  padding: EdgeInsets.only(right: 8),
-                  child: Row(
-                    children: [
-                      Text(
-                        genre.name,
-                        style: Theme.of(
-                          context,
-                        ).textTheme.labelLarge?.copyWith(color: Colors.grey),
-                      ),
-                      if (genre != genres!.last) ...[
-                        const SizedBox(width: 8.0),
-                        Text(
-                          "·",
-                          style: Theme.of(
-                            context,
-                          ).textTheme.labelLarge?.copyWith(color: Colors.grey),
-                        ),
-                      ],
-                    ],
-                  ),
-                ),
-              ),
-            ),
+          
         ],
       ),
     );

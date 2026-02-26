@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:reelhub/data/models/media_details/media_details_model.dart';
 import 'package:reelhub/data/models/season/season_model.dart';
-import 'package:reelhub/ui/core/genre_list.dart';
 import 'package:reelhub/ui/core/meta_list.dart';
 import 'package:reelhub/ui/core/production_info_list.dart';
 import 'package:reelhub/ui/tv_show_details/views/season_list.dart';
@@ -28,10 +27,8 @@ class MediaDetailsOverview extends StatelessWidget {
         const SizedBox(height: 4),
         ProductionInfoList(
           runtime: mediaDetails?.runtime,
-          productionCompanies: mediaDetails?.productionCompanies,
+          genres: mediaDetails?.genres,
         ),
-        const SizedBox(height: 4),
-        GenreList(genres: mediaDetails?.genres),
         const SizedBox(height: 8),
         MetaList(
           adult: mediaDetails?.adult,
@@ -39,7 +36,9 @@ class MediaDetailsOverview extends StatelessWidget {
           language: mediaDetails?.originalLanguage,
         ),
         if (seasonList != null && seasonList!.isNotEmpty)
-          Column(children: [const SizedBox(height: 24.0), SeasonList(seasonList!)]),
+          Column(
+            children: [const SizedBox(height: 24.0), SeasonList(seasonList!)],
+          ),
         const SizedBox(height: 24.0),
         Text(
           mediaDetails?.overview ?? "No overview...",
