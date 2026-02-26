@@ -28,10 +28,13 @@ class HomeScreen extends StatelessWidget {
                       case TrendingStatus.loading:
                         return Skeletonizer(
                           enabled: true,
-                          child: MovieList(mockMovieList, title: "Trending"),
+                          child: MovieList(
+                            title: "Trending",
+                            items: mockMovieList,
+                          ),
                         );
                       case TrendingStatus.success:
-                        return MovieList(state.items, title: "Trending");
+                        return MovieList(title: "Trending", items: state.items);
                       default:
                         return const Text("No data");
                     }
@@ -45,13 +48,13 @@ class HomeScreen extends StatelessWidget {
                         return Skeletonizer(
                           enabled: true,
                           child: MovieList(
-                            mockMovieList,
                             title: "Playing in Theatre",
+                            items: mockMovieList,
                           ),
                         );
                       case NowPlayingStatus.success:
                         return MovieList(
-                          state.items,
+                          items: state.items,
                           title: "Playing in Theatre",
                         );
                       default:
@@ -67,12 +70,15 @@ class HomeScreen extends StatelessWidget {
                         return Skeletonizer(
                           enabled: true,
                           child: MovieList(
-                            mockMovieList,
                             title: "Upcoming Movies",
+                            items: mockMovieList,
                           ),
                         );
                       case UpcomingMoviesStatus.success:
-                        return MovieList(state.items, title: "Upcoming Movies");
+                        return MovieList(
+                          title: "Upcoming Movies",
+                          items: state.items,
+                        );
                       default:
                         return const Text("No data");
                     }

@@ -6,40 +6,46 @@ class MovieList extends StatelessWidget {
   final List<Media>? items;
   final String title;
   final bool isMovie;
+  final bool isLoading;
+  final String? errorMessage;
 
-  const MovieList(
-    this.items, {
+  const MovieList({
     super.key,
     required this.title,
+    this.items,
+    this.errorMessage,
     this.isMovie = true,
+    this.isLoading = false,
   });
 
   @override
   Widget build(BuildContext context) {
-    if (items == null) {
-      return Text("No trending...");
-    }
+    final bool hasMovies = items != null && items!.isNotEmpty;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(title, style: Theme.of(context).textTheme.titleLarge),
         SizedBox(height: 16),
-        SizedBox(
-          height: 231,
-          child: ListView.builder(
-            scrollDirection: Axis.horizontal,
-            itemCount: items!.length,
-            itemBuilder: (BuildContext context, int index) {
-              return Padding(
-                padding: EdgeInsets.only(
-                  right: index < items!.length - 1 ? 8.0 : 16.0,
-                ),
-                child: MediaCard(items![index], isMovie: isMovie),
-              );
-            },
+        if (isLoading) CircularProgressIndicator.adaptive(),
+        if (errorMessage != null) Text(errorMessage!),
+        if (hasMovies)
+          SizedBox(
+            height: 231,
+            child: ListView.builder(
+              scrollDirection: Axis.horizontal,
+              itemCount: items!.length,
+              itemBuilder: (BuildContext context, int index) {
+                return Padding(
+                  padding: EdgeInsets.only(
+                    right: index < items!.length - 1 ? 8.0 : 16.0,
+                  ),
+                  child: MediaCard(items![index], isMovie: isMovie),
+                );
+              },
+            ),
           ),
-        ),
+        if (!hasMovies) Text("No Data..."),
       ],
     );
   }

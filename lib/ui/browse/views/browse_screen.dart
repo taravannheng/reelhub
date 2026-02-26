@@ -30,13 +30,13 @@ class BrowseScreen extends StatelessWidget {
                         return Skeletonizer(
                           enabled: true,
                           child: MovieList(
-                            mockMovieList,
+                            items: mockMovieList,
                             title: "Top Rated Movies",
                           ),
                         );
                       case TopRatedMoviesStatus.success:
                         return MovieList(
-                          state.items,
+                          items: state.items,
                           title: "Top Rated Movies",
                         );
                       default:
@@ -52,14 +52,14 @@ class BrowseScreen extends StatelessWidget {
                         return Skeletonizer(
                           enabled: true,
                           child: MovieList(
-                            mockMovieList,
+                            items: mockMovieList,
                             title: "Top Rated TV Shows",
                             isMovie: false,
                           ),
                         );
                       case TopRatedTVShowsStatus.success:
                         return MovieList(
-                          state.items,
+                          items: state.items,
                           title: "Top Rated TV Shows",
                           isMovie: false,
                         );
@@ -76,12 +76,12 @@ class BrowseScreen extends StatelessWidget {
                         return Skeletonizer(
                           enabled: true,
                           child: MovieList(
-                            mockMovieList,
+                            items: mockMovieList,
                             title: "Popular Movies",
                           ),
                         );
                       case PopularMoviesStatus.success:
-                        return MovieList(state.items, title: "Popular Movies");
+                        return MovieList(items: state.items, title: "Popular Movies");
                       default:
                         return const Text("No data");
                     }
@@ -95,14 +95,14 @@ class BrowseScreen extends StatelessWidget {
                         return Skeletonizer(
                           enabled: true,
                           child: MovieList(
-                            mockMovieList,
+                            items: mockMovieList,
                             title: "Popular TV Shows",
                             isMovie: false,
                           ),
                         );
                       case PopularTVShowsStatus.success:
                         return MovieList(
-                          state.items,
+                          items: state.items,
                           title: "Popular TV Shows",
                           isMovie: false,
                         );

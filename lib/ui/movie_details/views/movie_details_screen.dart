@@ -110,7 +110,18 @@ class MovieDetailsScreen extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 16.0),
             child: BlocBuilder<SimilarMediaBloc, SimilarMediaState>(
               builder: (context, state) {
-                return MovieList(state.items, title: 'Similar');
+                switch (state.status) {
+                  case SimilarMediaStatus.initial:
+                  case SimilarMediaStatus.loading:
+                    return MovieList(title: 'Similar', isLoading: true);
+                  case SimilarMediaStatus.failure:
+                    return MovieList(
+                      title: 'Similar',
+                      errorMessage: "Failed to fetch data...",
+                    );
+                  case SimilarMediaStatus.success:
+                    return MovieList(title: 'Similar', items: state.items);
+                }
               },
             ),
           ),
