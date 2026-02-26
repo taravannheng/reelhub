@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:reelhub/ui/core/cast_card.dart';
+import 'package:reelhub/ui/core/cast_avatar.dart';
 import 'package:reelhub/data/blocs/casts/casts_bloc.dart';
 
 class CastList extends StatelessWidget {
@@ -39,7 +39,7 @@ class CastList extends StatelessWidget {
                 Text("Casts", style: Theme.of(context).textTheme.titleLarge),
                 const SizedBox(height: 16),
                 SizedBox(
-                  height: 150,
+                  height: 100,
                   child: ListView(
                     scrollDirection: Axis.horizontal,
                     children: [
@@ -47,7 +47,7 @@ class CastList extends StatelessWidget {
                         ...state.items!.map(
                           (item) => Row(
                             children: [
-                              SizedBox(width: 100, child: CastCard(item)),
+                              SizedBox(width: 100, child: CastAvatar(item)),
                               const SizedBox(width: 8),
                             ],
                           ),

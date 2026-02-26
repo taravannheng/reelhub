@@ -21,6 +21,7 @@ class ReelHub extends StatelessWidget {
               colorScheme: ColorScheme.light(
                 primary: Colors.black,
                 surface: Colors.white,
+                surfaceContainer: Color(0xFFECECEC),
               ),
               scaffoldBackgroundColor: Colors.white,
               splashColor: Colors.transparent,
@@ -43,6 +44,7 @@ class ReelHub extends StatelessWidget {
               colorScheme: ColorScheme.dark(
                 primary: Colors.white,
                 surface: Colors.black,
+                surfaceContainer: Color(0xFF101010), 
               ),
               scaffoldBackgroundColor: Colors.black,
               splashColor: Colors.transparent,
