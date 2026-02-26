@@ -13,6 +13,7 @@ class SeasonCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
+      elevation: 0,
       child: Column(
         children: [
           season.posterPath == null || season.posterPath!.isEmpty
