@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:reelhub/data/blocs/casts/casts_bloc.dart';
 import 'package:reelhub/data/models/media_details/media_details_model.dart';
 import 'package:reelhub/ui/core/company_list.dart';
 import 'package:reelhub/ui/core/movie_list.dart';
@@ -52,7 +53,21 @@ class MovieDetailsScreen extends StatelessWidget {
           const SizedBox(height: 24),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16.0),
-            child: CastList(),
+            child: BlocBuilder<CastBloc, CastState>(
+              builder: (context, state) {
+                switch (state.status) {
+                  case CastStatus.initial:
+                  case CastStatus.loading:
+                    return CastList(isLoading: true);
+                  case CastStatus.failure:
+                    return CastList(
+                      errorMessage: 'Error occured while fetching data...',
+                    );
+                  case CastStatus.success:
+                    return CastList(casts: state.items);
+                }
+              },
+            ),
           ),
           const SizedBox(height: 24),
           Padding(
