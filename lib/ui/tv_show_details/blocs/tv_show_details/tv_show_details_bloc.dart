@@ -17,7 +17,9 @@ class TvShowDetailsBloc extends Bloc<TvShowDetailsEvent, TvShowDetailsState> {
     TvShowDetailsFetched event,
     Emitter<TvShowDetailsState> emit,
   ) async {
-    emit(state.copyWith(status: TvShowDetailsStatus.loading, errorMessage: null));
+    emit(
+      state.copyWith(status: TvShowDetailsStatus.loading, errorMessage: null),
+    );
 
     try {
       final result = await repository.getDetails(event.tvShowId);

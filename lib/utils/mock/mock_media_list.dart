@@ -1,6 +1,6 @@
 import 'package:reelhub/data/models/media/media_model.dart';
 
-List<Media> mockMovieList = [
+List<Media> mockMediaList = [
   Media(
     id: 1,
     mediaType: 'movie',

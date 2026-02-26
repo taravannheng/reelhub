@@ -10,6 +10,9 @@ import 'package:reelhub/ui/core/movie_list.dart';
 import 'package:reelhub/ui/core/trailer_list.dart';
 import 'package:reelhub/data/blocs/similar_media/similar_media_bloc.dart';
 import 'package:reelhub/ui/tv_show_details/blocs/tv_show_details/tv_show_details_bloc.dart';
+import 'package:reelhub/utils/mock/mock_media_list.dart';
+import 'package:reelhub/utils/mock/mock_tv_show.dart';
+import 'package:skeletonizer/skeletonizer.dart';
 
 class TvShowDetailsScreen extends StatelessWidget {
   final int id;
@@ -28,22 +31,60 @@ class TvShowDetailsScreen extends StatelessWidget {
         children: [
           BlocBuilder<TvShowDetailsBloc, TvShowDetailsState>(
             builder: (context, state) {
-              return Column(
-                children: [
-                  MediaDetailsHero(
-                    backdropPath: state.item?.backdropPath,
-                    posterPath: state.item?.posterPath,
-                  ),
-                  const SizedBox(height: 24),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                    child: MediaDetailsOverview(
-                      MediaDetails.fromTvShow(state.item),
-                      seasonList: state.item?.seasons,
+              switch (state.status) {
+                case TvShowDetailsStatus.initial:
+                case TvShowDetailsStatus.loading:
+                  return Skeletonizer(
+                    enabled: true,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        MediaDetailsHero(
+                          backdropPath: mockMediaList.first.backdropPath,
+                          posterPath: mockMediaList.first.posterPath,
+                        ),
+                        const SizedBox(height: 24),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                          child: MediaDetailsOverview(
+                            MediaDetails.fromTvShow(mockTvShow),
+                            seasonList: mockTvShow.seasons,
+                          ),
+                        ),
+                      ],
                     ),
-                  ),
-                ],
-              );
+                  );
+                case TvShowDetailsStatus.failure:
+                  return Column(
+                    children: [
+                      MediaDetailsHero(backdropPath: null, posterPath: null),
+                      const SizedBox(height: 24),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                        child: MediaDetailsOverview(
+                          MediaDetails.fromTvShow(null),
+                        ),
+                      ),
+                    ],
+                  );
+                case TvShowDetailsStatus.success:
+                  return Column(
+                    children: [
+                      MediaDetailsHero(
+                        backdropPath: state.item?.backdropPath,
+                        posterPath: state.item?.posterPath,
+                      ),
+                      const SizedBox(height: 24),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                        child: MediaDetailsOverview(
+                          MediaDetails.fromTvShow(state.item),
+                          seasonList: state.item?.seasons,
+                        ),
+                      ),
+                    ],
+                  );
+              }
             },
           ),
           const SizedBox(height: 24),

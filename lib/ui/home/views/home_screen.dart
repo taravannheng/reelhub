@@ -5,7 +5,7 @@ import 'package:reelhub/ui/home/blocs/now_playing/now_playing_bloc.dart';
 import 'package:reelhub/ui/home/blocs/trending/trending_bloc.dart';
 import 'package:reelhub/ui/core/movie_list.dart';
 import 'package:reelhub/ui/home/blocs/upcoming_movies/upcoming_movies_bloc.dart';
-import 'package:reelhub/utils/mock/mock_trending_items.dart';
+import 'package:reelhub/utils/mock/mock_media_list.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -30,7 +30,7 @@ class HomeScreen extends StatelessWidget {
                           enabled: true,
                           child: MovieList(
                             title: "Trending",
-                            items: mockMovieList,
+                            items: mockMediaList,
                           ),
                         );
                       case TrendingStatus.success:
@@ -49,7 +49,7 @@ class HomeScreen extends StatelessWidget {
                           enabled: true,
                           child: MovieList(
                             title: "Playing in Theatre",
-                            items: mockMovieList,
+                            items: mockMediaList,
                           ),
                         );
                       case NowPlayingStatus.success:
@@ -71,7 +71,7 @@ class HomeScreen extends StatelessWidget {
                           enabled: true,
                           child: MovieList(
                             title: "Upcoming Movies",
-                            items: mockMovieList,
+                            items: mockMediaList,
                           ),
                         );
                       case UpcomingMoviesStatus.success:

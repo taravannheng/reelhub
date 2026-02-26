@@ -35,7 +35,7 @@ class TrailerList extends StatelessWidget {
                 ...trailers!.map(
                   (item) => Row(
                     children: [
-                      SizedBox(width: 300, child: TrailerPlayer(item)),
+                      SizedBox(width: 300, child: TrailerPlayer(item, key: UniqueKey())),
                       const SizedBox(width: 8),
                     ],
                   ),

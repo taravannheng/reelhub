@@ -11,6 +11,9 @@ import 'package:reelhub/ui/core/cast_list.dart';
 import 'package:reelhub/ui/core/media_details_hero.dart';
 import 'package:reelhub/ui/core/media_details_overview.dart';
 import 'package:reelhub/ui/core/trailer_list.dart';
+import 'package:reelhub/utils/mock/mock_media_list.dart';
+import 'package:reelhub/utils/mock/mock_movie.dart';
+import 'package:skeletonizer/skeletonizer.dart';
 
 class MovieDetailsScreen extends StatelessWidget {
   final String movieId;
@@ -29,21 +32,58 @@ class MovieDetailsScreen extends StatelessWidget {
         children: [
           BlocBuilder<MovieDetailsBloc, MovieDetailsState>(
             builder: (context, state) {
-              return Column(
-                children: [
-                  MediaDetailsHero(
-                    backdropPath: state.item?.backdropPath,
-                    posterPath: state.item?.posterPath,
-                  ),
-                  const SizedBox(height: 24),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                    child: MediaDetailsOverview(
-                      MediaDetails.fromMovie(state.item),
+              switch (state.status) {
+                case MovieDetailsStatus.initial:
+                case MovieDetailsStatus.loading:
+                  return Skeletonizer(
+                    enabled: true,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        MediaDetailsHero(
+                          backdropPath: mockMediaList.first.backdropPath,
+                          posterPath: mockMediaList.first.posterPath,
+                        ),
+                        const SizedBox(height: 24),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                          child: MediaDetailsOverview(
+                            MediaDetails.fromMovie(mockMovie),
+                          ),
+                        ),
+                      ],
                     ),
-                  ),
-                ],
-              );
+                  );
+                case MovieDetailsStatus.failure:
+                  return Column(
+                    children: [
+                      MediaDetailsHero(backdropPath: null, posterPath: null),
+                      const SizedBox(height: 24),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                        child: MediaDetailsOverview(
+                          MediaDetails.fromMovie(null),
+                        ),
+                      ),
+                    ],
+                  );
+                case MovieDetailsStatus.success:
+                  return Column(
+                    children: [
+                      MediaDetailsHero(
+                        backdropPath: state.item?.backdropPath,
+                        posterPath: state.item?.posterPath,
+                      ),
+                      const SizedBox(height: 24),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                        child: MediaDetailsOverview(
+                          MediaDetails.fromMovie(state.item),
+                        ),
+                      ),
+                    ],
+                  );
+              }
             },
           ),
           const SizedBox(height: 24),

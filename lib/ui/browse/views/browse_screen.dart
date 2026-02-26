@@ -6,7 +6,7 @@ import 'package:reelhub/ui/browse/blocs/top_rated_tv_shows/top_rated_tv_shows_bl
 import 'package:reelhub/ui/core/custom_logo_app_bar.dart';
 import 'package:reelhub/ui/core/movie_list.dart';
 import 'package:reelhub/ui/browse/blocs/popular_tv_shows/popular_tv_shows_bloc.dart';
-import 'package:reelhub/utils/mock/mock_trending_items.dart';
+import 'package:reelhub/utils/mock/mock_media_list.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
 class BrowseScreen extends StatelessWidget {
@@ -30,7 +30,7 @@ class BrowseScreen extends StatelessWidget {
                         return Skeletonizer(
                           enabled: true,
                           child: MovieList(
-                            items: mockMovieList,
+                            items: mockMediaList,
                             title: "Top Rated Movies",
                           ),
                         );
@@ -52,7 +52,7 @@ class BrowseScreen extends StatelessWidget {
                         return Skeletonizer(
                           enabled: true,
                           child: MovieList(
-                            items: mockMovieList,
+                            items: mockMediaList,
                             title: "Top Rated TV Shows",
                             isMovie: false,
                           ),
@@ -76,12 +76,15 @@ class BrowseScreen extends StatelessWidget {
                         return Skeletonizer(
                           enabled: true,
                           child: MovieList(
-                            items: mockMovieList,
+                            items: mockMediaList,
                             title: "Popular Movies",
                           ),
                         );
                       case PopularMoviesStatus.success:
-                        return MovieList(items: state.items, title: "Popular Movies");
+                        return MovieList(
+                          items: state.items,
+                          title: "Popular Movies",
+                        );
                       default:
                         return const Text("No data");
                     }
@@ -95,7 +98,7 @@ class BrowseScreen extends StatelessWidget {
                         return Skeletonizer(
                           enabled: true,
                           child: MovieList(
-                            items: mockMovieList,
+                            items: mockMediaList,
                             title: "Popular TV Shows",
                             isMovie: false,
                           ),

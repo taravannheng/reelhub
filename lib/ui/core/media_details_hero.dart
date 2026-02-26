@@ -40,6 +40,7 @@ class MediaDetailsHero extends StatelessWidget {
                       size: BackdropSize.w1280,
                     ),
                     height: 400,
+                    width: double.infinity,
                     fit: BoxFit.cover,
                   ),
             Positioned(
