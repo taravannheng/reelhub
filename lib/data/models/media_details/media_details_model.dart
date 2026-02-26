@@ -1,12 +1,8 @@
-import 'package:json_annotation/json_annotation.dart';
 import 'package:reelhub/data/models/genre/genre_model.dart';
 import 'package:reelhub/data/models/movie/movie_model.dart';
 import 'package:reelhub/data/models/production_company/production_company_model.dart';
 import 'package:reelhub/data/models/tv_show/tv_show_model.dart';
 
-part 'media_details_model.g.dart';
-
-@JsonSerializable()
 class MediaDetails {
   final String? title;
   final String? releaseDate;

@@ -4,7 +4,7 @@ import 'package:reelhub/data/models/production_company/production_company_model.
 import 'package:reelhub/data/models/production_country/production_country_model.dart';
 import 'package:reelhub/data/models/spoken_language/spoken_language_model.dart';
 
-part 'movie_details_model.g.dart';
+part 'movie_model.g.dart';
 
 @JsonSerializable()
 class Movie {
@@ -99,7 +99,7 @@ class Movie {
   });
 
   factory Movie.fromJson(Map<String, dynamic> json) =>
-      _$MovieDetailsFromJson(json);
+      _$MovieFromJson(json);
 
-  Map<String, dynamic> toJson() => _$MovieDetailsToJson(this);
+  Map<String, dynamic> toJson() => _$MovieToJson(this);
 }
