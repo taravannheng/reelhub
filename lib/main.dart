@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -9,15 +11,25 @@ import 'package:reelhub/app.dart';
 import 'package:reelhub/config/di.dart';
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await dotenv.load(fileName: ".env");
-  await initDI();
-  final directory = await getApplicationDocumentsDirectory();
-  Bloc.observer = TalkerBlocObserver(
-    settings: const TalkerBlocLoggerSettings(enabled: kDebugMode),
+  runZonedGuarded(
+    () async {
+      WidgetsFlutterBinding.ensureInitialized();
+      await dotenv.load(fileName: ".env");
+      await initDI();
+      final directory = await getApplicationDocumentsDirectory();
+      Bloc.observer = TalkerBlocObserver(
+        settings: const TalkerBlocLoggerSettings(enabled: kDebugMode),
+      );
+      HydratedBloc.storage = await HydratedStorage.build(
+        storageDirectory: HydratedStorageDirectory(directory.path),
+      );
+      runApp(const ReelHub());
+    },
+    (error, stack) {
+      if (kDebugMode) {
+        print('Error: $error');
+        print('Stack trace: $stack');
+      }
+    },
   );
-  HydratedBloc.storage = await HydratedStorage.build(
-    storageDirectory: HydratedStorageDirectory(directory.path),
-  );
-  runApp(const ReelHub());
 }
