@@ -21,8 +21,19 @@ class _TrailerPlayerState extends State<TrailerPlayer> {
 
     _controller = YoutubePlayerController(
       initialVideoId: widget.trailer.key,
-      flags: YoutubePlayerFlags(autoPlay: false, mute: false),
+      flags: YoutubePlayerFlags(
+        autoPlay: false,
+        mute: false,
+        disableDragSeek: true,
+      ),
     );
+  }
+
+  @override
+  void deactivate() {
+    // Pauses video while navigating to next page.
+    _controller.pause();
+    super.deactivate();
   }
 
   @override
