@@ -9,6 +9,7 @@ import 'package:reelhub/ui/core/media_details_overview.dart';
 import 'package:reelhub/ui/core/movie_list.dart';
 import 'package:reelhub/ui/core/trailer_list.dart';
 import 'package:reelhub/data/blocs/similar_media/similar_media_bloc.dart';
+import 'package:reelhub/ui/core/trailer_list_skeleton.dart';
 import 'package:reelhub/ui/tv_show_details/blocs/tv_show_details/tv_show_details_bloc.dart';
 import 'package:reelhub/utils/mock/mock_media_list.dart';
 import 'package:reelhub/utils/mock/mock_tv_show.dart';
@@ -95,7 +96,7 @@ class TvShowDetailsScreen extends StatelessWidget {
                 switch (state.status) {
                   case TrailerStatus.initial:
                   case TrailerStatus.loading:
-                    return TrailerList(isLoading: true);
+                    return TrailerListSkeleton();
                   case TrailerStatus.failure:
                     return TrailerList(
                       errorMessage: 'Error occured while fetching data...',

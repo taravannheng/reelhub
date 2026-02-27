@@ -6,14 +6,8 @@ import 'package:reelhub/ui/core/trailer_player.dart';
 class TrailerList extends StatelessWidget {
   final List<Trailer>? trailers;
   final String? errorMessage;
-  final bool isLoading;
 
-  const TrailerList({
-    super.key,
-    this.trailers,
-    this.errorMessage,
-    this.isLoading = false,
-  });
+  const TrailerList({super.key, this.trailers, this.errorMessage});
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +18,6 @@ class TrailerList extends StatelessWidget {
       children: [
         Text("Trailers", style: Theme.of(context).textTheme.titleLarge),
         const SizedBox(height: 16),
-        if (isLoading) CircularProgressIndicator.adaptive(),
         if (errorMessage != null) Text(errorMessage!),
         if (hasTrailers)
           SizedBox(
@@ -35,7 +28,10 @@ class TrailerList extends StatelessWidget {
                 ...trailers!.map(
                   (item) => Row(
                     children: [
-                      SizedBox(width: 300, child: TrailerPlayer(item, key: ValueKey(item.key))),
+                      SizedBox(
+                        width: 300,
+                        child: TrailerPlayer(item, key: ValueKey(item.key)),
+                      ),
                       const SizedBox(width: 8),
                     ],
                   ),

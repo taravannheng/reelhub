@@ -1,0 +1,40 @@
+import 'package:reelhub/data/models/trailer/trailer_model.dart';
+
+final List<Trailer> mockTrailers = [
+  Trailer(
+    iso6391: 'en',
+    iso31661: 'US',
+    name: 'Official Trailer',
+    key: 'O-b2VfmmbyA',
+    site: 'YouTube',
+    size: 1080,
+    type: 'Trailer',
+    official: true,
+    publishedAt: DateTime.parse('2024-01-15T10:00:00Z'),
+    id: 'trailer_1',
+  ),
+  Trailer(
+    iso6391: 'ja',
+    iso31661: 'JP',
+    name: '予告編',
+    key: 'O-b2VfmmbyA',
+    site: 'YouTube',
+    size: 720,
+    type: 'Teaser',
+    official: false,
+    publishedAt: DateTime.parse('2024-02-01T12:30:00Z'),
+    id: 'trailer_2',
+  ),
+  Trailer(
+    iso6391: 'ko',
+    iso31661: 'KR',
+    name: '메인 트레일러',
+    key: 'O-b2VfmmbyA',
+    site: 'YouTube',
+    size: 1080,
+    type: 'Trailer',
+    official: true,
+    publishedAt: DateTime.parse('2024-03-10T08:15:00Z'),
+    id: 'trailer_3',
+  ),
+];

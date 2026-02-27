@@ -5,6 +5,7 @@ import 'package:reelhub/data/blocs/trailers/trailers_bloc.dart';
 import 'package:reelhub/data/models/media_details/media_details_model.dart';
 import 'package:reelhub/ui/core/company_list.dart';
 import 'package:reelhub/ui/core/movie_list.dart';
+import 'package:reelhub/ui/core/trailer_list_skeleton.dart';
 import 'package:reelhub/ui/movie_details/blocs/movie_details/movie_details_bloc.dart';
 import 'package:reelhub/data/blocs/similar_media/similar_media_bloc.dart';
 import 'package:reelhub/ui/core/cast_list.dart';
@@ -94,7 +95,7 @@ class MovieDetailsScreen extends StatelessWidget {
                 switch (state.status) {
                   case TrailerStatus.initial:
                   case TrailerStatus.loading:
-                    return TrailerList(isLoading: true);
+                    return TrailerListSkeleton();
                   case TrailerStatus.failure:
                     return TrailerList(
                       errorMessage: 'Error occured while fetching data...',
