@@ -6,13 +6,11 @@ import 'package:reelhub/data/models/production_company/production_company_model.
 class ProductionCompanyList extends StatelessWidget {
   final List<ProductionCompany>? productionCompanies;
   final String? errorMessage;
-  final bool isLoading;
 
   const ProductionCompanyList({
     super.key,
     this.productionCompanies,
     this.errorMessage,
-    this.isLoading = false,
   });
 
   @override
@@ -25,9 +23,8 @@ class ProductionCompanyList extends StatelessWidget {
       children: [
         Text("Productions", style: Theme.of(context).textTheme.titleLarge),
         const SizedBox(height: 16),
-        if (isLoading) CircularProgressIndicator.adaptive(),
-        if (errorMessage != null && !isLoading) Text(errorMessage!),
-        if (errorMessage == null && !isLoading)
+        if (errorMessage != null) Text(errorMessage!),
+        if (errorMessage == null)
           SizedBox(
             height: 100,
             child: ListView(
