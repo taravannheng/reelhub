@@ -11,6 +11,7 @@ import 'package:reelhub/ui/core/trailer_list.dart';
 import 'package:reelhub/data/blocs/similar_media/similar_media_bloc.dart';
 import 'package:reelhub/ui/core/trailer_list_skeleton.dart';
 import 'package:reelhub/ui/tv_show_details/blocs/tv_show_details/tv_show_details_bloc.dart';
+import 'package:reelhub/utils/mock/mock_cast_list.dart';
 import 'package:reelhub/utils/mock/mock_media_list.dart';
 import 'package:reelhub/utils/mock/mock_tv_show.dart';
 import 'package:skeletonizer/skeletonizer.dart';
@@ -115,7 +116,7 @@ class TvShowDetailsScreen extends StatelessWidget {
                 switch (state.status) {
                   case CastStatus.initial:
                   case CastStatus.loading:
-                    return CastList(isLoading: true);
+                    return CastList(casts: mockCasts);
                   case CastStatus.failure:
                     return CastList(
                       errorMessage: 'Error occured while fetching data...',

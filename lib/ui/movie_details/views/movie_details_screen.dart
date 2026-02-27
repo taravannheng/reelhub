@@ -12,6 +12,7 @@ import 'package:reelhub/ui/core/cast_list.dart';
 import 'package:reelhub/ui/core/media_details_hero.dart';
 import 'package:reelhub/ui/core/media_details_overview.dart';
 import 'package:reelhub/ui/core/trailer_list.dart';
+import 'package:reelhub/utils/mock/mock_cast_list.dart';
 import 'package:reelhub/utils/mock/mock_media_list.dart';
 import 'package:reelhub/utils/mock/mock_movie.dart';
 import 'package:skeletonizer/skeletonizer.dart';
@@ -114,7 +115,9 @@ class MovieDetailsScreen extends StatelessWidget {
                 switch (state.status) {
                   case CastStatus.initial:
                   case CastStatus.loading:
-                    return CastList(isLoading: true);
+                    return Skeletonizer(
+                      enabled: true,
+                      child: CastList(casts: mockCasts,));
                   case CastStatus.failure:
                     return CastList(
                       errorMessage: 'Error occured while fetching data...',

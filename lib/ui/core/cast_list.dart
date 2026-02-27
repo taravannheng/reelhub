@@ -6,13 +6,11 @@ import 'package:reelhub/ui/core/cast_avatar.dart';
 class CastList extends StatelessWidget {
   final List<Cast>? casts;
   final String? errorMessage;
-  final bool isLoading;
 
   const CastList({
     super.key,
     this.casts,
     this.errorMessage,
-    this.isLoading = false,
   });
 
   @override
@@ -24,7 +22,6 @@ class CastList extends StatelessWidget {
       children: [
         Text("Casts", style: Theme.of(context).textTheme.titleLarge),
         const SizedBox(height: 16),
-        if (isLoading) CircularProgressIndicator.adaptive(),
         if (errorMessage != null) Text(errorMessage!),
         if (hasCasts)
           SizedBox(
