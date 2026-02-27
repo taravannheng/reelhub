@@ -4,6 +4,7 @@ import 'package:reelhub/data/blocs/casts/casts_bloc.dart';
 import 'package:reelhub/data/blocs/trailers/trailers_bloc.dart';
 import 'package:reelhub/data/models/media_details/media_details_model.dart';
 import 'package:reelhub/ui/core/cast_list.dart';
+import 'package:reelhub/ui/core/company_list.dart';
 import 'package:reelhub/ui/core/media_details_hero.dart';
 import 'package:reelhub/ui/core/media_details_overview.dart';
 import 'package:reelhub/ui/core/movie_list.dart';
@@ -13,6 +14,7 @@ import 'package:reelhub/ui/core/trailer_list_skeleton.dart';
 import 'package:reelhub/ui/tv_show_details/blocs/tv_show_details/tv_show_details_bloc.dart';
 import 'package:reelhub/utils/mock/mock_cast_list.dart';
 import 'package:reelhub/utils/mock/mock_media_list.dart';
+import 'package:reelhub/utils/mock/mock_production_company_list.dart';
 import 'package:reelhub/utils/mock/mock_tv_show.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
@@ -123,6 +125,32 @@ class TvShowDetailsScreen extends StatelessWidget {
                     );
                   case CastStatus.success:
                     return CastList(casts: state.items);
+                }
+              },
+            ),
+          ),
+          const SizedBox(height: 24),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16.0),
+            child: BlocBuilder<TvShowDetailsBloc, TvShowDetailsState>(
+              builder: (context, state) {
+                switch (state.status) {
+                  case TvShowDetailsStatus.initial:
+                  case TvShowDetailsStatus.loading:
+                    return Skeletonizer(
+                      enabled: true,
+                      child: ProductionCompanyList(
+                        productionCompanies: mockProductionCompanies,
+                      ),
+                    );
+                  case TvShowDetailsStatus.failure:
+                    return ProductionCompanyList(
+                      errorMessage: 'Error occured while fetching data...',
+                    );
+                  case TvShowDetailsStatus.success:
+                    return ProductionCompanyList(
+                      productionCompanies: state.item!.productionCompanies,
+                    );
                 }
               },
             ),
