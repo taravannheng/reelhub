@@ -6,7 +6,6 @@ class MovieList extends StatelessWidget {
   final List<Media>? items;
   final String title;
   final bool isMovie;
-  final bool isLoading;
   final String? errorMessage;
 
   const MovieList({
@@ -15,7 +14,6 @@ class MovieList extends StatelessWidget {
     this.items,
     this.errorMessage,
     this.isMovie = true,
-    this.isLoading = false,
   });
 
   @override
@@ -27,7 +25,6 @@ class MovieList extends StatelessWidget {
       children: [
         Text(title, style: Theme.of(context).textTheme.titleLarge),
         SizedBox(height: 16),
-        if (isLoading) CircularProgressIndicator.adaptive(),
         if (errorMessage != null) Text(errorMessage!),
         if (hasMovies)
           SizedBox(

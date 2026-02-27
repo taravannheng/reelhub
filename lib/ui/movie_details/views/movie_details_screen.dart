@@ -160,7 +160,9 @@ class MovieDetailsScreen extends StatelessWidget {
                 switch (state.status) {
                   case SimilarMediaStatus.initial:
                   case SimilarMediaStatus.loading:
-                    return MovieList(title: 'Similar', isLoading: true);
+                    return Skeletonizer(
+                      enabled: true,
+                      child: MovieList(title: 'Similar', items: mockMediaList));
                   case SimilarMediaStatus.failure:
                     return MovieList(
                       title: 'Similar',
