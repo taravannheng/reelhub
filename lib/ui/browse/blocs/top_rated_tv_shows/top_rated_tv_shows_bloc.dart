@@ -32,7 +32,7 @@ class TopRatedTVShowsBloc extends Bloc<TopRatedTVShowsEvent, TopRatedTVShowsStat
       emit(
         state.copyWith(
           status: TopRatedTVShowsStatus.failure,
-          errorMessage: e.toString(),
+          errorMessage: "Failed to fetch top rated TV shows...",
           items: null,
         ),
       );

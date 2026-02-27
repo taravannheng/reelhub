@@ -27,6 +27,7 @@ class BrowseScreen extends StatelessWidget {
                 BlocBuilder<TopRatedMoviesBloc, TopRatedMoviesState>(
                   builder: (context, state) {
                     switch (state.status) {
+                      case TopRatedMoviesStatus.initial:
                       case TopRatedMoviesStatus.loading:
                         return Skeletonizer(
                           enabled: true,
@@ -35,13 +36,16 @@ class BrowseScreen extends StatelessWidget {
                             title: "Top Rated Movies",
                           ),
                         );
+                      case TopRatedMoviesStatus.failure:
+                        return MovieList(
+                          errorMessage: state.errorMessage,
+                          title: "Top Rated Movies",
+                        );
                       case TopRatedMoviesStatus.success:
                         return MovieList(
                           items: state.items,
                           title: "Top Rated Movies",
                         );
-                      default:
-                        return const Text("No data");
                     }
                   },
                 ),
@@ -49,6 +53,7 @@ class BrowseScreen extends StatelessWidget {
                 BlocBuilder<TopRatedTVShowsBloc, TopRatedTVShowsState>(
                   builder: (context, state) {
                     switch (state.status) {
+                      case TopRatedTVShowsStatus.initial:
                       case TopRatedTVShowsStatus.loading:
                         return Skeletonizer(
                           enabled: true,
@@ -58,14 +63,18 @@ class BrowseScreen extends StatelessWidget {
                             isMovie: false,
                           ),
                         );
+                      case TopRatedTVShowsStatus.failure:
+                        return MovieList(
+                          title: "Top Rated TV Shows",
+                          isMovie: false,
+                          errorMessage: state.errorMessage,
+                        );
                       case TopRatedTVShowsStatus.success:
                         return MovieList(
                           items: state.items,
                           title: "Top Rated TV Shows",
                           isMovie: false,
                         );
-                      default:
-                        return const Text("No data");
                     }
                   },
                 ),

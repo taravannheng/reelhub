@@ -32,7 +32,7 @@ class TopRatedMoviesBloc extends Bloc<TopRatedMoviesEvent, TopRatedMoviesState> 
       emit(
         state.copyWith(
           status: TopRatedMoviesStatus.failure,
-          errorMessage: e.toString(),
+          errorMessage: "Failed to fetch top rated movies...",
           items: null,
         ),
       );
