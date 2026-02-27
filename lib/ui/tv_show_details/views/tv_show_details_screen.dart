@@ -28,7 +28,11 @@ class TvShowDetailsScreen extends StatelessWidget {
     return Scaffold(
       extendBody: true,
       extendBodyBehindAppBar: true,
-      appBar: AppBar(backgroundColor: Colors.transparent),
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        surfaceTintColor: Colors.transparent,
+        elevation: 0,
+      ),
       body: ListView(
         scrollDirection: Axis.vertical,
         padding: EdgeInsets.zero,
