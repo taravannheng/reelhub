@@ -41,7 +41,7 @@ class TrailerBloc extends Bloc<TrailerEvent, TrailerState> {
       emit(
         state.copyWith(
           status: TrailerStatus.failure,
-          errorMessage: e.toString(),
+          errorMessage: "Failed to fetch trailers...",
           items: null,
         ),
       );

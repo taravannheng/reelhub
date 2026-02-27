@@ -100,7 +100,7 @@ class MovieDetailsScreen extends StatelessWidget {
                     return TrailerListSkeleton();
                   case TrailerStatus.failure:
                     return TrailerList(
-                      errorMessage: 'Error occured while fetching data...',
+                      errorMessage: state.errorMessage,
                     );
                   case TrailerStatus.success:
                     return TrailerList(trailers: state.items);
