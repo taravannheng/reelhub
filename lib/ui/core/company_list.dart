@@ -26,7 +26,7 @@ class ProductionCompanyList extends StatelessWidget {
         if (errorMessage != null) Text(errorMessage!),
         if (errorMessage == null)
           SizedBox(
-            height: 100,
+            height: 150,
             child: ListView(
               scrollDirection: Axis.horizontal,
               children: [
@@ -34,7 +34,23 @@ class ProductionCompanyList extends StatelessWidget {
                   ...productionCompanies!.map(
                     (item) => Row(
                       children: [
-                        SizedBox(width: 100, child: CompanyLogo(item)),
+                        SizedBox(
+                          width: 100,
+                          height: 150,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              CompanyLogo(item),
+                              const SizedBox(height: 8),
+                              Text(
+                                item.name,
+                                textAlign: TextAlign.center,
+                                overflow: TextOverflow.ellipsis,
+                                softWrap: true,
+                              ),
+                            ],
+                          ),
+                        ),
                         const SizedBox(width: 8),
                       ],
                     ),
