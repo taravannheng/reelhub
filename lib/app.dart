@@ -39,12 +39,17 @@ class ReelHub extends StatelessWidget {
               bottomSheetTheme: BottomSheetThemeData(
                 backgroundColor: Color(0xFFECECEC),
               ),
+              chipTheme: ChipThemeData(
+                color: WidgetStatePropertyAll(Colors.white),
+                backgroundColor: Colors.white,
+                surfaceTintColor: Colors.white,
+              ),
             ),
             darkTheme: ThemeData.dark(useMaterial3: true).copyWith(
               colorScheme: ColorScheme.dark(
                 primary: Colors.white,
                 surface: Colors.black,
-                surfaceContainer: Color(0xFF101010), 
+                surfaceContainer: Color(0xFF101010),
               ),
               scaffoldBackgroundColor: Colors.black,
               splashColor: Colors.transparent,
@@ -60,6 +65,11 @@ class ReelHub extends StatelessWidget {
               ),
               bottomSheetTheme: BottomSheetThemeData(
                 backgroundColor: Color(0xFF101010),
+              ),
+              chipTheme: ChipThemeData(
+                color: WidgetStatePropertyAll(Colors.black),
+                backgroundColor: Colors.black,
+                surfaceTintColor: Colors.black,
               ),
             ),
             themeMode: state.selectedTheme,

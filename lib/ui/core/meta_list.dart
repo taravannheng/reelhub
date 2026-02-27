@@ -61,7 +61,6 @@ class MetaList extends StatelessWidget {
                   ).textTheme.labelLarge?.copyWith(color: Colors.green),
                 ),
                 labelPadding: EdgeInsets.only(right: 8),
-                backgroundColor: Colors.transparent,
                 padding: EdgeInsets.symmetric(horizontal: 8, vertical: 0),
                 side: BorderSide(width: 1, color: Colors.green),
                 shape: RoundedRectangleBorder(
