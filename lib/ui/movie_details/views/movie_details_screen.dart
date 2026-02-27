@@ -121,7 +121,7 @@ class MovieDetailsScreen extends StatelessWidget {
                       child: CastList(casts: mockCasts,));
                   case CastStatus.failure:
                     return CastList(
-                      errorMessage: 'Error occured while fetching data...',
+                      errorMessage: state.errorMessage,
                     );
                   case CastStatus.success:
                     return CastList(casts: state.items);

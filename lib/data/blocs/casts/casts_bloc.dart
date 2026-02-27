@@ -53,7 +53,7 @@ class CastBloc extends Bloc<CastEvent, CastState> {
       emit(
         state.copyWith(
           status: CastStatus.failure,
-          errorMessage: e.toString(),
+          errorMessage: "Failed to fetch cast data...",
           items: null,
         ),
       );
