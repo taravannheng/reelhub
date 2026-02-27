@@ -75,6 +75,7 @@ class HomeScreen extends StatelessWidget {
                 BlocBuilder<UpcomingMoviesBloc, UpcomingMoviesState>(
                   builder: (context, state) {
                     switch (state.status) {
+                      case UpcomingMoviesStatus.initial:
                       case UpcomingMoviesStatus.loading:
                         return Skeletonizer(
                           enabled: true,
@@ -83,13 +84,16 @@ class HomeScreen extends StatelessWidget {
                             items: mockMediaList,
                           ),
                         );
+                      case UpcomingMoviesStatus.failure:
+                        return MovieList(
+                          title: "Upcoming Movies",
+                          errorMessage: state.errorMessage,
+                        );
                       case UpcomingMoviesStatus.success:
                         return MovieList(
                           title: "Upcoming Movies",
                           items: state.items,
                         );
-                      default:
-                        return const Text("No data");
                     }
                   },
                 ),

@@ -34,7 +34,7 @@ class UpcomingMoviesBloc extends Bloc<UpcomingMoviesEvent, UpcomingMoviesState> 
       emit(
         state.copyWith(
           status: UpcomingMoviesStatus.failure,
-          errorMessage: e.toString(),
+          errorMessage: "Failed to fetch upcoming movies...",
           items: null,
         ),
       );
