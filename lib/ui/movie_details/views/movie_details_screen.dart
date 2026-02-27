@@ -4,6 +4,7 @@ import 'package:reelhub/data/blocs/casts/casts_bloc.dart';
 import 'package:reelhub/data/blocs/trailers/trailers_bloc.dart';
 import 'package:reelhub/data/models/media_details/media_details_model.dart';
 import 'package:reelhub/ui/core/company_list.dart';
+import 'package:reelhub/ui/core/custom_app_bar.dart';
 import 'package:reelhub/ui/core/movie_list.dart';
 import 'package:reelhub/ui/core/trailer_list_skeleton.dart';
 import 'package:reelhub/ui/movie_details/blocs/movie_details/movie_details_bloc.dart';
@@ -28,11 +29,7 @@ class MovieDetailsScreen extends StatelessWidget {
     return Scaffold(
       extendBody: true,
       extendBodyBehindAppBar: true,
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        surfaceTintColor: Colors.transparent,
-        elevation: 0,
-      ),
+      appBar: CustomAppBar(),
       body: ListView(
         scrollDirection: Axis.vertical,
         padding: EdgeInsets.zero,

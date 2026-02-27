@@ -5,6 +5,7 @@ import 'package:reelhub/data/blocs/trailers/trailers_bloc.dart';
 import 'package:reelhub/data/models/media_details/media_details_model.dart';
 import 'package:reelhub/ui/core/cast_list.dart';
 import 'package:reelhub/ui/core/company_list.dart';
+import 'package:reelhub/ui/core/custom_app_bar.dart';
 import 'package:reelhub/ui/core/media_details_hero.dart';
 import 'package:reelhub/ui/core/media_details_overview.dart';
 import 'package:reelhub/ui/core/movie_list.dart';
@@ -28,11 +29,7 @@ class TvShowDetailsScreen extends StatelessWidget {
     return Scaffold(
       extendBody: true,
       extendBodyBehindAppBar: true,
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        surfaceTintColor: Colors.transparent,
-        elevation: 0,
-      ),
+      appBar: CustomAppBar(),
       body: ListView(
         scrollDirection: Axis.vertical,
         padding: EdgeInsets.zero,
