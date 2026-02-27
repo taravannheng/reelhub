@@ -42,7 +42,7 @@ class MovieList extends StatelessWidget {
               },
             ),
           ),
-        if (!hasMovies) Text("No Data..."),
+        if (!hasMovies && errorMessage == null) Text("No Data..."),
       ],
     );
   }

@@ -32,7 +32,7 @@ class TrendingBloc extends Bloc<TrendingEvent, TrendingState> {
       emit(
         state.copyWith(
           status: TrendingStatus.failure,
-          errorMessage: e.toString(),
+          errorMessage: "Failed to fetch trending data...",
           items: null,
         ),
       );

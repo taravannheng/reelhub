@@ -20,11 +20,13 @@ class HomeScreen extends StatelessWidget {
           padding: const EdgeInsets.only(left: 16.0),
           child: SingleChildScrollView(
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 SizedBox(height: 24),
                 BlocBuilder<TrendingBloc, TrendingState>(
                   builder: (context, state) {
                     switch (state.status) {
+                      case TrendingStatus.initial:
                       case TrendingStatus.loading:
                         return Skeletonizer(
                           enabled: true,
@@ -33,10 +35,13 @@ class HomeScreen extends StatelessWidget {
                             items: mockMediaList,
                           ),
                         );
+                      case TrendingStatus.failure:
+                        return MovieList(
+                          title: "Trending",
+                          errorMessage: state.errorMessage,
+                        );
                       case TrendingStatus.success:
                         return MovieList(title: "Trending", items: state.items);
-                      default:
-                        return const Text("No data");
                     }
                   },
                 ),
