@@ -46,6 +46,7 @@ class ProductionCompanyList extends StatelessWidget {
                                 item.name,
                                 textAlign: TextAlign.center,
                                 overflow: TextOverflow.ellipsis,
+                                maxLines: 2,
                                 softWrap: true,
                               ),
                             ],
