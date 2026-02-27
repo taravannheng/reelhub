@@ -7,11 +7,7 @@ class CastList extends StatelessWidget {
   final List<Cast>? casts;
   final String? errorMessage;
 
-  const CastList({
-    super.key,
-    this.casts,
-    this.errorMessage,
-  });
+  const CastList({super.key, this.casts, this.errorMessage});
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +21,7 @@ class CastList extends StatelessWidget {
         if (errorMessage != null) Text(errorMessage!),
         if (hasCasts)
           SizedBox(
-            height: 100,
+            height: 150,
             child: ListView(
               scrollDirection: Axis.horizontal,
               children: [
@@ -33,7 +29,24 @@ class CastList extends StatelessWidget {
                   ...casts!.map(
                     (item) => Row(
                       children: [
-                        SizedBox(width: 100, child: CastAvatar(item)),
+                        SizedBox(
+                          width: 100,
+                          height: 150,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              CastAvatar(item),
+                              const SizedBox(height: 8),
+                              Text(
+                                item.name,
+                                textAlign: TextAlign.center,
+                                softWrap: true,
+                                maxLines: 2,
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                            ],
+                          ),
+                        ),
                         const SizedBox(width: 8),
                       ],
                     ),
