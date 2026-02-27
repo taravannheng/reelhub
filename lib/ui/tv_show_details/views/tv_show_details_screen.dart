@@ -51,7 +51,7 @@ class TvShowDetailsScreen extends StatelessWidget {
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 16.0),
                           child: MediaDetailsOverview(
-                            MediaDetails.fromTvShow(mockTvShow),
+                            mediaDetails: MediaDetails.fromTvShow(mockTvShow),
                             seasonList: mockTvShow.seasons,
                           ),
                         ),
@@ -60,13 +60,14 @@ class TvShowDetailsScreen extends StatelessWidget {
                   );
                 case TvShowDetailsStatus.failure:
                   return Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       MediaDetailsHero(backdropPath: null, posterPath: null),
                       const SizedBox(height: 24),
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 16.0),
                         child: MediaDetailsOverview(
-                          MediaDetails.fromTvShow(null),
+                          errorMessage: state.errorMessage,
                         ),
                       ),
                     ],
@@ -82,7 +83,7 @@ class TvShowDetailsScreen extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 16.0),
                         child: MediaDetailsOverview(
-                          MediaDetails.fromTvShow(state.item),
+                          mediaDetails: MediaDetails.fromTvShow(state.item),
                           seasonList: state.item?.seasons,
                         ),
                       ),
@@ -101,9 +102,7 @@ class TvShowDetailsScreen extends StatelessWidget {
                   case TrailerStatus.loading:
                     return TrailerListSkeleton();
                   case TrailerStatus.failure:
-                    return TrailerList(
-                      errorMessage: state.errorMessage,
-                    );
+                    return TrailerList(errorMessage: state.errorMessage);
                   case TrailerStatus.success:
                     return TrailerList(trailers: state.items);
                 }
@@ -120,9 +119,7 @@ class TvShowDetailsScreen extends StatelessWidget {
                   case CastStatus.loading:
                     return CastList(casts: mockCasts);
                   case CastStatus.failure:
-                    return CastList(
-                      errorMessage: state.errorMessage,
-                    );
+                    return CastList(errorMessage: state.errorMessage);
                   case CastStatus.success:
                     return CastList(casts: state.items);
                 }
@@ -145,7 +142,7 @@ class TvShowDetailsScreen extends StatelessWidget {
                     );
                   case TvShowDetailsStatus.failure:
                     return ProductionCompanyList(
-                      errorMessage: 'Error occured while fetching data...',
+                      errorMessage: state.errorMessage,
                     );
                   case TvShowDetailsStatus.success:
                     return ProductionCompanyList(

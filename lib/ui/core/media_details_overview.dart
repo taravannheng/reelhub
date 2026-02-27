@@ -9,12 +9,13 @@ import 'package:reelhub/utils/helpers/movie_helpers.dart';
 class MediaDetailsOverview extends StatelessWidget {
   final MediaDetails? mediaDetails;
   final List<Season>? seasonList;
+  final String? errorMessage;
 
-  const MediaDetailsOverview(this.mediaDetails, {super.key, this.seasonList});
+  const MediaDetailsOverview({super.key, this.seasonList, this.mediaDetails, this.errorMessage});
 
   @override
   Widget build(BuildContext context) {
-    if (mediaDetails == null) return Text("No data...");
+    if (errorMessage != null) return Text(errorMessage!);
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,

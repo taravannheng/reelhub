@@ -34,7 +34,7 @@ class MovieDetailsBloc extends Bloc<MovieDetailsEvent, MovieDetailsState> {
       emit(
         state.copyWith(
           status: MovieDetailsStatus.failure,
-          errorMessage: e.toString(),
+          errorMessage: "Failed to fetch movie details...",
           item: null,
         ),
       );

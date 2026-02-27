@@ -34,7 +34,7 @@ class TvShowDetailsBloc extends Bloc<TvShowDetailsEvent, TvShowDetailsState> {
       emit(
         state.copyWith(
           status: TvShowDetailsStatus.failure,
-          errorMessage: e.toString(),
+          errorMessage: "Failed to fetch TV show details...",
           item: null,
         ),
       );

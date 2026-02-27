@@ -51,7 +51,7 @@ class MovieDetailsScreen extends StatelessWidget {
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 16.0),
                           child: MediaDetailsOverview(
-                            MediaDetails.fromMovie(mockMovie),
+                            mediaDetails: MediaDetails.fromMovie(mockMovie),
                           ),
                         ),
                       ],
@@ -59,13 +59,14 @@ class MovieDetailsScreen extends StatelessWidget {
                   );
                 case MovieDetailsStatus.failure:
                   return Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       MediaDetailsHero(backdropPath: null, posterPath: null),
                       const SizedBox(height: 24),
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 16.0),
                         child: MediaDetailsOverview(
-                          MediaDetails.fromMovie(null),
+                          errorMessage: state.errorMessage,
                         ),
                       ),
                     ],
@@ -81,7 +82,7 @@ class MovieDetailsScreen extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 16.0),
                         child: MediaDetailsOverview(
-                          MediaDetails.fromMovie(state.item),
+                          mediaDetails: MediaDetails.fromMovie(state.item),
                         ),
                       ),
                     ],
@@ -99,9 +100,7 @@ class MovieDetailsScreen extends StatelessWidget {
                   case TrailerStatus.loading:
                     return TrailerListSkeleton();
                   case TrailerStatus.failure:
-                    return TrailerList(
-                      errorMessage: state.errorMessage,
-                    );
+                    return TrailerList(errorMessage: state.errorMessage);
                   case TrailerStatus.success:
                     return TrailerList(trailers: state.items);
                 }
@@ -118,11 +117,10 @@ class MovieDetailsScreen extends StatelessWidget {
                   case CastStatus.loading:
                     return Skeletonizer(
                       enabled: true,
-                      child: CastList(casts: mockCasts,));
-                  case CastStatus.failure:
-                    return CastList(
-                      errorMessage: state.errorMessage,
+                      child: CastList(casts: mockCasts),
                     );
+                  case CastStatus.failure:
+                    return CastList(errorMessage: state.errorMessage);
                   case CastStatus.success:
                     return CastList(casts: state.items);
                 }
@@ -139,10 +137,13 @@ class MovieDetailsScreen extends StatelessWidget {
                   case MovieDetailsStatus.loading:
                     return Skeletonizer(
                       enabled: true,
-                      child: ProductionCompanyList(productionCompanies: mockProductionCompanies,));
+                      child: ProductionCompanyList(
+                        productionCompanies: mockProductionCompanies,
+                      ),
+                    );
                   case MovieDetailsStatus.failure:
                     return ProductionCompanyList(
-                      errorMessage: 'Error occured while fetching data...',
+                      errorMessage: state.errorMessage,
                     );
                   case MovieDetailsStatus.success:
                     return ProductionCompanyList(
@@ -162,7 +163,8 @@ class MovieDetailsScreen extends StatelessWidget {
                   case SimilarMediaStatus.loading:
                     return Skeletonizer(
                       enabled: true,
-                      child: MovieList(title: 'Similar', items: mockMediaList));
+                      child: MovieList(title: 'Similar', items: mockMediaList),
+                    );
                   case SimilarMediaStatus.failure:
                     return MovieList(
                       title: 'Similar',
