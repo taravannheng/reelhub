@@ -17,7 +17,9 @@ class MovieDetailsBloc extends Bloc<MovieDetailsEvent, MovieDetailsState> {
     MovieDetailsFetched event,
     Emitter<MovieDetailsState> emit,
   ) async {
-    emit(state.copyWith(status: MovieDetailsStatus.loading, errorMessage: null));
+    emit(
+      state.copyWith(status: MovieDetailsStatus.loading, errorMessage: null),
+    );
 
     try {
       final result = await repository.getMovieDetails(event.movieId);

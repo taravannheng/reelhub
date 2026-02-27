@@ -15,6 +15,7 @@ import 'package:reelhub/ui/core/trailer_list.dart';
 import 'package:reelhub/utils/mock/mock_cast_list.dart';
 import 'package:reelhub/utils/mock/mock_media_list.dart';
 import 'package:reelhub/utils/mock/mock_movie.dart';
+import 'package:reelhub/utils/mock/mock_production_company_list.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
 class MovieDetailsScreen extends StatelessWidget {
@@ -136,7 +137,9 @@ class MovieDetailsScreen extends StatelessWidget {
                 switch (state.status) {
                   case MovieDetailsStatus.initial:
                   case MovieDetailsStatus.loading:
-                    return ProductionCompanyList(isLoading: true);
+                    return Skeletonizer(
+                      enabled: true,
+                      child: ProductionCompanyList(productionCompanies: mockProductionCompanies,));
                   case MovieDetailsStatus.failure:
                     return ProductionCompanyList(
                       errorMessage: 'Error occured while fetching data...',
