@@ -15,7 +15,7 @@ class TmdbService {
   Future<List<Media>?> getSimilar(int id, {required bool isMovie}) async {
     try {
       final Map<dynamic, dynamic> results = isMovie
-          ? await _tmdb.v3.movies.getSimilar(0)
+          ? await _tmdb.v3.movies.getSimilar(id)
           : await _tmdb.v3.tv.getSimilar(id);
 
       final similarMovieList = (results["results"] as List<dynamic>)
