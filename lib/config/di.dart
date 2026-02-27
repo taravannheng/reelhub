@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get_it/get_it.dart';
 import 'package:reelhub/data/repositories/cast/cast_repository.dart';
@@ -26,11 +27,16 @@ import 'package:reelhub/data/blocs/similar_media/similar_media_bloc.dart';
 import 'package:reelhub/data/blocs/trailers/trailers_bloc.dart';
 import 'package:reelhub/ui/profile/blocs/theme/theme_bloc.dart';
 import 'package:reelhub/ui/tv_show_details/blocs/tv_show_details/tv_show_details_bloc.dart';
+import 'package:talker/talker.dart';
 import 'package:tmdb_api/tmdb_api.dart';
 
 final getIt = GetIt.instance;
 
 Future<void> initDI() async {
+  getIt.registerSingleton<Talker>(Talker(
+    settings: TalkerSettings(enabled: kDebugMode)
+  ));
+
   getIt.registerLazySingleton<TMDB>(
     () => TMDB(
       ApiKeys(dotenv.env["TMDB_API_KEY"] ?? '', 'apiReadAccessTokenv4'),
@@ -38,7 +44,7 @@ Future<void> initDI() async {
     ),
   );
 
-  getIt.registerLazySingleton<TmdbService>(() => TmdbService(getIt<TMDB>()));
+  getIt.registerLazySingleton<TmdbService>(() => TmdbService(getIt<TMDB>(), getIt<Talker>()));
 
   getIt.registerLazySingleton<TrendingRepository>(
     () => TrendingRepositoryImpl(getIt<TmdbService>()),

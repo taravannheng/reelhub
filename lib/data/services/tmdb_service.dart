@@ -3,17 +3,19 @@ import 'package:reelhub/data/models/media/media_model.dart';
 import 'package:reelhub/data/models/movie/movie_model.dart';
 import 'package:reelhub/data/models/trailer/trailer_model.dart';
 import 'package:reelhub/data/models/tv_show/tv_show_model.dart';
+import 'package:talker/talker.dart';
 import 'package:tmdb_api/tmdb_api.dart';
 
 class TmdbService {
   final TMDB _tmdb;
+  final Talker _talker;
 
-  TmdbService(this._tmdb);
+  TmdbService(this._tmdb, this._talker);
 
   Future<List<Media>?> getSimilar(int id, {required bool isMovie}) async {
     try {
       final Map<dynamic, dynamic> results = isMovie
-          ? await _tmdb.v3.movies.getSimilar(id)
+          ? await _tmdb.v3.movies.getSimilar(0)
           : await _tmdb.v3.tv.getSimilar(id);
 
       final similarMovieList = (results["results"] as List<dynamic>)
@@ -23,7 +25,8 @@ class TmdbService {
 
       return similarMovieList;
     } catch (e) {
-      return null;
+      _talker.error(e.toString());
+      rethrow;
     }
   }
 
@@ -40,7 +43,8 @@ class TmdbService {
 
       return castList;
     } catch (e) {
-      return null;
+      _talker.error(e.toString());
+      rethrow;
     }
   }
 
@@ -57,7 +61,8 @@ class TmdbService {
 
       return trailerList;
     } catch (e) {
-      return [];
+      _talker.error(e.toString());
+      rethrow;
     }
   }
 
@@ -69,7 +74,8 @@ class TmdbService {
 
       return Movie.fromJson(result as Map<String, dynamic>);
     } catch (e) {
-      return null;
+      _talker.error(e.toString());
+      rethrow;
     }
   }
 
@@ -87,7 +93,8 @@ class TmdbService {
 
       return trendingList;
     } catch (e) {
-      return [];
+      _talker.error(e.toString());
+      rethrow;
     }
   }
 
@@ -103,7 +110,8 @@ class TmdbService {
 
       return nowPlayingList;
     } catch (e) {
-      return [];
+      _talker.error(e.toString());
+      rethrow;
     }
   }
 
@@ -118,7 +126,8 @@ class TmdbService {
 
       return popularList;
     } catch (e) {
-      return [];
+      _talker.error(e.toString());
+      rethrow;
     }
   }
 
@@ -133,7 +142,8 @@ class TmdbService {
 
       return topRatedMovieList;
     } catch (e) {
-      return [];
+      _talker.error(e.toString());
+      rethrow;
     }
   }
 
@@ -148,7 +158,8 @@ class TmdbService {
 
       return topRatedTvShowsList;
     } catch (e) {
-      return [];
+      _talker.error(e.toString());
+      rethrow;
     }
   }
 
@@ -158,7 +169,8 @@ class TmdbService {
 
       return TvShow.fromJson(result as Map<String, dynamic>);
     } catch (e) {
-      return null;
+      _talker.error(e.toString());
+      rethrow;
     }
   }
 
@@ -173,7 +185,8 @@ class TmdbService {
 
       return popularMovieList;
     } catch (e) {
-      return [];
+      _talker.error(e.toString());
+      rethrow;
     }
   }
 
@@ -188,7 +201,8 @@ class TmdbService {
 
       return upcomingMovieList;
     } catch (e) {
-      return [];
+      _talker.error(e.toString());
+      rethrow;
     }
   }
 }
