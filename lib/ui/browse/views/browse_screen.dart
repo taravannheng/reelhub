@@ -21,6 +21,7 @@ class BrowseScreen extends StatelessWidget {
           padding: const EdgeInsets.only(left: 16.0),
           child: SingleChildScrollView(
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 SizedBox(height: 24),
                 BlocBuilder<TopRatedMoviesBloc, TopRatedMoviesState>(
@@ -72,6 +73,7 @@ class BrowseScreen extends StatelessWidget {
                 BlocBuilder<PopularMoviesBloc, PopularMoviesState>(
                   builder: (context, state) {
                     switch (state.status) {
+                      case PopularMoviesStatus.initial:
                       case PopularMoviesStatus.loading:
                         return Skeletonizer(
                           enabled: true,
@@ -80,13 +82,16 @@ class BrowseScreen extends StatelessWidget {
                             title: "Popular Movies",
                           ),
                         );
+                      case PopularMoviesStatus.failure:
+                        return MovieList(
+                          title: "Popular Movies",
+                          errorMessage: state.errorMessage,
+                        );
                       case PopularMoviesStatus.success:
                         return MovieList(
                           items: state.items,
                           title: "Popular Movies",
                         );
-                      default:
-                        return const Text("No data");
                     }
                   },
                 ),
@@ -94,6 +99,7 @@ class BrowseScreen extends StatelessWidget {
                 BlocBuilder<PopularTVShowsBloc, PopularTVShowsState>(
                   builder: (context, state) {
                     switch (state.status) {
+                      case PopularTVShowsStatus.initial:
                       case PopularTVShowsStatus.loading:
                         return Skeletonizer(
                           enabled: true,
@@ -103,14 +109,18 @@ class BrowseScreen extends StatelessWidget {
                             isMovie: false,
                           ),
                         );
+                      case PopularTVShowsStatus.failure:
+                        return MovieList(
+                          title: "Popular TV Shows",
+                          errorMessage: state.errorMessage,
+                          isMovie: false,
+                        );
                       case PopularTVShowsStatus.success:
                         return MovieList(
                           items: state.items,
                           title: "Popular TV Shows",
                           isMovie: false,
                         );
-                      default:
-                        return const Text("No data");
                     }
                   },
                 ),

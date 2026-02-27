@@ -32,7 +32,7 @@ class PopularMoviesBloc extends Bloc<PopularMoviesEvent, PopularMoviesState> {
       emit(
         state.copyWith(
           status: PopularMoviesStatus.failure,
-          errorMessage: e.toString(),
+          errorMessage: "Failed to fetch popular movies...",
           items: null,
         ),
       );

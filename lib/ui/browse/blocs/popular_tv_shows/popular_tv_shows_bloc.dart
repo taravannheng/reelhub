@@ -6,7 +6,8 @@ import 'package:reelhub/data/repositories/tv/tv_repository.dart';
 part 'popular_tv_shows_event.dart';
 part 'popular_tv_shows_state.dart';
 
-class PopularTVShowsBloc extends Bloc<PopularTVShowsEvent, PopularTVShowsState> {
+class PopularTVShowsBloc
+    extends Bloc<PopularTVShowsEvent, PopularTVShowsState> {
   final TvRepository repository;
 
   PopularTVShowsBloc(this.repository) : super(const PopularTVShowsState()) {
@@ -17,7 +18,9 @@ class PopularTVShowsBloc extends Bloc<PopularTVShowsEvent, PopularTVShowsState> 
     PopularTVShowsFetched event,
     Emitter<PopularTVShowsState> emit,
   ) async {
-    emit(state.copyWith(status: PopularTVShowsStatus.loading, errorMessage: null));
+    emit(
+      state.copyWith(status: PopularTVShowsStatus.loading, errorMessage: null),
+    );
 
     try {
       final result = await repository.getPopular();
@@ -32,7 +35,7 @@ class PopularTVShowsBloc extends Bloc<PopularTVShowsEvent, PopularTVShowsState> 
       emit(
         state.copyWith(
           status: PopularTVShowsStatus.failure,
-          errorMessage: e.toString(),
+          errorMessage: "Failed to fetch popular TV shows...",
           items: null,
         ),
       );
