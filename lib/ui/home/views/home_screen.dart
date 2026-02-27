@@ -49,6 +49,7 @@ class HomeScreen extends StatelessWidget {
                 BlocBuilder<NowPlayingBloc, NowPlayingState>(
                   builder: (context, state) {
                     switch (state.status) {
+                      case NowPlayingStatus.initial:
                       case NowPlayingStatus.loading:
                         return Skeletonizer(
                           enabled: true,
@@ -57,13 +58,16 @@ class HomeScreen extends StatelessWidget {
                             items: mockMediaList,
                           ),
                         );
+                      case NowPlayingStatus.failure:
+                        return MovieList(
+                          title: "Playing in Theatre",
+                          errorMessage: state.errorMessage,
+                        );
                       case NowPlayingStatus.success:
                         return MovieList(
                           items: state.items,
                           title: "Playing in Theatre",
                         );
-                      default:
-                        return const Text("No data");
                     }
                   },
                 ),

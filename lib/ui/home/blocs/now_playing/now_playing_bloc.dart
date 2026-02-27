@@ -32,7 +32,7 @@ class NowPlayingBloc extends Bloc<NowPlayingEvent, NowPlayingState> {
       emit(
         state.copyWith(
           status: NowPlayingStatus.failure,
-          errorMessage: e.toString(),
+          errorMessage: "Failed to fetch data...",
           items: null,
         ),
       );
