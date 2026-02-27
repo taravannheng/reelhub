@@ -40,7 +40,7 @@ class SimilarMediaBloc extends Bloc<SimilarMediaEvent, SimilarMediaState> {
       emit(
         state.copyWith(
           status: SimilarMediaStatus.failure,
-          errorMessage: e.toString(),
+          errorMessage: "Failed to fetch similar media...",
           items: null,
         ),
       );

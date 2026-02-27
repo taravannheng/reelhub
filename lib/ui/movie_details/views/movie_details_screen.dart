@@ -166,7 +166,7 @@ class MovieDetailsScreen extends StatelessWidget {
                   case SimilarMediaStatus.failure:
                     return MovieList(
                       title: 'Similar',
-                      errorMessage: "Failed to fetch data...",
+                      errorMessage: state.errorMessage,
                     );
                   case SimilarMediaStatus.success:
                     return MovieList(title: 'Similar', items: state.items);
