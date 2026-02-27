@@ -19,7 +19,8 @@ class CompanyLogo extends StatelessWidget {
       height: 100,
       decoration: BoxDecoration(
         shape: BoxShape.circle,
-        color: Theme.of(context).colorScheme.surfaceContainer,
+        // do not change to black color, conflict with logo
+        color: Color(0xFFECECEC),
       ),
       child: hasImage
           ? Padding(
