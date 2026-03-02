@@ -28,6 +28,7 @@ dependencies:
   talker: ^5.1.14
   talker_bloc_logger: ^5.1.13
   tmdb_api: ^2.2.3
+  url_launcher: ^6.3.2
   youtube_player_flutter: ^9.1.3
 
 dev_dependencies:

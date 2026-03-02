@@ -40,6 +40,9 @@ class Trailer {
 
   Map<String, dynamic> toJson() => _$TrailerToJson(this);
 
-  /// Optional helper for YouTube URL
+  /// Optional helpers for YouTube URL
   String get youtubeUrl => "https://www.youtube.com/watch?v=$key";
+
+  String get youtubeThumbnail =>
+      'https://img.youtube.com/vi/$key/hqdefault.jpg';
 }

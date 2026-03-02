@@ -1,4 +1,9 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:reelhub/ui/core/custom_icon.dart';
+import 'package:reelhub/utils/constants/icon_constants.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 import 'package:reelhub/data/models/trailer/trailer_model.dart';
@@ -19,6 +24,8 @@ class _TrailerPlayerState extends State<TrailerPlayer> {
   void initState() {
     super.initState();
 
+    if (Platform.isAndroid) return;
+
     _controller = YoutubePlayerController(
       initialVideoId: widget.trailer.key,
       flags: YoutubePlayerFlags(
@@ -29,8 +36,18 @@ class _TrailerPlayerState extends State<TrailerPlayer> {
     );
   }
 
+  Future<void> _launchYoutube() async {
+    final url = Uri.parse(widget.trailer.youtubeUrl);
+
+    if (await canLaunchUrl(url)) {
+      await launchUrl(url, mode: LaunchMode.externalApplication);
+    }
+  }
+
   @override
   void deactivate() {
+    if (Platform.isAndroid) return super.deactivate();
+
     // Pauses video while navigating to next page.
     _controller.pause();
     super.deactivate();
@@ -38,12 +55,33 @@ class _TrailerPlayerState extends State<TrailerPlayer> {
 
   @override
   void dispose() {
-    _controller.dispose();
+    if (!Platform.isAndroid) _controller.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
+    if (Platform.isAndroid) {
+      return GestureDetector(
+        onTap: _launchYoutube,
+        child: Stack(
+          alignment: Alignment.center,
+          children: [
+            Image.network(
+              widget.trailer.youtubeThumbnail,
+              width: double.infinity,
+              fit: BoxFit.cover,
+            ),
+            SizedBox(
+              width: 56,
+              height: 56,
+              child: CustomIcon(path: CustomIcons.play, color: Colors.white),
+            ),
+          ],
+        ),
+      );
+    }
+
     return YoutubePlayer(
       controller: _controller,
       showVideoProgressIndicator: false,

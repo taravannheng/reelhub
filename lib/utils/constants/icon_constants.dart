@@ -22,4 +22,6 @@ class CustomIcons {
   static final String profileSolid = '$_basePath/profile_solid.svg';
   static final String photo = '$_basePath/photo.svg';
   static final String photoSolid = '$_basePath/photo_solid.svg';
+  static final String play = '$_basePath/play.svg';
+  static final String playSolid = '$_basePath/play_solid.svg';
 }
