@@ -21,7 +21,7 @@ class PersonDetailsOverview extends StatelessWidget {
         ),
         const SizedBox(height: 4),
         Text(
-          "${person?.birthday ?? ""} - ${person?.deathday ?? "Present"} · ${person?.placeOfBirth}",
+          "${person?.birthday ?? ""} - ${person?.deathday ?? "Present"}${person?.placeOfBirth == null ? "" : " · ${person?.placeOfBirth}"}",
           textAlign: TextAlign.left,
           style: Theme.of(
             context,
