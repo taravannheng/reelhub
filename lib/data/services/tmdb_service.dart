@@ -1,6 +1,7 @@
 import 'package:reelhub/data/models/cast/cast_model.dart';
 import 'package:reelhub/data/models/media/media_model.dart';
 import 'package:reelhub/data/models/movie/movie_model.dart';
+import 'package:reelhub/data/models/person/person_model.dart';
 import 'package:reelhub/data/models/trailer/trailer_model.dart';
 import 'package:reelhub/data/models/tv_show/tv_show_model.dart';
 import 'package:talker/talker.dart';
@@ -200,6 +201,38 @@ class TmdbService {
           .toList();
 
       return upcomingMovieList;
+    } catch (e) {
+      _talker.error(e.toString());
+      rethrow;
+    }
+  }
+
+  Future<Person?> getPersonDetailsByImdbId(int imdbId) async {
+    try {
+      final Map<String, dynamic> result =
+          await _tmdb.v3.people.getDetails(imdbId) as Map<String, dynamic>;
+
+      return Person.fromJson(result);
+    } catch (e) {
+      _talker.error(e.toString());
+      rethrow;
+    }
+  }
+
+  Future<List<Media>> getPersonMovies(String imdbId) async {
+    try {
+      final Map<String, dynamic> result =
+          await _tmdb.v3.find.getById(imdbId) as Map<String, dynamic>;
+
+      final personResults =
+          (result["person_results"] as List<dynamic>)
+                  .cast<Map<String, dynamic>>()
+                  .first["known_for"]
+              as List<dynamic>;
+
+      final movies = personResults.map((item) => Media.fromJson(item)).toList();
+
+      return movies;
     } catch (e) {
       _talker.error(e.toString());
       rethrow;

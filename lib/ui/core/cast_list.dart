@@ -6,8 +6,9 @@ import 'package:reelhub/ui/core/cast_avatar.dart';
 class CastList extends StatelessWidget {
   final List<Cast>? casts;
   final String? errorMessage;
+  final String? movieId;
 
-  const CastList({super.key, this.casts, this.errorMessage});
+  const CastList({super.key, this.casts, this.errorMessage, this.movieId});
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +36,7 @@ class CastList extends StatelessWidget {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
-                              CastAvatar(item),
+                              CastAvatar(item, movieId: movieId ?? '',),
                               const SizedBox(height: 8),
                               Text(
                                 item.name,

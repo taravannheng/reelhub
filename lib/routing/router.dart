@@ -18,6 +18,9 @@ import 'package:reelhub/ui/movie_details/blocs/movie_details/movie_details_bloc.
 import 'package:reelhub/data/blocs/similar_media/similar_media_bloc.dart';
 import 'package:reelhub/data/blocs/trailers/trailers_bloc.dart';
 import 'package:reelhub/ui/movie_details/views/movie_details_screen.dart';
+import 'package:reelhub/ui/person_details/blocs/person_details/person_details_bloc.dart';
+import 'package:reelhub/ui/person_details/blocs/person_movies/person_movies_bloc.dart';
+import 'package:reelhub/ui/person_details/views/person_details_screen.dart';
 import 'package:reelhub/ui/profile/views/profile_screen.dart';
 import 'package:reelhub/ui/tv_show_details/blocs/tv_show_details/tv_show_details_bloc.dart';
 import 'package:reelhub/ui/tv_show_details/views/tv_show_details_screen.dart';
@@ -96,6 +99,31 @@ final GoRouter routerInstance = GoRouter(
                       child: MovieDetailsScreen(id),
                     );
                   },
+                  routes: <RouteBase>[
+                    GoRoute(
+                      name: Routes.personDetails,
+                      path: Routes.personDetailsPath,
+                      builder: (BuildContext context, GoRouterState state) {
+                        final id = state.pathParameters['imdbId'] ?? '';
+                        final idAsInt = int.tryParse(id) ?? 0;
+
+                        return MultiBlocProvider(
+                          providers: [
+                            BlocProvider(
+                              create: (context) =>
+                                  getIt<PersonDetailsBloc>()
+                                    ..add(PersonDetailsFetched(idAsInt)),
+                            ),
+                            BlocProvider(
+                              create: (context) =>
+                                  getIt<PersonMoviesBloc>(),
+                            ),
+                          ],
+                          child: PersonDetailsScreen(),
+                        );
+                      },
+                    ),
+                  ],
                 ),
                 GoRoute(
                   name: Routes.tvShowDetails,

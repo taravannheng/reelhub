@@ -123,7 +123,7 @@ class MovieDetailsScreen extends StatelessWidget {
                   case CastStatus.failure:
                     return CastList(errorMessage: state.errorMessage);
                   case CastStatus.success:
-                    return CastList(casts: state.items);
+                    return CastList(casts: state.items, movieId: movieId);
                 }
               },
             ),

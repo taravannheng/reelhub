@@ -9,4 +9,6 @@ class Routes {
   static final String movieDetailsPath = '/$movieDetails/:id';
   static final String tvShowDetails = 'tv-show-details';
   static final String tvShowDetailsPath = '/$tvShowDetails/:id';
+  static final String personDetails = 'person-details';
+  static final String personDetailsPath = '/$personDetails/:imdbId';
 }

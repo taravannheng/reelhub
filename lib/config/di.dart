@@ -7,6 +7,8 @@ import 'package:reelhub/data/repositories/movie/movie_repository.dart';
 import 'package:reelhub/data/repositories/movie/movie_repository_impl.dart';
 import 'package:reelhub/data/repositories/movie_details/movie_details_repository.dart';
 import 'package:reelhub/data/repositories/movie_details/movie_details_repository_impl.dart';
+import 'package:reelhub/data/repositories/person_details/person_details_repository.dart';
+import 'package:reelhub/data/repositories/person_details/person_details_repository_impl.dart';
 import 'package:reelhub/data/repositories/trailer/trailer_repository.dart';
 import 'package:reelhub/data/repositories/trailer/trailer_repository_impl.dart';
 import 'package:reelhub/data/repositories/trending/trending_repository.dart';
@@ -25,6 +27,8 @@ import 'package:reelhub/data/blocs/casts/casts_bloc.dart';
 import 'package:reelhub/ui/movie_details/blocs/movie_details/movie_details_bloc.dart';
 import 'package:reelhub/data/blocs/similar_media/similar_media_bloc.dart';
 import 'package:reelhub/data/blocs/trailers/trailers_bloc.dart';
+import 'package:reelhub/ui/person_details/blocs/person_details/person_details_bloc.dart';
+import 'package:reelhub/ui/person_details/blocs/person_movies/person_movies_bloc.dart';
 import 'package:reelhub/ui/profile/blocs/theme/theme_bloc.dart';
 import 'package:reelhub/ui/tv_show_details/blocs/tv_show_details/tv_show_details_bloc.dart';
 import 'package:talker/talker.dart';
@@ -60,6 +64,10 @@ Future<void> initDI() async {
 
   getIt.registerLazySingleton<MovieDetailsRepository>(
     () => MovieDetailsRepositoryImpl(getIt<TmdbService>()),
+  );
+
+  getIt.registerLazySingleton<PersonDetailsRepository>(
+    () => PersonDetailsRepositoryImpl(getIt<TmdbService>()),
   );
 
   getIt.registerLazySingleton<TrailerRepository>(
@@ -104,6 +112,10 @@ Future<void> initDI() async {
     () => MovieDetailsBloc(getIt<MovieDetailsRepository>()),
   );
 
+  getIt.registerFactory<PersonDetailsBloc>(
+    () => PersonDetailsBloc(getIt<PersonDetailsRepository>()),
+  );
+
   getIt.registerFactory<TrailerBloc>(
     () => TrailerBloc(getIt<TrailerRepository>()),
   );
@@ -116,5 +128,10 @@ Future<void> initDI() async {
 
   getIt.registerFactory<TvShowDetailsBloc>(
     () => TvShowDetailsBloc(getIt<TvRepository>()),
+  );
+
+
+  getIt.registerFactory<PersonMoviesBloc>(
+    () => PersonMoviesBloc(getIt<PersonDetailsRepository>()),
   );
 }
