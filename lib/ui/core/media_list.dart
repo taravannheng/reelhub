@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:reelhub/data/models/media/media_model.dart';
 import 'package:reelhub/ui/core/media_card.dart';
 
-class MovieList extends StatelessWidget {
+class MediaList extends StatelessWidget {
   final List<Media>? items;
   final String title;
   final bool isMovie;
   final String? errorMessage;
 
-  const MovieList({
+  const MediaList({
     super.key,
     required this.title,
     this.items,

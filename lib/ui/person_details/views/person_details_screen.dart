@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:reelhub/ui/core/custom_app_bar.dart';
-import 'package:reelhub/ui/core/movie_list.dart';
+import 'package:reelhub/ui/core/media_list.dart';
 import 'package:reelhub/ui/person_details/blocs/person_details/person_details_bloc.dart';
 import 'package:reelhub/ui/person_details/blocs/person_movies/person_movies_bloc.dart';
 import 'package:reelhub/ui/person_details/views/person_details_hero.dart';
@@ -97,7 +97,7 @@ class PersonDetailsScreen extends StatelessWidget {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            MovieList(
+                            MediaList(
                               title: "Appears in",
                               items: mockMediaList,
                             ),
@@ -108,7 +108,7 @@ class PersonDetailsScreen extends StatelessWidget {
                   case PersonMoviesStatus.failure:
                     return Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                      child: MovieList(
+                      child: MediaList(
                         title: 'Appears in',
                         errorMessage: state.errorMessage,
                       ),
@@ -119,7 +119,7 @@ class PersonDetailsScreen extends StatelessWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          MovieList(title: "Appears in", items: state.items),
+                          MediaList(title: "Appears in", items: state.items),
                         ],
                       ),
                     );

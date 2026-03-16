@@ -5,7 +5,7 @@ import 'package:reelhub/data/blocs/trailers/trailers_bloc.dart';
 import 'package:reelhub/data/models/media_details/media_details_model.dart';
 import 'package:reelhub/ui/core/company_list.dart';
 import 'package:reelhub/ui/core/custom_app_bar.dart';
-import 'package:reelhub/ui/core/movie_list.dart';
+import 'package:reelhub/ui/core/media_list.dart';
 import 'package:reelhub/ui/core/trailer_list_skeleton.dart';
 import 'package:reelhub/ui/movie_details/blocs/movie_details/movie_details_bloc.dart';
 import 'package:reelhub/data/blocs/similar_media/similar_media_bloc.dart';
@@ -164,15 +164,15 @@ class MovieDetailsScreen extends StatelessWidget {
                   case SimilarMediaStatus.loading:
                     return Skeletonizer(
                       enabled: true,
-                      child: MovieList(title: 'Similar', items: mockMediaList),
+                      child: MediaList(title: 'Similar', items: mockMediaList),
                     );
                   case SimilarMediaStatus.failure:
-                    return MovieList(
+                    return MediaList(
                       title: 'Similar',
                       errorMessage: state.errorMessage,
                     );
                   case SimilarMediaStatus.success:
-                    return MovieList(title: 'Similar', items: state.items);
+                    return MediaList(title: 'Similar', items: state.items);
                 }
               },
             ),

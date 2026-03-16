@@ -4,7 +4,7 @@ import 'package:reelhub/ui/browse/blocs/popular_movies/popular_movies_bloc.dart'
 import 'package:reelhub/ui/browse/blocs/top_rated_movies/top_rated_movies_bloc.dart';
 import 'package:reelhub/ui/browse/blocs/top_rated_tv_shows/top_rated_tv_shows_bloc.dart';
 import 'package:reelhub/ui/core/custom_logo_app_bar.dart';
-import 'package:reelhub/ui/core/movie_list.dart';
+import 'package:reelhub/ui/core/media_list.dart';
 import 'package:reelhub/ui/browse/blocs/popular_tv_shows/popular_tv_shows_bloc.dart';
 import 'package:reelhub/utils/mock/mock_media_list.dart';
 import 'package:skeletonizer/skeletonizer.dart';
@@ -31,18 +31,18 @@ class BrowseScreen extends StatelessWidget {
                       case TopRatedMoviesStatus.loading:
                         return Skeletonizer(
                           enabled: true,
-                          child: MovieList(
+                          child: MediaList(
                             items: mockMediaList,
                             title: "Top Rated Movies",
                           ),
                         );
                       case TopRatedMoviesStatus.failure:
-                        return MovieList(
+                        return MediaList(
                           errorMessage: state.errorMessage,
                           title: "Top Rated Movies",
                         );
                       case TopRatedMoviesStatus.success:
-                        return MovieList(
+                        return MediaList(
                           items: state.items,
                           title: "Top Rated Movies",
                         );
@@ -57,20 +57,20 @@ class BrowseScreen extends StatelessWidget {
                       case TopRatedTVShowsStatus.loading:
                         return Skeletonizer(
                           enabled: true,
-                          child: MovieList(
+                          child: MediaList(
                             items: mockMediaList,
                             title: "Top Rated TV Shows",
                             isMovie: false,
                           ),
                         );
                       case TopRatedTVShowsStatus.failure:
-                        return MovieList(
+                        return MediaList(
                           title: "Top Rated TV Shows",
                           isMovie: false,
                           errorMessage: state.errorMessage,
                         );
                       case TopRatedTVShowsStatus.success:
-                        return MovieList(
+                        return MediaList(
                           items: state.items,
                           title: "Top Rated TV Shows",
                           isMovie: false,
@@ -86,18 +86,18 @@ class BrowseScreen extends StatelessWidget {
                       case PopularMoviesStatus.loading:
                         return Skeletonizer(
                           enabled: true,
-                          child: MovieList(
+                          child: MediaList(
                             items: mockMediaList,
                             title: "Popular Movies",
                           ),
                         );
                       case PopularMoviesStatus.failure:
-                        return MovieList(
+                        return MediaList(
                           title: "Popular Movies",
                           errorMessage: state.errorMessage,
                         );
                       case PopularMoviesStatus.success:
-                        return MovieList(
+                        return MediaList(
                           items: state.items,
                           title: "Popular Movies",
                         );
@@ -112,20 +112,20 @@ class BrowseScreen extends StatelessWidget {
                       case PopularTVShowsStatus.loading:
                         return Skeletonizer(
                           enabled: true,
-                          child: MovieList(
+                          child: MediaList(
                             items: mockMediaList,
                             title: "Popular TV Shows",
                             isMovie: false,
                           ),
                         );
                       case PopularTVShowsStatus.failure:
-                        return MovieList(
+                        return MediaList(
                           title: "Popular TV Shows",
                           errorMessage: state.errorMessage,
                           isMovie: false,
                         );
                       case PopularTVShowsStatus.success:
-                        return MovieList(
+                        return MediaList(
                           items: state.items,
                           title: "Popular TV Shows",
                           isMovie: false,

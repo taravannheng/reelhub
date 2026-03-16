@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:reelhub/ui/core/custom_logo_app_bar.dart';
 import 'package:reelhub/ui/home/blocs/now_playing/now_playing_bloc.dart';
 import 'package:reelhub/ui/home/blocs/trending/trending_bloc.dart';
-import 'package:reelhub/ui/core/movie_list.dart';
+import 'package:reelhub/ui/core/media_list.dart';
 import 'package:reelhub/ui/home/blocs/upcoming_movies/upcoming_movies_bloc.dart';
 import 'package:reelhub/utils/mock/mock_media_list.dart';
 import 'package:skeletonizer/skeletonizer.dart';
@@ -30,18 +30,18 @@ class HomeScreen extends StatelessWidget {
                       case TrendingStatus.loading:
                         return Skeletonizer(
                           enabled: true,
-                          child: MovieList(
+                          child: MediaList(
                             title: "Trending",
                             items: mockMediaList,
                           ),
                         );
                       case TrendingStatus.failure:
-                        return MovieList(
+                        return MediaList(
                           title: "Trending",
                           errorMessage: state.errorMessage,
                         );
                       case TrendingStatus.success:
-                        return MovieList(title: "Trending", items: state.items);
+                        return MediaList(title: "Trending", items: state.items);
                     }
                   },
                 ),
@@ -53,18 +53,18 @@ class HomeScreen extends StatelessWidget {
                       case NowPlayingStatus.loading:
                         return Skeletonizer(
                           enabled: true,
-                          child: MovieList(
+                          child: MediaList(
                             title: "Playing in Theatre",
                             items: mockMediaList,
                           ),
                         );
                       case NowPlayingStatus.failure:
-                        return MovieList(
+                        return MediaList(
                           title: "Playing in Theatre",
                           errorMessage: state.errorMessage,
                         );
                       case NowPlayingStatus.success:
-                        return MovieList(
+                        return MediaList(
                           items: state.items,
                           title: "Playing in Theatre",
                         );
@@ -79,18 +79,18 @@ class HomeScreen extends StatelessWidget {
                       case UpcomingMoviesStatus.loading:
                         return Skeletonizer(
                           enabled: true,
-                          child: MovieList(
+                          child: MediaList(
                             title: "Upcoming Movies",
                             items: mockMediaList,
                           ),
                         );
                       case UpcomingMoviesStatus.failure:
-                        return MovieList(
+                        return MediaList(
                           title: "Upcoming Movies",
                           errorMessage: state.errorMessage,
                         );
                       case UpcomingMoviesStatus.success:
-                        return MovieList(
+                        return MediaList(
                           title: "Upcoming Movies",
                           items: state.items,
                         );
