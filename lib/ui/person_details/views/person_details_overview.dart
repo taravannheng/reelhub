@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:reelhub/data/models/person/person_model.dart';
+import 'package:reelhub/utils/helpers/person_helpers.dart';
 
 class PersonDetailsOverview extends StatelessWidget {
   final Person? person;
@@ -9,6 +10,12 @@ class PersonDetailsOverview extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final String subtitle = PersonHelpers.formatSubtitle(
+      birthday: person?.birthday,
+      deathday: person?.deathday,
+      placeOfBirth: person?.placeOfBirth,
+    );
+
     if (errorMessage != null) return Text(errorMessage!);
 
     return Column(
@@ -20,13 +27,14 @@ class PersonDetailsOverview extends StatelessWidget {
           style: Theme.of(context).textTheme.headlineLarge,
         ),
         const SizedBox(height: 4),
-        Text(
-          "${person?.birthday ?? ""} - ${person?.deathday ?? "Present"}${person?.placeOfBirth == null ? "" : " · ${person?.placeOfBirth}"}",
-          textAlign: TextAlign.left,
-          style: Theme.of(
-            context,
-          ).textTheme.labelLarge?.copyWith(color: Colors.grey),
-        ),
+        if (subtitle.isNotEmpty)
+          Text(
+            subtitle,
+            textAlign: TextAlign.left,
+            style: Theme.of(
+              context,
+            ).textTheme.labelLarge?.copyWith(color: Colors.grey),
+          ),
         const SizedBox(height: 24),
         Text(
           person?.biography ?? "No biography found...",
