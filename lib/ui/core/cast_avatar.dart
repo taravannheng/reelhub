@@ -24,35 +24,21 @@ class CastAvatar extends StatelessWidget {
           pathParameters: {'imdbId': cast.id.toString(), 'id': movieId},
         );
       },
-      child: Container(
-        width: 100,
-        height: 100,
-        decoration: BoxDecoration(
-          shape: BoxShape.circle,
-          color: Theme.of(context).colorScheme.surfaceContainer,
-          image: hasImage
-              ? DecorationImage(
-                  image: NetworkImage(
-                    ImageHelpers.formatProfileUrl(
-                      cast.profilePath,
-                      size: ProfileSize.w185,
-                    ),
-                  ),
-                  fit: BoxFit.cover,
-                  alignment: Alignment.topCenter,
-                )
-              : null,
-        ),
-        child: !hasImage
-            ? Center(
-                child: SizedBox(
-                  width: 50,
-                  height: 50,
-                  child: CustomIcon(
-                    path: CustomIcons.profile,
-                    color: Theme.of(context).colorScheme.primary,
-                  ),
+      child: CircleAvatar(
+        radius: 50,
+        backgroundColor: Theme.of(context).colorScheme.surfaceContainer,
+        foregroundImage: hasImage
+            ? NetworkImage(
+                ImageHelpers.formatProfileUrl(
+                  cast.profilePath,
+                  size: ProfileSize.w185,
                 ),
+              )
+            : null,
+        child: !hasImage
+            ? CustomIcon(
+                path: CustomIcons.profile,
+                color: Theme.of(context).colorScheme.primary,
               )
             : null,
       ),
