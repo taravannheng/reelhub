@@ -16,11 +16,11 @@ import 'package:reelhub/data/repositories/trending/trending_repository_impl.dart
 import 'package:reelhub/data/repositories/tv/tv_repository.dart';
 import 'package:reelhub/data/repositories/tv/tv_repository_impl.dart';
 import 'package:reelhub/data/services/tmdb_service.dart';
-import 'package:reelhub/ui/browse/blocs/popular_movies/popular_movies_bloc.dart';
-import 'package:reelhub/ui/browse/blocs/top_rated_movies/top_rated_movies_bloc.dart';
-import 'package:reelhub/ui/browse/blocs/top_rated_tv_shows/top_rated_tv_shows_bloc.dart';
+import 'package:reelhub/ui/home/blocs/popular_movies/popular_movies_bloc.dart';
+import 'package:reelhub/ui/home/blocs/top_rated_movies/top_rated_movies_bloc.dart';
+import 'package:reelhub/ui/home/blocs/top_rated_tv_shows/top_rated_tv_shows_bloc.dart';
 import 'package:reelhub/ui/home/blocs/now_playing/now_playing_bloc.dart';
-import 'package:reelhub/ui/browse/blocs/popular_tv_shows/popular_tv_shows_bloc.dart';
+import 'package:reelhub/ui/home/blocs/popular_tv_shows/popular_tv_shows_bloc.dart';
 import 'package:reelhub/ui/home/blocs/trending/trending_bloc.dart';
 import 'package:reelhub/ui/home/blocs/upcoming_movies/upcoming_movies_bloc.dart';
 import 'package:reelhub/data/blocs/casts/casts_bloc.dart';

@@ -3,13 +3,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:reelhub/config/di.dart';
 import 'package:reelhub/routing/routes.dart';
-import 'package:reelhub/ui/browse/blocs/popular_movies/popular_movies_bloc.dart';
-import 'package:reelhub/ui/browse/blocs/top_rated_movies/top_rated_movies_bloc.dart';
-import 'package:reelhub/ui/browse/blocs/top_rated_tv_shows/top_rated_tv_shows_bloc.dart';
-import 'package:reelhub/ui/browse/views/browse_screen.dart';
+import 'package:reelhub/ui/home/blocs/popular_movies/popular_movies_bloc.dart';
+import 'package:reelhub/ui/home/blocs/top_rated_movies/top_rated_movies_bloc.dart';
+import 'package:reelhub/ui/home/blocs/top_rated_tv_shows/top_rated_tv_shows_bloc.dart';
 import 'package:reelhub/ui/core/scaffold_with_navbar.dart';
 import 'package:reelhub/ui/home/blocs/now_playing/now_playing_bloc.dart';
-import 'package:reelhub/ui/browse/blocs/popular_tv_shows/popular_tv_shows_bloc.dart';
+import 'package:reelhub/ui/home/blocs/popular_tv_shows/popular_tv_shows_bloc.dart';
 import 'package:reelhub/ui/home/blocs/trending/trending_bloc.dart';
 import 'package:reelhub/ui/home/blocs/upcoming_movies/upcoming_movies_bloc.dart';
 import 'package:reelhub/ui/home/views/home_screen.dart';
@@ -63,6 +62,26 @@ final GoRouter routerInstance = GoRouter(
                         create: (context) =>
                             getIt<UpcomingMoviesBloc>()
                               ..add(UpcomingMoviesFetched()),
+                      ),
+                      BlocProvider(
+                        create: (context) =>
+                            getIt<TopRatedMoviesBloc>()
+                              ..add(TopRatedMoviesFetched()),
+                      ),
+                      BlocProvider(
+                        create: (context) =>
+                            getIt<TopRatedTVShowsBloc>()
+                              ..add(TopRatedTVShowsFetched()),
+                      ),
+                      BlocProvider(
+                        create: (context) =>
+                            getIt<PopularMoviesBloc>()
+                              ..add(PopularMoviesFetched()),
+                      ),
+                      BlocProvider(
+                        create: (context) =>
+                            getIt<PopularTVShowsBloc>()
+                              ..add(PopularTVShowsFetched()),
                       ),
                     ],
                     child: const HomeScreen(),
@@ -159,41 +178,6 @@ final GoRouter routerInstance = GoRouter(
                   },
                 ),
               ],
-            ),
-          ],
-        ),
-        StatefulShellBranch(
-          routes: <RouteBase>[
-            GoRoute(
-              name: Routes.browse,
-              path: Routes.browsePath,
-              builder: (BuildContext context, GoRouterState state) =>
-                  MultiBlocProvider(
-                    providers: [
-                      BlocProvider(
-                        create: (context) =>
-                            getIt<TopRatedMoviesBloc>()
-                              ..add(TopRatedMoviesFetched()),
-                      ),
-                      BlocProvider(
-                        create: (context) =>
-                            getIt<TopRatedTVShowsBloc>()
-                              ..add(TopRatedTVShowsFetched()),
-                      ),
-                      BlocProvider(
-                        create: (context) =>
-                            getIt<PopularMoviesBloc>()
-                              ..add(PopularMoviesFetched()),
-                      ),
-                      BlocProvider(
-                        create: (context) =>
-                            getIt<PopularTVShowsBloc>()
-                              ..add(PopularTVShowsFetched()),
-                      ),
-                    ],
-
-                    child: const BrowseScreen(),
-                  ),
             ),
           ],
         ),

@@ -35,14 +35,6 @@ class ScaffoldWithNavBar extends StatelessWidget {
               label: 'Home',
             ),
             BottomNavigationBarItem(
-              icon: CustomIcon(path: CustomIcons.magnifyingGlass,
-                color: Theme.of(
-                  context,
-                ).bottomNavigationBarTheme.unselectedIconTheme?.color,),
-              activeIcon: CustomIcon(path: CustomIcons.magnifyingGlassSolid),
-              label: 'Browse',
-            ),
-            BottomNavigationBarItem(
               icon: CustomIcon(path: CustomIcons.profile,
                 color: Theme.of(
                   context,
